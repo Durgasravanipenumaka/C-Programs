@@ -226,3 +226,30 @@ int main(){
         ptr(minimum,maximum);
 }
 ```
+## 10. Write a program in C to separate odd and even integers into separate arrays.
+```c
+#include<stdio.h>
+#define n 6
+void evenodd(int array[]){
+        int k=0,l=0,even[100],odd[100];
+        for(int i=0;i<n;i++){
+                if(array[i]%2==0)
+                        even[k++]=array[i];
+                else
+                        odd[l++]=array[i];
+        }
+        printf("Even numbers are :");
+        for(int i=0;i<k;i++){
+                printf("%d ",even[i]);
+        }
+        printf("\nOdd numbers are :");
+        for(int i=0;i<l;i++){
+                printf("%d ",odd[i]);
+        }
+}
+int main(){
+        int arr[]={1,2,3,4,5,6};
+        void (*ptr)(int [])=&evenodd;
+        ptr(arr);
+}
+```
