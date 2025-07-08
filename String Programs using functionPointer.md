@@ -63,3 +63,35 @@ int main(){
         return 0;
 }
 ```
+## 3.. Write a C program to sort a string array in ascending order.
+```c
+#include<stdio.h>
+#include<string.h>
+void sorting(char s[]){
+        int k=0;
+        for(int i=0;s[i]!='\0';i++){
+                if(s[i]!=' ')
+                        s[k++]=s[i];
+        }
+        s[k]='\0';
+        printf("%s\n",s);
+}
+int main(){
+        char str[100];
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        void (*ptr)(char [])=&sorting;
+        for(int i=0;str[i]!='\0';i++){
+                for(int j=i+1;str[j]!='\0';j++){
+                        if(str[i] > str[j]){
+                                int temp=str[i];
+                                str[i]=str[j];
+                                str[j]=temp;
+                        }
+                }
+        }
+        printf("Sorted string:\n");
+        ptr(str);
+}
+```
