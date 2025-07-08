@@ -25,3 +25,41 @@ int main(){
         ptr(str);
 }
 ```
+ ## 2. Write a C program to check the String is Pangram or not.
+```c
+#include<stdio.h>
+#include<string.h>
+void pangram(int ptr){
+        if(ptr)
+                printf("string is pangram");
+        else
+                printf("String is not pangram");
+
+}
+int main(){
+        char str[100];
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+             str[strlen(str)-1]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]>='A' && str[i]<='Z')
+                        str[i]=str[i]+32;
+        }
+        void (*ptr)(int)=&pangram;
+        for(char ch='a';ch<='z';ch++){
+                int found=0;
+                for(int i=0;str[i]!='\0';i++){
+                        if(str[i]==ch){
+                                found=1;
+                                break;
+                        }
+                }
+                if(!found){
+                        ptr(0);
+                        return 0;
+                }
+        }
+        ptr(1);
+        return 0;
+}
+```
