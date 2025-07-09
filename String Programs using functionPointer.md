@@ -95,3 +95,43 @@ int main(){
         ptr(str);
 }
 ```
+## 4. Write a program in C to find the frequency of characters.
+```c
+##include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+void count(char s1[],int freq[]){
+                for(int i=0;s1[i]!='\0';i++){
+                        if(freq[i]!=0)
+                              printf("%c repeates %d times\n",s1[i],freq[i]);
+        }
+}
+int main(){
+        char str[100];
+        int c;
+        void (*ptr)(char [],int [])=&count;
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                str[i]=tolower(str[i]);
+        }
+        int f[strlen(str)];
+        for(int i=0;i<strlen(str);i++){
+                f[i]=-1;
+        }
+        for(int i=0;str[i]!='\0';i++){
+                c=1;
+                if(f[i]==-1){
+                for(int j=i+1;str[j]!='\0';j++){
+                        if(str[i]==str[j]){
+                                c++;
+                                f[j]=0;
+                        }
+                }
+                f[i]=c;
+                }
+        }
+        ptr(str,f);
+}
+```
