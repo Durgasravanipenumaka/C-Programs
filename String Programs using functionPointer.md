@@ -168,3 +168,37 @@ int main(){
         ptr(s1,start,sublength,length);
 }
 ```
+## 6. Write a program in C to find the number of times a given word 'the' appears in the given String.
+```c
+#include<stdio.h>
+#include<string.h>
+void count(char str[],char aword[],char word[]){
+        int count=0,k=0;
+        for(int i=0; ;i++){
+                if(str[i]!=' ' && str[i]!=',' && str[i]!='\0'){
+                        word[k++]=str[i];
+                }
+                else{
+                word[k]='\0';
+                if(strcmp(aword,word)==0){
+                        count++;
+                }
+                k=0;
+                }
+                if(str[i]=='\0')
+                        break;
+        }
+        printf("count=%d",count);
+}
+int main(){
+        char s1[100],aword[100],word[100];
+        fgets(s1,sizeof(s1),stdin);
+        if(s1[strlen(s1)-1]=='\n')
+                s1[strlen(s1)-1]='\0';
+        fgets(aword,sizeof(aword),stdin);
+        if(aword[strlen(aword)-1]=='\n')
+                aword[strlen(aword)-1]='\0';
+        void (*ptr)(char [],char [],char [])=&count;
+        ptr(s1,aword,word);
+}
+```
