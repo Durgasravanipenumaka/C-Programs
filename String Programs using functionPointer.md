@@ -63,7 +63,7 @@ int main(){
         return 0;
 }
 ```
-## 3.. Write a C program to sort a string array in ascending order.
+## 3. Write a C program to sort a string array in ascending order.
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -133,5 +133,38 @@ int main(){
                 }
         }
         ptr(str,f);
+}
+```
+## 5.Write a program in C to extract a substring from a given string.
+```c
+#include<stdio.h>
+#include<string.h>
+void extractstring(char string[],int str,int len,int mlen){
+         char word[100];
+         int k=0;
+         if(str>0 && str<=mlen){
+                for(int i=str-1;i<str-1+len;i++){
+                        word[k++]=string[i];
+                }
+                word[k]='\0';
+                printf("%s",word);
+         }
+         else
+                 printf("Invalid");
+
+}
+int main(){
+        char s1[100];
+        int start,sublength;
+        fgets(s1,sizeof(s1),stdin);
+        if(s1[strlen(s1)-1]=='\n')
+                s1[strlen(s1)-1]='\0';
+        int length=strlen(s1);
+        printf("\nEnter the starting position:");
+        scanf("%d",&start);
+        printf("\nEnter length of the substring:");
+        scanf("%d",&sublength);
+        void (*ptr)(char[],int ,int,int)=&extractstring;
+        ptr(s1,start,sublength,length);
 }
 ```
