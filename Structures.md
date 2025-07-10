@@ -27,8 +27,7 @@ void display(char *ptr,int id,float m){
         printf("%s %d %f\n",ptr,id,m);
 }
 ```
-## 21. Create a structure to represent a book with the following members: title (string), author (string),ISBN (long int), and number of pages (int). Write a function to accept details of a book from the user and
-## store them in a structure variable. 
+## 21. Create a structure to represent a book with the following members: title (string), author (string),ISBN (long int), and number of pages (int). Write a function to accept details of a book from the user and store them in a structure variable. 
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -65,3 +64,32 @@ void display(char *str1,char *str2,long int isbn,int numofpages){
 }
 
 ```
+## 3.Print size of Structure.
+```c
+#include<stdio.h>
+struct node{
+        char name[10];
+        int empid;
+        float sal;
+};
+int main(){
+        struct node e;
+        printf("size of the structure:%zu",sizeof(e));
+}
+```
+## 4.Write a program to print size of structure without using sizeof() opeartor.
+```c
+#include<stdio.h>
+struct node{
+        char name[10];
+        int id;
+        float sal;
+};
+int main(){
+        struct node *p=0;
+        p++;
+        printf("size of the structure=%ld\n",(long)p);
+}
+```
+
+
