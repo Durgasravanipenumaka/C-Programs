@@ -34,3 +34,28 @@ int reverse(int n,int *rev){
     }
 }
 ```
+## 3.Write a function to print sum of even numbers in a number and product of odd numbers in a number.
+```c
+#include<stdio.h>
+void sumprod(int num){
+    int rem,sum=0,prod=1;
+    while(num>0){
+        rem=num%10;
+        if(rem%2==0){
+            sum=sum+rem;
+        }
+        else{
+            prod=prod*rem;
+        }
+        num=num/10;
+    }
+    printf("Sum of Even numbers in a number=%d\n",sum);
+    printf("Product of odd numbers in a number=%d",prod);
+}
+int main(){
+    int a;
+    printf("Enter the number:");
+    scanf("%d",&a);
+    sumprod(a);
+}
+```
