@@ -83,6 +83,51 @@ int main(){
         printf("%s",str);
 }
 ```
+## 7.Write a C Program to check if a two strings are Anagram or not.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+void sort(char str[]){
+        for(int i=0;str[i]!='\0';i++){
+                for(int j=i+1;str[j]!='\0';j++){
+                        if(str[i]>str[j]){
+                        char temp=str[i];
+                        str[i]=str[j];
+                        str[j]=temp;
+                }
+                }
+        }
+}
+int main(){
+        char str1[100],str2[100];
+        int count=0;
+        fgets(str1,sizeof(str1),stdin);
+        if(str1[strlen(str1)-1]=='\n')
+                str1[strlen(str1)-1]='\0';
+        fgets(str2,sizeof(str2),stdin);
+        if(str2[strlen(str2)-1]=='\n')
+                str2[strlen(str2)-1]='\0';
+
+        if(strlen(str1)!=strlen(str2)){
+                printf("string is not a anagram");
+                return 0;
+        }
+        for(int i=0;str1[i]!='\0';i++){
+                str1[i]=tolower(str1[i]);
+        }
+        for(int i=0;str2[i]!='\0';i++){
+                str2[i]=tolower(str2[i]);
+        }
+        sort(str1);
+        sort(str2);
+        if(strcmp(str1,str2)==0)
+                printf("String is a anagram");
+        else
+                printf("string is not a anagram");
+
+}
+```
 
 
 
