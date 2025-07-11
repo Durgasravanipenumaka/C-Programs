@@ -27,7 +27,6 @@ int main(){
 
 }
 ```
-```
 ## Find the largest element in an array using pointer notation.
 ```c
 #include<stdio.h>
