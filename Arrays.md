@@ -27,3 +27,22 @@ int main(){
 
 }
 ```
+```
+## Find the largest element in an array using pointer notation.
+```c
+#include<stdio.h>
+void largest(int arr[],int len){
+        int max=*(arr);
+        for(int i=0;i<len;i++){
+                if(*(arr+i)>max){
+                        max=*(arr+i);
+                }
+        }
+        printf("Largest element=%d",max);
+}
+int main(){
+        int arr1[]={4,5,6,7,10,8};
+        int length=sizeof(arr1)/sizeof(arr1[0]);
+        largest(arr1,length);
+}
+```
