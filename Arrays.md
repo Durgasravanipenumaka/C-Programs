@@ -134,4 +134,16 @@ int main(){
         }
 }
 ```
+## 6.Print the address and value of each element in an integer array using pointer arithmetic.
+```c
+#include<stdio.h>
+int main(){
+        int arr[]={2,3,4,6,7,8};
+        int len=sizeof(arr)/sizeof(arr[0]);
+        int *ptr=arr;
+        for(int i=0;i<len;i++){
+                printf("Address=%p and Values=%d\n",ptr+i,*(ptr+i));
+        }
+}
+```
 
