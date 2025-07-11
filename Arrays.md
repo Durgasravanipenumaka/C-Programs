@@ -27,7 +27,7 @@ int main(){
 
 }
 ```
-## Find the largest element in an array using pointer notation.
+## 2.Find the largest element in an array using pointer notation.
 ```c
 #include<stdio.h>
 void largest(int arr[],int len){
@@ -45,3 +45,93 @@ int main(){
         largest(arr1,length);
 }
 ```
+## 3.Write a program to rotate a 3×3 matrix by 90 degrees clockwise.
+```c
+#include<stdio.h>
+#define r 2
+#define c 3
+int main(){
+        int arr[r][c],tran[c][r],rev[c][r];
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        tran[j][i]=arr[i][j];
+                }
+        }
+        for(int i=0;i<c;i++){
+                for(int j=0;j<r;j++){
+                        rev[i][j]=tran[i][r-1-j];
+                }
+        }
+        printf("Matrix after Rotated to 90 degrees in clockwise\n");
+        for(int i=0;i<c;i++){
+                for(int j=0;j<r;j++){
+                        printf("%d ",rev[i][j]);
+                }
+                printf("\n");
+        }
+}
+```
+## 4.Write a program to rotate a 3×3 matrix by 90 degrees Anti-clockwise.
+```c
+#include<stdio.h>
+#define r 2
+#define c 3
+int main(){
+        int arr[r][c],tran[c][r],rev[c][r];
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        tran[j][i]=arr[i][j];
+                }
+        }
+        for(int i=0;i<c;i++){
+                for(int j=0;j<r;j++){
+                        rev[i][j]=tran[c-1-i][j];
+                }
+        }
+        printf("Matrix after Rotated to 90 degrees in anticlockwise\n");
+        for(int i=0;i<c;i++){
+                for(int j=0;j<r;j++){
+                        printf("%d ",rev[i][j]);
+                }
+                printf("\n");
+        }
+}
+```
+## 5.Write a program to rotate a matrix by 180 degrees.
+```c
+#include<stdio.h>
+#define r 2
+#define c 3
+int main(){
+        int arr[r][c],rev[r][c];
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        rev[i][j]=arr[r-1-i][c-1-j];
+
+                }
+        }
+        printf("Matrix after Rotated to 180 degrees\n");
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        printf("%d ",rev[i][j]);
+                }
+                printf("\n");
+        }
+}
+```
+
