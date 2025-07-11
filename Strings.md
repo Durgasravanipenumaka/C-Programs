@@ -128,6 +128,38 @@ int main(){
 
 }
 ```
+## 8.Write a C program to check if string is pangram or not.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+void pangram(char str[]){
+        for(char ch='a';ch<='z';ch++){
+                int found=0;
+                for(int i=0;str[i]!='\0';i++){
+                        if(ch==str[i]){
+                              found=1;
+                              break;
+                        }
+                }
+                if(found==0){
+                        printf("Not a Pangram");
+                        return ;
+                }
+        }
+        printf("Pangram");
+}
+int main(){
+        char s1[1000];
+        fgets(s1,sizeof(s1),stdin);
+        if(s1[strlen(s1)-1]=='\n')
+                s1[strlen(s1)-1]='\0';
+        for(int i=0;s1[i]!='\0';i++){
+                s1[i]=tolower(s1[i]);
+        }
+        pangram(s1);
+}
+```
 
 
 
