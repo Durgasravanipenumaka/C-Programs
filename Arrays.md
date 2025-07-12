@@ -146,4 +146,31 @@ int main(){
         }
 }
 ```
+## 7.Swap two arrays of equal size using pointers.
+```c
+#include<stdio.h>
+int main(){
+        int arr1[]={1,2,3,4,5};
+        int arr2[]={6,7,8,9,10};
+        int *p1,*p2;
+        int len=sizeof(arr1)/sizeof(arr1[0]);
+        p1=arr1;
+        p2=arr2;
+        for(int i=0;i<len;i++){
+                int temp=*(p1+i);
+                *(p1+i)=*(p2+i);
+                *(p2+i)=temp;
+        }
+        printf("first array:\n");
+        for(int i=0;i<len;i++){
+                printf("%d ",arr1[i]);
+        }
+        printf("\nSecond array:\n");
+        for(int i=0;i<len;i++){
+                printf("%d ",arr2[i]);
+        }
+
+}
+```
+
 
