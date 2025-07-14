@@ -95,5 +95,79 @@ int main(){
         printf("result=%d",res);
 }
 ```
-## 7.
+## 7.Write a program to find state of 3rd and 2nd bit.
+```c
+#include<stdio.h>
+void checkbit(int num){
+        if(((1<<2)&num)!=0)
+                printf("state of the 3rd position is 1\n");
+        else
+                printf("state of the 3rd position is 0\n");
+        if(((1<<1)&num)!=0)
+                printf("state of the 2nd position is 1\n");
+        else
+                printf("state of the 2nd position is 0\n");
+}
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        checkbit(num);
+}
+```
+## 8.Write a program to toggle 7th,5th,4th and 1st bits.
+```c
+#include<stdio.h>
+int toggle(int n){
+        int mask,res;
+        mask=((1<<6)|(1<<4)|(1<<3)|(1<<0));
+        res=n^mask;
+        return res;
+}
+int main(){
+        int num,result;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        result=toggle(num);
+        printf("Result=%d\n",result);
+}
+```
+## 9.Write a program to count number of set bits in a number input by user.
+```c
+#include<stdio.h>
+int countsetbit(int n){
+        int count;
+        while(n>0){
+                if(n&1)
+                        count++;
+                n=n>>1;
+        }
+        return count;
+}
+int main(){
+        int num,res;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        res=countsetbit(num);
+        printf("Number of set bits=%d",res);
+}
+```
+## 10.Find whether the number is odd or even
+```c
+#include<stdio.h>
+void evenorodd(int n){
+        if(n&1)
+                printf("Odd Number");
+        else
+                printf("Even Number");
+}
+int main(){
+        int num,res;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        evenorodd(num);
+}
+```
+
+
 
