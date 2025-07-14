@@ -172,5 +172,23 @@ int main(){
 
 }
 ```
+## 8.Write a C program to print highest sum of adjacent elements in an array.
+```c
+#include<stdio.h>
+int main(){
+    int arr[]={1,4,7,2,3,8};
+    int sum=0;
+    int len=sizeof(arr)/sizeof(arr[0]);
+    int max=0;
+    for(int i=0;i<len;i++){
+        sum=arr[i]+arr[i+1];
+        if(max<sum){
+            max=sum;
+        }
+    }
+    printf("Highest sum=%d",max);
+}
+```
+
 
 
