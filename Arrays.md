@@ -180,7 +180,7 @@ int main(){
     int sum=0;
     int len=sizeof(arr)/sizeof(arr[0]);
     int max=0;
-    for(int i=0;i<len;i++){
+    for(int i=0;i<len-1;i++){
         sum=arr[i]+arr[i+1];
         if(max<sum){
             max=sum;
