@@ -79,6 +79,21 @@ int main(){
         printf("Number after removing last bit:%d",num);
 }
 ```
-## 6.Find whether a number is even or odd
+## 6.Write a C program to clear 4th and 2nd bit of the number input by the user.
 ```c
+#include<stdio.h>
+int clear4and2bit(int a){
+        int result;
+        result = a & ~ ((1<<3)|(1<<1));
+        return result;
+}
+int main(){
+        int num,res;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        res=clear4and2bit(num);
+        printf("result=%d",res);
+}
+```
+## 7.
 
