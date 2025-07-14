@@ -168,6 +168,61 @@ int main(){
         evenorodd(num);
 }
 ```
+## 11.Check whether the given number is power of 2 or not.
+```c
+#include<stdio.h>
+int ispowerof2(int n){
+        if(n>0&&(n&(n-1))==0)
+                printf("%d is power of 2\n",n);
+        else
+                printf("%d is not a power of 2\n",n);
+}
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        ispowerof2(num);
+}
+```
+## 12.Write a program to multiply a number by 2.
+```c
+#include<stdio.h>
+int main(){
+        int num,res;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        res=num<<1;
+        printf("%d after multiplied by 2 is %d",num,res);
+}
+```
+## 13.Write a program to divide a number by 2.
+```c
+#include<stdio.h>
+int main(){
+        int num,res;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        res=num>>1;
+        printf("%d after divided by 2 is %d",num,res);
+}
+```
+## 14.Write a program to swap two numbers without using third variable.
+```c
+#include<stdio.h>
+int main(){
+        int a,b;
+        printf("Enter the a and b numbers:");
+        scanf("%d %d",&a,&b);
+        printf("Numbers before swapping:%d %d\n",a,b);
+        a=a^b;
+        b=a^b;
+        a=a^b;
+        printf("Numbers after swapping:%d %d\n",a,b);
+}
+```
+## 15.Write a program to swap lower and higher nibble of a number.
+```c
+
 
 
 
