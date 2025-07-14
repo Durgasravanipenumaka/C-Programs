@@ -183,4 +183,34 @@ int main(){
         printf("\n%s",str);
 }
 ```
+## 10.Write a C program to print sum of numbers in a string.
+```c
+#include<stdio.h>
+int main(){
+        char str[]="Hello123bg43";
+        int sum=0;
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]>='0'&&str[i]<='9'){
+                        sum=sum+str[i]-'0';
+                }
+        }
+        printf("Sum of the digits=%d",sum);
+}
+```
+## 11.Write a C program to count number of vowels in a string.
+```c
+#include<stdio.h>
+int main(){
+        char str[100];
+        int count=0;
+        fgets(str,sizeof(str),stdin);
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]=='a' || str[i]=='e' || str[i]=='i' || str[i]=='o' || str[i]=='u'){
+                        count++;
+                }
+        }
+        printf("Number of vowels in a string=%d",count);
+}
+```
+
 
