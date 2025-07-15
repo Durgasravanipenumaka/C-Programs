@@ -182,3 +182,114 @@ int main(){
         display();
 }
 ```
+## 5.Delete a node at the end of the Linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void deletenodeatend(){
+        struct node *pretrav,*trav;
+        trav=phead;
+        while(trav->nxt!=NULL){
+                pretrav=trav;
+                trav=trav->nxt;
+        }
+        free(trav);
+        pretrav->nxt=NULL;
+        trav=NULL;
+}
+void display(){
+        struct node *temp=phead;
+        while(temp!=NULL){
+                printf("%d\n",temp->val);
+                temp=temp->nxt;
+        }
+}
+int main(){
+        createnode(10);
+        createnode(20);
+        createnode(30);
+        createnode(40);
+        createnode(50);
+        deletenodeatend();
+        display();
+}
+```
+## 6.Delete a node at the beginning of the Linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void deletenodeathead(){
+        struct node *ptemp;
+        ptemp=phead;
+        phead=phead->nxt;
+        free(ptemp);
+        ptemp=NULL;
+}
+void display(){
+        struct node *temp=phead;
+        while(temp!=NULL){
+                printf("%d\n",temp->val);
+                temp=temp->nxt;
+        }
+}
+int main(){
+        createnode(10);
+        createnode(20);
+        createnode(30);
+        createnode(40);
+        createnode(50);
+        deletenodeathead();
+        display();
+}
+```
+
