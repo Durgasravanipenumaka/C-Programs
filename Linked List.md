@@ -59,3 +59,126 @@ int main(){
         display();
 }
 ```
+## 3.Adding an employee node at the end of the linked list
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void Addnodeattail(int a){
+        struct node *pretrav,*new;
+        new=(struct node*)malloc(sizeof(struct node));
+        if(new==NULL){
+                printf("malloc error");
+                return;
+        }
+        new->val=a;
+        new->nxt=NULL;
+        if(phead==NULL){
+                phead=new;
+        }
+        else{
+                pretrav=phead;
+                while(pretrav->nxt!=NULL){
+                     pretrav=pretrav->nxt;
+                }
+                pretrav->nxt=new;
+        }
+}
+void display(){
+        struct node *temp=phead;
+        while(temp!=NULL){
+                printf("%d\n",temp->val);
+                temp=temp->nxt;
+        }
+}
+int main(){
+        createnode(10);
+        createnode(20);
+        createnode(30);
+        createnode(40);
+        createnode(50);
+        Addnodeattail(60);
+        display();
+}
+```
+## 4. Adding an employee node at the beginning of the linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void Addingnodeathead(int a){
+        struct node *new;
+        new=(struct node*)malloc(sizeof(struct node));
+        if(new==NULL){
+                printf("Malloc error");
+                return;
+        }
+        new->val=a;
+        new->nxt=phead;
+        phead=new;
+}
+void display(){
+        struct node *temp=phead;
+        while(temp!=NULL){
+                printf("%d\n",temp->val);
+                temp=temp->nxt;
+        }
+}
+int main(){
+        createnode(10);
+        createnode(20);
+        createnode(30);
+        createnode(40);
+        createnode(50);
+        Addingnodeathead(60);
+        display();
+}
+```
