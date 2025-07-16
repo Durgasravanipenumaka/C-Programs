@@ -217,5 +217,38 @@ int main(){
         printf("Number of vowels in a string=%d",count);
 }
 ```
+## 12.Write a C program to find substring in a given string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char str[1000],Aword[100];
+    int found=0;
+    fgets(str,sizeof(str),stdin);
+    if(str[strlen(str)-1]=='\n')
+       str[strlen(str)-1]='\0';
+    fgets(Aword,sizeof(Aword),stdin);
+    if(Aword[strlen(Aword)-1]=='\n')
+       Aword[strlen(Aword)-1]='\0';
+    int len1=strlen(str);
+    int len2=strlen(Aword);
+    for(int i=0;i<=len1-len2;i++){
+        int j;
+        for(j=0;j<len2;j++){
+            if(str[i+j]!=Aword[j])
+                break;
+        }
+        if(j==len2){
+                found=1;
+                break;
+        }
+    }
+    if(found)
+        printf("substring is found");
+    else
+        printf("substring is not found");
+    
+}
+```
 
 
