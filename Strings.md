@@ -250,5 +250,27 @@ int main(){
     
 }
 ```
+## 13.Write a function to reverse a string.
+```c
+#include<stdio.h>
+#include<string.h>
+char* reverse(char str1[]){
+    int len=strlen(str1);
+    for(int i=0,j=len;i<j;i++,j--){
+        int temp=str1[i];
+        str1[i]=str1[j];
+        str1[j]=temp;
+    }
+    return str1;
+}
+int main(){
+    char str[100];
+    fgets(str,sizeof(str),stdin);
+    if(str[strlen(str)-1]=='\n')
+       str[strlen(str)-1]='\0';
+    reverse(str);
+    printf("%s",str);
+}
+```
 
 
