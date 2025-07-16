@@ -60,16 +60,21 @@ int main(){
 ## 5. Write a program in C to count the total number of words in a string.
 ```c
 #include<stdio.h>
-int main(){
-        char s1[100];
-        int count=0;
-        fgets(s1,sizeof(s1),stdin);
-        printf("string : %s",s1);
-        for(int i=0 ;s1[i]!='\0';i++){
-                if((i==0 && s1[i]!=' ' && s1[i]!='\n' && s1[i]!='\t')||(s1[i]!=' ' && s1[i]!='\n' && s1[i]!='\t' && (s1[i-1]==' '||s1[i-1]=='\n' ||s1[i-1]=='\t')))
-                        count++;
+#include<string.h>
+int main(){ 
+    char str[1000];
+    int count=0;
+    fgets(str,sizeof(str),stdin);
+    if(str[strlen(str)-1]=='\n')
+    str[strlen(str)-1]='\0';
+    for(int i=0;str[i]!='\0';i++){
+        if((i==0&&str[i]!=' '&&str[i]!=','&&str[i]!='.'&&str[i]!='\t')||(str[i]!=' '&&str[i]!=','
+        &&str[i]!='\t'&&str[i]!='.'&&(str[i-1]==' '||str[i-1]==','||str[i-1]=='.'
+        ||str[i-1]=='\t'))){
+            count++;
         }
-        printf("\nNo of words in a string:%d",count);
+    }
+    printf("count=%d",count);
 }
 ```
 ## 6. Remove the newline character added by fgets() using strcspn().
