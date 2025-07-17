@@ -216,7 +216,59 @@ int main(){
         }
 }
 ```
-## 10.
+## 10.Write a C Program to Print all Non Repeated Elements in an Array.
+```c
+#include<stdio.h>
+int main(){
+    int arr[]={2,3,4,5,1,2,6,9,6,4,3};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    int freq[len];
+    for(int i=0;i<len;i++){
+        freq[i]=-1;
+    }
+    for(int i=0;i<len;i++){
+        if(freq[i]==-1){
+            for(int j=i+1;j<len;j++){
+                if(arr[i]==arr[j]){
+                    freq[i]=freq[j]=0;
+                    break;
+                }
+            }
+        }
+    }
+    for(int i=0;i<len;i++){
+        if(freq[i]!=0)
+           printf("%d ",arr[i]);
+    }
+}
+```
+## 11.Write a program in C to print all unique elements in an array.
+```c
+#include<stdio.h>
+int main(){
+    int arr[]={2,3,4,5,1,2,6,9,6,4,3};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    int freq[len];
+    for(int i=0;i<len;i++){
+        freq[i]=-1;
+    }
+    for(int i=0;i<len;i++){
+        if(freq[i]==-1){
+            for(int j=i+1;j<len;j++){
+                if(arr[i]==arr[j]){
+                    freq[j]=0;
+                    break;
+                }
+            }
+        }
+    }
+    for(int i=0;i<len;i++){
+        if(freq[i]!=0)
+           printf("%d ",arr[i]);
+    }
+}
+```
+## 12.
 
 
 
