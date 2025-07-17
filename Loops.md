@@ -83,3 +83,22 @@ int main(){
     
 }
 ```
+## 3.WRITE A C PROGRAM TO FIND THE SUM OF ALL PRIME NUMBERS BETWEEN 1 AND 1000 USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+int main(){
+    int found=1;
+    for(int i=2;i<=1000;i++){
+        found=1;
+        for(int j=2;j<i/2;j++){
+            if(i%j==0){
+                found=0;
+                break;
+            }
+        }
+        if(found==1)
+        printf("%d ",i);
+    }
+}
+```
+
