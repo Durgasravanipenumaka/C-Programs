@@ -268,7 +268,34 @@ int main(){
     }
 }
 ```
-## 12.
+## 12.Write a program to find the sum of rows and columns of a 2-d array and store the sums in the same array.
+```c
+#include<stdio.h>
+#define r 3
+#define c 3
+int main(){
+    int arr[r+1][c+1]={0};
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            scanf("%d",&arr[i][j]);
+        }
+    }
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            arr[i][c]+=arr[i][j];
+            arr[r][j]+=arr[i][j];
+            arr[r][c]+=arr[i][j];
+        }
+    }
+    for(int i=0;i<=r;i++){
+        for(int j=0;j<=c;j++){
+            printf("%d ",arr[i][j]);
+        }
+        printf("\n");
+    }
+    
+}
+```
 
 
 
