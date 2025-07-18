@@ -296,6 +296,34 @@ int main(){
     
 }
 ```
+## 13.Maximum Average of Subarrays of Size 4.
+```c
+#include<stdio.h>
+int main(){
+        int arr1[6]={1,12,-5,-6,50,3};
+        int arr2[6];
+        int sum=0,n=0,k=4;
+        float len,max;
+        len=sizeof(arr1)/sizeof(arr1[0]);
+        for(int i=0;i<=len-k;i++){
+                sum=0;
+                for(int j=i;j<(i+k);j++){
+                        sum=sum+arr1[j];
+                }
+                arr2[n++]=(sum/4);
+        }
+
+        for(int i=0;i<n;i++){
+                printf("%d ",arr2[i]);
+        }
+        max=arr2[0];
+        for(int i=0;i<n;i++){
+                if(arr2[i]>max)
+                        max=arr2[i];
+        }
+        printf("\naverage sum=%f",max);
+}
+```
 
 
 
