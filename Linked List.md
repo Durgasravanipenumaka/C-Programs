@@ -292,4 +292,78 @@ int main(){
         display();
 }
 ```
+## 7.Insertion of node at a particular position of the Linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node *)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt != NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void insertnode(int d){
+        struct node *s,*p;
+        s=phead;
+        while(s!=NULL){
+                if(s->val==20){
+                   p=(struct node*)malloc(sizeof(struct node));
+                   if(p==NULL){
+                       printf("Malloc error");
+                       return;
+                    }
+                   p->val=d;
+                   p->nxt=s->nxt;
+                   s->nxt=p;
+                   s=p->nxt;
+                }
+                else{
+                        s=s->nxt;
+                }
+
+        }
+}
+void display(){
+        struct node *ptemp;
+        ptemp=phead;
+        while(ptemp!=NULL){
+                printf("%d ",ptemp->val);
+                ptemp=ptemp->nxt;
+        }
+}
+int main(){
+        int n,data,in;
+        printf("Enter the total number of nodes: ");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the data in the node:");
+                scanf("%d",&data);
+                createnode(data);
+        }
+        printf("Enter the insertion value:");
+        scanf("%d",&in);
+        insertnode(in);
+        printf("The elements in the list are:");
+        display();
+}
+```
 
