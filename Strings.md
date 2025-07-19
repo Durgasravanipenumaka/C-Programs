@@ -271,5 +271,45 @@ int main(){
     printf("%s",str);
 }
 ```
+## 14. Write a program in C to find the maximum number of characters in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char str[100];
+    int count=0;
+    int len,freq;
+    char maxcharacter;
+    fgets(str,sizeof(str),stdin);
+    if(str[strlen(str)-1]=='\n')
+        str[strlen(str)-1]='\0';
+    len=strlen(str);
+    int fre[len];
+    for(int i=0;i<len;i++){
+        fre[i]=-1;
+    }
+    for(int i=0;i<len;i++){
+        if(fre[i]==-1){
+            count=0;
+            for(int j=0;j<len;j++){
+                if(str[i]==str[j]){
+                    fre[j]=0;
+                    count++;
+                }
+            }
+            fre[i]=count;
+        }
+    }
+    freq=fre[0];
+    maxcharacter=str[0];
+    for(int i=0;i<len;i++){
+        if(fre[i]>freq){
+            freq=fre[i];
+            maxcharacter=str[i];
+        }
+    }
+    printf("character %c repeates %d times",maxcharacter,freq);
+}
+```
 
 
