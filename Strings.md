@@ -68,9 +68,8 @@ int main(){
     if(str[strlen(str)-1]=='\n')
     str[strlen(str)-1]='\0';
     for(int i=0;str[i]!='\0';i++){
-        if((i==0&&str[i]!=' '&&str[i]!=','&&str[i]!='.'&&str[i]!='\t')||(str[i]!=' '&&str[i]!=','
-        &&str[i]!='\t'&&str[i]!='.'&&(str[i-1]==' '||str[i-1]==','||str[i-1]=='.'
-        ||str[i-1]=='\t'))){
+        ifif((i==0 && str[i]!=' ' && str[i]!=','&& str[i]!='\t')||((str[i]==' '||str[i]=='.'||
+    str[i]=='\t'||str[i]==',')&&((str[i+1]!=' '&&str[i+1]!=','&&str[i+1]!='\t'&&str[i+1]!='.')))){
             count++;
         }
     }
