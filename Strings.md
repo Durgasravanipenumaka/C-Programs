@@ -311,5 +311,26 @@ int main(){
     printf("character %c repeates %d times",maxcharacter,freq);
 }
 ```
+## 15.Write a program in C to extract a substring from a given string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char str1[1000],word[100];
+    int k=0,a,len;
+    fgets(str1,sizeof(str1),stdin);
+    if(str1[strlen(str1)-1]=='\n')
+        str1[strlen(str1)-1]='\0';
+    printf("Enter the position the starting position(1-based index):");
+    scanf("%d",&a);
+    printf("Enter the length of the string:");
+    scanf("%d",&len);
+    for(int i=a-1;i<a-1+len&&str1[i]!='\0';i++){
+        word[k++]=str1[i];
+    }
+    word[k]='\0';
+    printf("%s",word);
+}
+```
 
 
