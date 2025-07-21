@@ -380,4 +380,22 @@ int main(){
     
 }
 ```
+## 18.Write a program in C to remove characters from a string except alphabets.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char str[1000],word[100];
+    int k=0;
+    fgets(str,sizeof(str),stdin);
+    if(str[strlen(str)-1]=='\n')
+        str[strlen(str)-1]='\0';
+    for(int i=0;str[i]!='\0';i++){
+        if((str[i]>='a'&&str[i]<='z')||(str[i]>='A'&&str[i]<='Z'))
+             word[k++]=str[i];
+    }
+    word[k]='\0';
+    printf("%s",word);
+}
+```
 
