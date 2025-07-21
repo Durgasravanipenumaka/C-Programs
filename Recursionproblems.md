@@ -64,4 +64,25 @@ int main(){
                 printf("%d is not a prime number",n);
 }
 ```
+## 4.Program to display and find out the sum of series.
+```c
+#include<stdio.h>
+int sumofdigits(int n){
+    int s=0;
+    if(n==1){
+        printf("1");
+       return 1;
+    }
+    else{
+        s=sumofdigits(n-1);
+        printf(" + %d",n);
+        return s+n;
+    }
+}
+int main(){
+    int sum;
+    sum=sumofdigits(5);
+    printf("\nSum=%d",sum);
+}
+```
 
