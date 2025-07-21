@@ -332,7 +332,36 @@ int main(){
     printf("%s",word);
 }
 ```
-## 16.Write a program in C to read a sentence and replace lowercase characters with uppercase and vice versa.
+## 18.Write a program in C to find the number of times a given word 'the' appears in the given string.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+    char str[1000],word[100];
+    int count=0,k=0;
+    fgets(str,sizeof(str),stdin);
+    if(str[strlen(str)-1]=='\n')
+        str[strlen(str)-1]='\0';
+    for(int i=0;str[i]!='\0';i++){
+        str[i]=tolower(str[i]);
+    }
+    for(int i=0; ;i++){
+        if(str[i]!=' '&&str[i]!='\0')
+           word[k++]=str[i];
+        else{
+        word[k]='\0';
+        if(strcmp(word,"the")==0)
+            count++;
+        k=0;
+        }
+        if(str[i]=='\0')
+          break;
+    }
+    printf("the repeats %d times",count);
+}
+```
+## 17.Write a program in C to read a sentence and replace lowercase characters with uppercase and vice versa.
 ```c
 #include<stdio.h>
 #include<string.h>
