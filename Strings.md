@@ -430,4 +430,33 @@ int main(){
     printf("Smallest string=%s\n",smallest);
 }
 ```
-
+## 20.Write a program in C to combine two strings manually.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char str1[1000],str2[1000];
+    int len1,len2,k=0;
+    printf("Enter the 1st string:");
+    fgets(str1,sizeof(str1),stdin);
+    if(str1[strlen(str1)-1]=='\n')
+        str1[strlen(str1)-1]='\0';
+    printf("\n");
+    printf("Enter the 2nd string:");
+    fgets(str2,sizeof(str2),stdin);
+    if(str2[strlen(str2)-1]=='\n')
+        str2[strlen(str2)-1]='\0';
+    len1=strlen(str1);
+    len2=strlen(str2);
+    char string[len1+len2];
+    for(int i=0;str1[i]!='\0';i++){
+        string[k++]=str1[i];
+    }
+    for(int i=0;str2[i]!='\0';i++){
+        string[k++]=str2[i];
+    }
+    string[k]='\0';
+    printf("%s",string);
+  
+}
+```
