@@ -398,4 +398,36 @@ int main(){
     printf("%s",word);
 }
 ```
+## 19.Write a program in C to find the largest and smallest words in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char str[1000],word[100],largest[100],smallest[100];
+    int k=0,maxlen=0,minlen=1000;
+    fgets(str,sizeof(str),stdin);
+    if(str[strlen(str)-1]=='\n')
+        str[strlen(str)-1]='\0';
+    for(int i=0; ;i++){
+        if((str[i]!=' '&&str[i]!='\0'))
+             word[k++]=str[i];
+        else{     
+           word[k]='\0';
+           if(strlen(word)>maxlen){
+              maxlen=strlen(word);
+              strcpy(largest,word);
+           }
+           if(strlen(word)<minlen&&strlen(word)>0){
+               minlen=strlen(word);
+               strcpy(smallest,word);
+           }
+           k=0;
+        }
+        if(str[i]=='\0')
+              break;
+    }
+    printf("Largest string=%s\n",largest);
+    printf("Smallest string=%s\n",smallest);
+}
+```
 
