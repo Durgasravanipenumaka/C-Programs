@@ -332,7 +332,7 @@ int main(){
     printf("%s",word);
 }
 ```
-## 18.Write a program in C to find the number of times a given word 'the' appears in the given string.
+## 16.Write a program in C to find the number of times a given word 'the' appears in the given string.
 ```c
 #include<stdio.h>
 #include<string.h>
