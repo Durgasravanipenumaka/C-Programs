@@ -301,27 +301,18 @@ int main(){
 #include<stdio.h>
 int main(){
         int arr1[6]={1,12,-5,-6,50,3};
-        int arr2[6];
-        int sum=0,n=0,k=4;
-        float len,max;
+        float sum=0,k=4;
+        float len,max=-10000;
         len=sizeof(arr1)/sizeof(arr1[0]);
         for(int i=0;i<=len-k;i++){
                 sum=0;
                 for(int j=i;j<(i+k);j++){
                         sum=sum+arr1[j];
                 }
-                arr2[n++]=(sum/4);
+                if((sum/k)>max)
+                    max=sum/k;
         }
-
-        for(int i=0;i<n;i++){
-                printf("%d ",arr2[i]);
-        }
-        max=arr2[0];
-        for(int i=0;i<n;i++){
-                if(arr2[i]>max)
-                        max=arr2[i];
-        }
-        printf("\naverage sum=%f",max);
+        printf("\naverage highest sum=%2f",max);
 }
 ```
 ## 14.Write a C Program to find largest and secondlargest of an array.
