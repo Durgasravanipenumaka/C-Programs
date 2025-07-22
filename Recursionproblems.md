@@ -85,4 +85,54 @@ int main(){
     printf("\nSum=%d",sum);
 }
 ```
+## 5.Program to convert a positive decimal number to Binary,Octal and Hexadecimal using recursion.
+```c
+#include<stdio.h>
+void convert(int num,int base){
+    int rem=num%base;
+    if(num==0)
+      return;
+    convert(num/base,base);
+    if(rem<10)
+    printf("%d ",rem);
+    else
+    printf("%c ",rem-10+'A');
+}
+int main(){
+    int n;
+    printf("Enter the number:");
+    scanf("%d",&n);
+    printf("Number in Binary form:");
+    convert(n,2);
+    printf("\n");
+    printf("Number in Octal form:");
+    convert(n,8);
+    printf("\n");
+    printf("Number in Hexadecimal form:");
+    convert(n,16);
+    printf("\n");
+}
+```
+## 6.Program to raise a floating point number to Positive number using recursion.
+```c
+#include<stdio.h>
+#include<math.h>
+float power(float a,int n){
+    if(n==0)
+       return 1;
+    else
+        return a*power(a,n-1);
+}
+int main(){
+    float a,p;
+    int n;
+    printf("Enter the a value:");
+    scanf("%f",&a);
+    printf("Enter the n value:");
+    scanf("%d",&n);
+    p=power(a,n);
+    printf("%f raised to power %d is %f",a,n,p);
+    
+}
+```
 
