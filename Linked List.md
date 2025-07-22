@@ -321,23 +321,23 @@ void createnode(int d){
                 ptrav->nxt=pnew;
         }
 }
-void insertnode(int d){
-        struct node *s,*p;
-        s=phead;
-        while(s!=NULL){
-                if(s->val==20){
-                   p=(struct node*)malloc(sizeof(struct node));
-                   if(p==NULL){
+void insertnode(int d,int x){
+        struct node *ptrav,*pnew;
+        ptrav=phead;
+        while(ptrav->nxt!=NULL){
+                if(ptrav->val==x){
+                   pnew=(struct node*)malloc(sizeof(struct node));
+                   if(pnew==NULL){
                        printf("Malloc error");
                        return;
                     }
-                   p->val=d;
-                   p->nxt=s->nxt;
-                   s->nxt=p;
-                   s=p->nxt;
+                   pnew->val=d;
+                   pnew->nxt=ptrav->nxt;
+                   ptrav->nxt=pnew;
+                   ptrav=pnew->nxt;
                 }
                 else{
-                        s=s->nxt;
+                        ptrav=ptrav->nxt;
                 }
 
         }
@@ -351,7 +351,7 @@ void display(){
         }
 }
 int main(){
-        int n,data,in;
+        int n,data,in,x;
         printf("Enter the total number of nodes: ");
         scanf("%d",&n);
         for(int i=0;i<n;i++){
@@ -361,7 +361,9 @@ int main(){
         }
         printf("Enter the insertion value:");
         scanf("%d",&in);
-        insertnode(in);
+        printf("Enter the target");
+        scanf("%d",&x);
+        insertnode(in,x);
         printf("The elements in the list are:");
         display();
 }
