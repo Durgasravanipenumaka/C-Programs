@@ -135,4 +135,42 @@ int main(){
     
 }
 ```
+## 7.The recursive function for printing the prime factors of a number.
+```c
+#include<stdio.h>
+void PFactors(int num){
+    int i=2;
+    if(num==1)
+      return;
+    while(num%i!=0)
+        i++;
+    printf("%d ",i);
+    return PFactors(num/i);
+}
+int main(){
+    int n;
+    printf("Enter the number:");
+    scanf("%d",&n);
+    PFactors(n);
+}
+```
+## 8.GCD of a number using Recursion.
+```c
+#include<stdio.h>
+int gcd(int x,int y){
+    if(y==0)
+    return x;
+    else 
+    return gcd(y,x%y);
+}
+int main(){
+    int a,b,c;
+    printf("Enter the a value:");
+    scanf("%d",&a);
+    printf("Enter the b value:");
+    scanf("%d",&b);
+    c=gcd(a,b);
+    printf("%d",c);
+}
+```
 
