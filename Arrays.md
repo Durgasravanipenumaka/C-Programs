@@ -324,6 +324,27 @@ int main(){
         printf("\naverage sum=%f",max);
 }
 ```
+## 14.Write a C Program to find largest and secondlargest of an array.
+```c
+#include<stdio.h>
+int main(){
+    int arr[6]={10,30,28,46,87,67};
+    int len=sizeof(arr)/sizeof(arr[0]);
+    int largest=arr[0];
+    int secondlargest=arr[0];
+    for(int i=0;i<len;i++){
+        if(arr[i]>largest){
+            secondlargest=largest;
+            largest=arr[i];
+        }
+        else if(arr[i]>secondlargest && arr[i]!=largest){
+            secondlargest=arr[i];
+        }
+    }
+    printf("largest=%d \nsecondlargest=%d",largest,secondlargest);
+}
+```
+
 
 
 
