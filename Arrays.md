@@ -335,6 +335,26 @@ int main(){
     printf("largest=%d \nsecondlargest=%d",largest,secondlargest);
 }
 ```
+## 15.Write a C program to perform left rotation of an array by k positions.
+```c
+#include<stdio.h>
+int main(){
+        int arr[5]={1,2,3,4,5};
+        int len=sizeof(arr)/sizeof(arr[0]);
+        int temp,k=3;
+        for(int i=0;i<k;i++){
+            temp=arr[0];
+            for(int j=0;j<len-1;j++){
+                arr[j]=arr[j+1];
+            }
+            arr[len-1]=temp;
+        }
+        for(int i=0;i<5;i++){
+            printf("%d ",arr[i]);
+        }
+        
+}
+```
 
 
 
