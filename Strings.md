@@ -460,3 +460,35 @@ int main(){
   
 }
 ```
+## 21.Write a C program to reverse each word in a sentence while keeping spaces, commas, and full stop in their original positions.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[1000],word[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int len1=strlen(str);
+        int k=0,len2;
+        for(int i=0; ;i++){
+                if(str[i]!=' '&&str[i]!=','&&str[i]!='.'&&str[i]!='\0')
+                        word[k++]=str[i];
+                else{
+                    word[k]='\0';
+                    for(int i=0,j=k-1;i<j;i++,j--){
+                        int temp=word[i];
+                        word[i]=word[j];
+                        word[j]=temp;
+                    }
+                    printf("%s",word);
+                    if(str[i]!='\0')
+                            printf("%c",str[i]);
+                    k=0;
+                   }
+                if(str[i]=='\0')
+                        break;
+        }
+}
+```
