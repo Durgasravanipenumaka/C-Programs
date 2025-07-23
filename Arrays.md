@@ -374,6 +374,63 @@ int main(){
         }
 }
 ```
+## 17.Count the Number of Subarrays with Sum Less Than or Equal to K.
+```c
+#include<stdio.h>
+int main(){
+        int n,k,sum=0,count=0;
+        printf("Enter the number of elements in the array:");
+        scanf("%d",&n);
+        int arr[n];
+        printf("Enter the elements in the array:");
+        for(int i=0;i<n;i++){
+                scanf("%d",&arr[i]);
+        }
+        printf("Enter k value:");
+        scanf("%d",&k);
+        for(int i=0;i<n;i++){
+                sum=0;
+                for(int j=i;j<n;j++){
+                        sum=sum+arr[j];
+                        if(sum<=k)
+                                count++;
+                        else
+                                break;
+                }
+        }
+        printf("count=%d",count);
+}
+```
+## 18.Find the smallest subarray with a sum ≥ k.
+```c
+#include<stdio.h>
+int main(){
+        int n,k,sum=0,min=999,m=0;
+        printf("Enter the number of elements in the array:");
+        scanf("%d",&n);
+        int arr[n],arr1[n];
+        printf("Enter the elements in the array:");
+        for(int i=0;i<n;i++){
+                scanf("%d",&arr[i]);
+        }
+        printf("Enter k value:");
+        scanf("%d",&k);
+        for(int i=0;i<n;i++){
+                sum=0,m=0;
+                for(int j=i;j<n;j++){
+                        sum=sum+arr[j];
+                        m++;
+                        if(sum>=k){
+                                if(m<min)
+                                    min=m;
+                                break;
+                        }
+
+                }
+        }
+        printf("m=%d",min);
+}
+```
 
 
 
