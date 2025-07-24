@@ -440,7 +440,7 @@ int main(){
         display();
 }
 ```
-## Deletion of middle node using Linked list.
+## 9.Deletion of middle node using Linked list.
 ```c
 #include<stdio.h>
 #include<stdlib.h>
@@ -504,6 +504,66 @@ int main(){
                 createnode(data);
         }
         deletenode();
+        display();
+}
+```
+## 10.Reversing of linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void reverse(){
+        struct node *prev=NULL,*current=phead,*temp=NULL;
+        while(current!=NULL){
+                temp=current->nxt;
+                current->nxt=prev;
+                prev=current;
+                current=temp;
+        }
+        phead=prev;
+}
+void display(){
+        struct node *temp=phead;
+        while(temp!=NULL){
+                printf("%d\n",temp->val);
+                temp=temp->nxt;
+        }
+}
+int main(){
+        int n,data;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&n);
+        printf("Enter the values in the nodes:");
+        for(int i=0;i<n;i++){
+                scanf("%d",&data);
+                createnode(data);
+        }
+        printf("List after revesing:\n");
+        reverse();
         display();
 }
 ```
