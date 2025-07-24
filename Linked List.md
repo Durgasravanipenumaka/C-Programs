@@ -324,7 +324,7 @@ void createnode(int d){
 void insertnode(int d,int x){
         struct node *ptrav,*pnew;
         ptrav=phead;
-        while(ptrav->nxt!=NULL){
+        while(ptrav!=NULL){
                 if(ptrav->val==x){
                    pnew=(struct node*)malloc(sizeof(struct node));
                    if(pnew==NULL){
@@ -334,7 +334,7 @@ void insertnode(int d,int x){
                    pnew->val=d;
                    pnew->nxt=ptrav->nxt;
                    ptrav->nxt=pnew;
-                   ptrav=pnew->nxt;
+                   ptrav=pnew;
                 }
                 else{
                         ptrav=ptrav->nxt;
