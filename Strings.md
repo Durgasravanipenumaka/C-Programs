@@ -518,3 +518,30 @@ int main(){
         }
 }
 ```
+## 23.Write a C program to read a sentence and split it into words using spaces. Do not use strtok. Use pointer manipulation.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],word[100];
+        int k=0;
+        char *ptr;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        for(ptr=str; ;ptr++){
+                if(*ptr!=' ' && *ptr!='.' && *ptr!=',' && *ptr!='\0')
+                        word[k++]=*ptr;
+                else{
+                    word[k]='\0';
+                    if(k>0)
+                         printf("%s\n",word);
+                    k=0;
+                }
+                if(*ptr=='\0')
+                        break;
+        }
+}
+```
+
