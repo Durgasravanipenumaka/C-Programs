@@ -440,4 +440,71 @@ int main(){
         display();
 }
 ```
+## Deletion of middle node using Linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void display(){
+        struct node *ptrav;
+        ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d ",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+}
+void deletenode(){
+        struct node *prev,*slow,*fast,*temp,*pnew;
+        slow=fast=phead;
+        if(phead==NULL||phead->nxt==NULL){
+                printf("It have 0 or 1 node");
+                return;
+        }
+        while(fast!=NULL&&fast->nxt!=NULL){
+                prev=slow;
+                slow=slow->nxt;
+                fast=fast->nxt->nxt;
+        }
+        temp=prev->nxt;
+        prev->nxt=prev->nxt->nxt;
+        free(temp);
+}
+int main(){
+        int n,data;
+        printf("Enter total number of nodes:");
+        scanf("%d",&n);
+        printf("Enter the values of the nodes:");
+        for(int i=0;i<n;i++){
+                printf("Enter the value at node");
+                scanf("%d",&data);
+                createnode(data);
+        }
+        deletenode();
+        display();
+}
+```
 
