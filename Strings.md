@@ -580,3 +580,19 @@ int main(){
         printf("%d",strlen(word));
 }
 ```
+## 26.Write a C program to read an integer target, an array of n integers, and print all indices where the array element equals target.
+```c
+#include<stdio.h>
+int main(){
+        int arr[]={1,3,4,6,5,67,9};
+        int num,len;
+        len=sizeof(arr)/sizeof(arr[0]);
+        printf("Enter the number:");
+        scanf("%d",&num);
+        for(int i=0;i<len;i++){
+                if(arr[i]==num){
+                        printf("Index value=%d",i);
+                }
+        }
+}
+```
