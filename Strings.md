@@ -596,3 +596,17 @@ int main(){
         }
 }
 ```
+## 27.Write a C program to find and print all adjacent pairs in an array whose sum is equal to a given number k.
+```c
+#include<stdio.h>
+int main(){
+        int arr[]={1,2,3,4,5};
+        int sum=0,k=3;
+        for(int i=0;i<4;i++){
+                sum=arr[i]+arr[i+1];
+                if(sum==3){
+                        printf("%d %d",arr[i],arr[i+1]);
+                }
+        }
+}
+```
