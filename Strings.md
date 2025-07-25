@@ -610,3 +610,26 @@ int main(){
         }
 }
 ```
+## 28.Write a C program to check whether a given number is a Happy Number or not.
+```c
+#include<stdio.h>
+int main(){
+        int num,rem;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        while(num>9){
+                int sum=0;
+                while(num>0){
+                        rem=num%10;
+                        sum=sum+rem*rem;
+                        num=num/10;
+                }
+                num=sum;
+        }
+        if(num==1)
+                printf("Happy");
+        else
+                printf("Not Happy");
+}
+```
+
