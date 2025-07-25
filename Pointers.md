@@ -36,6 +36,25 @@ int main(){
         printf("value pointed to pointer:%d",*p);
 }
 ```
+## 25. Implement a function to copy one string into another using pointers, without using any standard library functions.
+```c
+#include<stdio.h>
+#include<string.h>
+int copystr(char *str1,char *str2){
+        for(int i=0;*str1!='\0';i++){
+                *str2=*str1;
+                str1++;
+                str2++;
+        }
+}
+int main(){
+        char str1[]="Linux";
+        int len=strlen(str1);
+        char str2[len];
+        copystr(str1,str2);
+        printf("%s",str2);
+}
+```
 ##  Write a program to print array of pointer.
 ```c
 #include<stdio.h>
