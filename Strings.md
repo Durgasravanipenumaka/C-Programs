@@ -561,3 +561,22 @@ int main(){
         printf("%s",str);
 }
 ```
+## 25.Find the length of the last word.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[1000],word[100];
+        int k=0;
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int len=strlen(str),i;
+        for(i=len-1;i>=0&&str[i]==' ';i--);
+        for(;i>=0&&str[i]!=' ';i--){
+                        word[k++]=str[i];
+        }
+        word[k]='\0';
+        printf("%d",strlen(word));
+}
+```
