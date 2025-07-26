@@ -162,7 +162,7 @@ void evenorodd(int n){
                 printf("Even Number");
 }
 int main(){
-        int num,res;
+        int num;
         printf("Enter the number:");
         scanf("%d",&num);
         evenorodd(num);
