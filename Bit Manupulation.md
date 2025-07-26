@@ -14,7 +14,7 @@ int main(){
         return 0;
 }
 ```
-## 2.Set the ith bit of a number.
+## 2.Write a C program to check whether the k-th bit of a given integer n is set (i.e., 1) or not.
 ```c
 #include<stdio.h>
 void kthbit(int n,int k){
@@ -69,7 +69,7 @@ int main(){
 ```c
 #include<stdio.h>
 int removelastbit(int n){
-        return (n&(n-1));
+        return (n&(~1));
 }
 int main(){
         int n,num;
