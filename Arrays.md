@@ -431,6 +431,22 @@ int main(){
         printf("m=%d",min);
 }
 ```
+## 19.Write a C program to calculate the sum of both diagonals of a 3×3 matrix.
+```c
+#include<stdio.h>
+int main(){
+    int arr[3][3]={{1,2,3},{4,5,6},{7,8,9}};
+    int sum1=0,sum2=0;
+    for(int i=0;i<3;i++){
+        sum1+=arr[i][i];
+        sum2+=arr[i][2-i];
+    }
+    printf("sum of the diagnols=%d",sum1+sum2);
+}
+```
+## 20.a C program to check whether parentheses are balanced and correct.
+```c
+
 
 
 
