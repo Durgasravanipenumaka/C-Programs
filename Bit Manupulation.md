@@ -69,7 +69,7 @@ int main(){
 ```c
 #include<stdio.h>
 int removelastbit(int n){
-        return (n&(~1));
+        return (n&(n-1));
 }
 int main(){
         int n,num;
