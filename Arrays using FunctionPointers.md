@@ -156,6 +156,15 @@ void merge(int array1[],int array2[],int len){
                 array3[i]=array2[j];
         }
         for(int i=0;i<2*len;i++){
+            for(int j=i+1;j<2*len;j++){
+                if(array3[i]<array3[j]){
+                    int temp=array3[i];
+                    array3[i]=array3[j];
+                    array3[j]=temp;
+                }
+            }
+        }
+        for(int i=0;i<2*len;i++){
                 printf("%d ",array3[i]);
         }
         printf("\n");
