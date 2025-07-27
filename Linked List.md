@@ -633,3 +633,76 @@ int main(){
         display();
 }
 ```
+## 12.Merging and sorting of an array.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void insertnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void sorted(){
+        struct node *i,*j;
+        int temp;
+        for(i=phead;i!=NULL;i=i->nxt){
+                for(j=i->nxt;j!=NULL;j=j->nxt){
+                        if(i->val>j->val){
+                                temp=i->val;
+                                i->val=j->val;
+                                j->val=temp;
+                        }
+                }
+        }
+}
+void display(){
+        struct node *ptrav;
+        ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d ",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+}
+
+int main(){
+        int n1,n2,data;
+        printf("Enter the nodes in list1:\n");
+        scanf("%d",&n1);
+        for(int i=0;i<n1;i++){
+                printf("Enter the node:");
+                scanf("%d",&data);
+                insertnode(data);
+        }
+        printf("Enter the nodes in list2:\n");
+        scanf("%d",&n2);
+        for(int i=0;i<n2;i++){
+                printf("Enter the node:");
+                scanf("%d",&data);
+                insertnode(data);
+        }
+        printf("Sorted Array:");
+        sorted();
+        display();
+}
+```
