@@ -36,6 +36,9 @@ int main(){
         printf("value pointed to pointer:%d",*p);
 }
 ```
+## 5. C program to illustrate pointer arithmetic.
+```c
+
 ## 25. Implement a function to copy one string into another using pointers, without using any standard library functions.
 ```c
 #include<stdio.h>
