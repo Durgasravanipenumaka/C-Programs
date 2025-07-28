@@ -706,3 +706,63 @@ int main(){
         display();
 }
 ```
+## 13.Count the number of nodes in a linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void insertnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node *)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void count(){
+        struct node *ptrav;
+        int count=0;
+        ptrav=phead;
+        while(ptrav!=NULL){
+                ptrav=ptrav->nxt;
+                count++;
+        }
+        printf("count of the nodes:%d\n",count);
+}
+void display(){
+        struct node *ptrav;
+        ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d ",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+        printf("\n");
+}
+int main(){
+        insertnode(10);
+        insertnode(20);
+        insertnode(30);
+        insertnode(40);
+        insertnode(50);
+        display();
+        count();
+        return 0;
+}
+```
