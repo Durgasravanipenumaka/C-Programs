@@ -766,3 +766,62 @@ int main(){
         return 0;
 }
 ```
+## 14.Search for an element in a linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void insertnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void search(int d){
+        struct node *ptrav;
+        int pos=1;
+        ptrav=phead;
+        while(ptrav!=NULL){
+                if(ptrav->val==d){
+                        printf("%d elements is at %d position",d,pos);
+                        return;
+                }
+                pos++;
+                ptrav=ptrav->nxt;
+        }
+        printf("Element is not found");
+
+}
+int main(){
+        int n,data,node;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node:");
+                scanf("%d",&data);
+                insertnode(data);
+        }
+        printf("Enter the node to search:");
+        scanf("%d",&node);
+        search(node);
+}
+```
