@@ -632,4 +632,34 @@ int main(){
                 printf("Not Happy");
 }
 ```
+## 29.Write a C program to check whether the parentheses in a given expression are balanced or not.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char exps[100];
+        int top=-1;
+        printf("Enter the expression:");
+        fgets(exps,sizeof(exps),stdin);
+        if(exps[strlen(exps)-1]=='\n')
+                exps[strlen(exps)-1]='\0';
+        for(int i=0;exps[i]!='\0';i++){
+                if(exps[i]=='('){
+                        top++;
+                }
+                else if(exps[i]==')'){
+                        if(top==-1){
+                                printf("Not Balanced");
+                                return 0;
+                        }
+                        else
+                                top--;
+                }
+        }
+        if(top==-1)
+                printf("Balanced");
+        else
+                printf("Not balanced");
+}
+```
 
