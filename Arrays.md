@@ -444,8 +444,55 @@ int main(){
     printf("sum of the diagnols=%d",sum1+sum2);
 }
 ```
-## 20.a C program to check whether parentheses are balanced and correct.
+## 20.Program to find missing number in an array.
 ```c
+#include<stdio.h>
+int main(){
+        int totalsum,n,sum=0;
+        printf("Enter number of elements in the array:");
+        scanf("%d",&n);
+        int arr[n];
+        for(int i=0;i<n;i++){
+                scanf("%d",&arr[i]);
+        }
+        for(int i=0;i<n;i++){
+                sum=sum+arr[i];
+        }
+        totalsum=(n+1)*(n+2)/2;
+        printf("Missing element=%d",totalsum-sum);
+}
+```
+## 21.Program to find second smallest element in an array.
+```c
+#include<stdio.h>
+int main(){
+        int n,smallest,secondsmallest;
+        printf("Enter size of the array:");
+        scanf("%d",&n);
+        int arr[n];
+        for(int i=0;i<n;i++){
+                scanf("%d",&arr[i]);
+        }
+        if(arr[0]>arr[1]){
+                smallest=arr[1];
+                secondsmallest=arr[0];
+        }
+        else{
+                smallest=arr[0];
+                secondsmallest=arr[1];
+        }
+        for(int i=0;i<n;i++){
+                if(arr[i]<smallest){
+                    secondsmallest=smallest;
+                    smallest=arr[i];
+                }
+                else if(arr[i]!=smallest&&arr[i]<secondsmallest){
+                        secondsmallest=arr[i];
+                }
+        }
+        printf("Second Smallest:%d",secondsmallest);
+}
+```
 
 
 
