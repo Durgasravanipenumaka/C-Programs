@@ -825,3 +825,88 @@ int main(){
         search(node);
 }
 ```
+## 15.Detect a loop in the linked list.
+```c
+#include<stdio.h> 
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void insertnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void display(){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d ",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+}
+void loop(int x){
+        struct node *ptrav=phead,*temp;
+        int count=0;
+        while(count!=x){
+                ptrav=ptrav->nxt;
+                count++; 
+        }
+        temp=ptrav;
+        ptrav=phead;
+        while(ptrav->nxt!=NULL){
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=temp;
+        return;
+}
+int detectloop(){
+        struct node *slow,*fast;
+        slow=fast=phead;
+        while(fast!=NULL&&fast->nxt!=NULL){
+                slow=slow->nxt;
+                fast=fast->nxt->nxt;
+                if(slow==fast)
+                        return 1;
+        }
+        return 0;
+}
+int main(){
+        int n,data,x,a;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node:");
+                scanf("%d",&data);
+                insertnode(data);
+        }
+        display();
+        printf("Enter the index of the node to create loop:");
+        scanf("%d",&x);
+        loop(x);
+        a=detectloop();
+        if(a){
+                printf("Loop is detected");
+        }
+        else{
+                printf("Loop is not detected");
+        }
+}
+```
