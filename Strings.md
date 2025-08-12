@@ -636,4 +636,36 @@ int main(){
                 printf("Not balanced");
 }
 ```
+## 31.Write a program in C to compare two strings without using string library functions.
+```c
+#include<stdio.h>
+#include<string.h>
+int comp(char *ptr1,char *ptr2){
+        while(*ptr1!='\0'&&*ptr2!='\0'&&*ptr1==*ptr2){
+                ptr1++;
+                ptr2++;
+        }
+        if(*ptr1==*ptr2)
+                return 0;
+        else
+                return(*ptr1-*ptr2);
+}
+int main(){
+        char str1[100],str2[100];
+        int c;
+        printf("Enter the string1:");
+        fgets(str1,sizeof(str1),stdin);
+        if(str1[strlen(str1)-1]=='\n')
+                str1[strlen(str1)-1]='\0';
+        printf("Enter the string2:");
+        fgets(str2,sizeof(str2),stdin);
+        if(str2[strlen(str2)-1]=='\n')
+                str2[strlen(str2)-1]='\0';
+        c=comp(str1,str2);
+        if(!c)
+                printf("Two strings are equal");
+        else
+                printf("Two strings are not equal");
+}
+```
 
