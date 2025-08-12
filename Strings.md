@@ -518,33 +518,7 @@ int main(){
         }
 }
 ```
-## 23.Write a C program to read a sentence and split it into words using spaces. Do not use strtok. Use pointer manipulation.
-```c
-#include<stdio.h>
-#include<string.h>
-int main(){
-        char str[100],word[100];
-        int k=0;
-        char *ptr;
-        printf("Enter the string:");
-        fgets(str,sizeof(str),stdin);
-        if(str[strlen(str)-1]=='\n')
-                str[strlen(str)-1]='\0';
-        for(ptr=str; ;ptr++){
-                if(*ptr!=' ' && *ptr!='.' && *ptr!=',' && *ptr!='\0')
-                        word[k++]=*ptr;
-                else{
-                    word[k]='\0';
-                    if(k>0)
-                         printf("%s\n",word);
-                    k=0;
-                }
-                if(*ptr=='\0')
-                        break;
-        }
-}
-```
-## 24.Replace vowels with nxt character in a string.
+## 25.Replace vowels with nxt character in a string.
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -561,7 +535,7 @@ int main(){
         printf("%s",str);
 }
 ```
-## 25.Find the length of the last word.
+## 26.Find the length of the last word.
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -580,7 +554,7 @@ int main(){
         printf("%d",strlen(word));
 }
 ```
-## 26.Write a C program to read an integer target, an array of n integers, and print all indices where the array element equals target.
+## 27.Write a C program to read an integer target, an array of n integers, and print all indices where the array element equals target.
 ```c
 #include<stdio.h>
 int main(){
@@ -596,7 +570,7 @@ int main(){
         }
 }
 ```
-## 27.Write a C program to find and print all adjacent pairs in an array whose sum is equal to a given number k.
+## 28.Write a C program to find and print all adjacent pairs in an array whose sum is equal to a given number k.
 ```c
 #include<stdio.h>
 int main(){
@@ -610,7 +584,7 @@ int main(){
         }
 }
 ```
-## 28.Write a C program to check whether a given number is a Happy Number or not.
+## 29.Write a C program to check whether a given number is a Happy Number or not.
 ```c
 #include<stdio.h>
 int main(){
@@ -632,7 +606,7 @@ int main(){
                 printf("Not Happy");
 }
 ```
-## 29.Write a C program to check whether the parentheses in a given expression are balanced or not.
+## 30.Write a C program to check whether the parentheses in a given expression are balanced or not.
 ```c
 #include<stdio.h>
 #include<string.h>
