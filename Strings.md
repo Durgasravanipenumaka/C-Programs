@@ -681,3 +681,19 @@ int main(){
                 printf("Character is not hexadecimal");
 }
 ```
+## 33.Write a program in C to replace the spaces in a string with a specific character.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        for(int i=0;str[i]!='\0';i++){
+              if(str[i]==' ')
+                   str[i]='!';
+         }
+        printf("%s",str);
+}
+```
