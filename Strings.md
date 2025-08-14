@@ -801,3 +801,20 @@ int main(){
         printf("Length of the substring=%d\n",maxlen);
 }
 ```
+## 36.Write a program in C to read a file and remove the spaces between two words of its content.
+```c
+#include<stdio.h>
+int main(){
+        FILE *fp=fopen("file.txt","r");
+        if(fp==NULL){
+                printf("File is not found");
+                return 1;
+        }
+        char c;
+        while((c=fgetc(fp))!=EOF){
+                if(c!=' ')
+                        putchar(c);
+        }
+        fclose(fp);
+}
+```
