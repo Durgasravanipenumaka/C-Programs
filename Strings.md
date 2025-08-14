@@ -818,3 +818,39 @@ int main(){
         fclose(fp);
 }
 ```
+## 37.A given string contains the bracket characters '(', ')', '{', '}', '<', ‘>', '[' and ']', Write a Cprogram to check if the string is valid or not. The input string will be valid when open brackets and closed brackets are the same type of brackets.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        char stack[100];
+        int top=-1;
+        int valid=1;
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                char c=str[i];
+                if(c=='('||c=='{'||c=='['||c=='<')
+                        stack[++top]=c;
+                else if(c==')'||c=='}'||c==']'||c=='>'){
+                        if(top==-1){
+                                valid=0;
+                                break;
+                        }
+                        char open=stack[top--];
+                        if((c==')'&&open!='(')||
+                           (c=='}'&&open!='{')||
+                           (c==']'&&open!='[')||
+                           (c=='>'&&open!='<')){
+                                valid=0;
+                                break;
+                        }
+                }
+        }
+        if(top!=-1)
+                valid=0;
+        printf(valid?"Valid\n":"Invalid\n");
+}
+```
