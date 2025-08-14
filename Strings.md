@@ -731,3 +731,37 @@ int main(){
         printf("No of punctuaction marks=%d",count);
 }
 ```
+## 35. Write a C program to find the repeated character in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int len=strlen(str);
+        int freq[len];
+        for(int i=0;i<len;i++){
+                freq[i]=-1;
+        }
+        for(int i=0;str[i]!='\0';i++){
+                if(freq[i]==-1){
+                        int count=1;
+                        for(int j=i+1;str[j]!='\0';j++){
+                                if(str[i]==str[j]){
+                                        count++;
+                                        freq[j]=0;
+                                }
+                        }
+                        freq[i]=count;
+                }
+        }
+        printf("Repeated characters are:");
+        for(int i=0;i<len;i++){
+                if(freq[i]>1&&freq[i]!='\0'){
+                        printf("%c ",str[i]);
+                }
+        }
+}
+```
