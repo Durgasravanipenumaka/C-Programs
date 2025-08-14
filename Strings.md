@@ -668,4 +668,16 @@ int main(){
                 printf("Two strings are not equal");
 }
 ```
-
+## 32.Write a program in C to check whether a character is a Hexadecimal Digit or not.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char ch;
+        scanf("%c",&ch);
+        if((ch>='0'&&ch<='9')||(ch>='a'&&ch<='f')||(ch>='A'&&ch<='F'))
+                printf("character is hexadecimal");
+        else
+                printf("Character is not hexadecimal");
+}
+```
