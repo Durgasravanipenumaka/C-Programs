@@ -765,3 +765,39 @@ int main(){
         }
 }
 ```
+## 36.Write a C program to find the length of the longest substring of a given string without repeating characters.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int len,maxlen=0;
+        char longest[100];
+        len=strlen(str);
+        for(int i=0;i<len;i++){
+                char current[100];
+                int count=0;
+                for(int j=0;j<len;j++){
+                        int k;
+                        for(k=0;k<count;k++){
+                                if(str[j]==current[k])
+                                        break;
+                        }
+                        if(k!=count)
+                                break;
+                        current[k]=str[j];
+                        count++;
+                }
+                current[count]='\0';
+                if(count>maxlen){
+                        maxlen=count;
+                        strcpy(longest,current);
+                }
+        }
+        printf("Longest substring without repeating characters=%s\n",longest);
+        printf("Length of the substring=%d\n",maxlen);
+}
+```
