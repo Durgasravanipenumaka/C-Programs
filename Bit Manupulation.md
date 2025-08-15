@@ -262,5 +262,15 @@ int main(){
                 printf("number is not a power of 4\n");
 }
 ```
-
+## 18.Clear the last right side set a bit of a number.
+```c
+#include<stdio.h>
+int main(){
+    int num;
+    printf("Enter the number:");
+    scanf("%d",&num);
+    num=num&(num-1);
+    printf("After clearing of last set bit=%d",num);
+}
+```
 
