@@ -222,6 +222,16 @@ int main(){
 ```
 ## 15.Write a program to swap lower and higher nibble of a number.
 ```c
+#include<stdio.h>
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        int swap=((num&0x0f)<<4)|((num&0xf0)>>4);
+        printf("Orginal numbers:%d\n",num);
+        printf("After swapping Nibbles:%d\n",swap);
+}
+```
 
 
 
