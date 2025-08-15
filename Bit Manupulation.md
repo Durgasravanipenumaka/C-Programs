@@ -249,6 +249,18 @@ int main(){
         printf("after toggling bit from %d to %d=%d\n",l,r,result);
 }
 ```
-
+## 17.Check whether the given number is power of 2 or not.
+```c
+#include<stdio.h>
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        if(num>0&&((num&(num-1))==0)&&num%3==1)
+                printf("number is a power of 4\n");
+        else
+                printf("number is not a power of 4\n");
+}
+```
 
 
