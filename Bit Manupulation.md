@@ -232,7 +232,23 @@ int main(){
         printf("After swapping Nibbles:%d\n",swap);
 }
 ```
-
+## 16.Toggle a given range of bits.For example, take the number 245. The equivalent binary format is 11110101and the range is 4 to 7. So, the output should be 000001010 which is 5 in decimal.
+```c
+#include<stdio.h>
+int main(){
+        int num,r,l;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        printf("Enter the staring position:");
+        scanf("%d",&l);
+        printf("Enter the ending position:");
+        scanf("%d",&r);
+        int mask=((1<<(r-l+1))-1)<<l;
+        int result=num^mask;
+        printf("Original number:%d\n",num);
+        printf("after toggling bit from %d to %d=%d\n",l,r,result);
+}
+```
 
 
 
