@@ -1002,3 +1002,27 @@ int main(){
 
 }
 ```
+## 43.. Write a C program to find the last occurrence of a character in a given string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],ch;
+        int lastpos=-1;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the character:");
+        scanf("%c",&ch);
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]==ch){
+                        lastpos=i+1;
+                }
+        }
+        if(lastpos!=-1)
+                printf("Last occurrence of %c is at position %d",ch,lastpos);
+        else
+                printf("Character is not found");
+}
+```
