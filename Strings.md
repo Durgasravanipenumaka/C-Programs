@@ -856,6 +856,37 @@ int main(){
 ```
 ## 38.Write a function for performing case insensitive string comparison.
 ```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int strcasecmp(const char *s1,const char *s2){
+        while(*s1&&*s2){
+                char c1=tolower((unsigned char)*s1);
+                char c2=tolower((unsigned char)*s2);
+                if(c1!=c2){
+                        return c1-c2;
+                }
+                *s1++;
+                *s2++;
+        }
+        return (unsigned char)*s1-(unsigned char)*s2;
+}
+int main(){
+        char s1[100],s2[100];
+        printf("Enter the string1:");
+        fgets(s1,sizeof(s1),stdin);
+        if(s1[strlen(s1)-1]=='\n')
+                s1[strlen(s1)-1]='\0';
+        printf("Enter the string2:");
+        fgets(s2,sizeof(s2),stdin);
+        if(s2[strlen(s2)-1]=='\n')
+                s2[strlen(s2)-1]='\0';
+        int result=strcasecmp(s1,s2);
+        if(result==0)
+                printf("Strings are same");
+        else
+                printf("Strings are not same");
+}
 ```
 ## 39.Write a program to accept a line of text and display the number of consonants and spaces in that line of text.
 ```c
