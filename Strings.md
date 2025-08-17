@@ -911,3 +911,31 @@ int main(){
         printf("Consonants=%d\nSpaces=%d",consonants,spaces);
 }
 ```
+## 40.Write a C program to check whether a string is palindrome or not.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str1[100],str2[100];
+        printf("Enter the string:");
+        fgets(str1,sizeof(str1),stdin);
+        if(str1[strlen(str1)-1]=='\n')
+                str1[strlen(str1)-1]='\0';
+        int len=strlen(str1);
+        for(int i=0;str1[i]!='\0';i++){
+                if(str1[i]>='A'&&str1[i]<='Z'){
+                        str1[i]=str1[i]+32;
+                }
+        }
+        strcpy(str2,str1);
+        for(int i=0,j=len-1;i<j;i++,j--){
+                char temp=str1[i];
+                str1[i]=str1[j];
+                str1[j]=temp;
+        }
+        if(strcmp(str1,str2)==0)
+                        printf("Palindrome");
+        else
+                printf("Not a palindrome");
+}
+```
