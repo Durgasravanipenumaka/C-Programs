@@ -975,3 +975,30 @@ int main(){
 
 }
 ```
+## 42.Write a C program to find the first occurrence of a character in a given string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],ch;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the character:");
+        scanf("%c",&ch);
+        int pos=1,found=0;
+        for(int i=0;str[i]!='\0';i++){
+                if(ch==str[i]){
+                        found=1;
+                        break;
+                }
+                pos++;
+        }
+        if(found)
+                printf("First occurrence of %c at position %d",ch,pos);
+        else
+                printf("character is not found");
+
+}
+```
