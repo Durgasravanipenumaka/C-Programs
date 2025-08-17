@@ -854,3 +854,29 @@ int main(){
         printf(valid?"Valid\n":"Invalid\n");
 }
 ```
+## 38.Write a function for performing case insensitive string comparison.
+```c
+```
+## 39.Write a program to accept a line of text and display the number of consonants and spaces in that line of text.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int spaces=0,consonants=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                char c=str[i];
+                if(c==' '){
+                        spaces++;
+                }
+                else if(c!='a'&&c!='e'&&c!='i'&&c!='o'&&c!='u'&&c!='A'&&c!='E'&&c!='I'&&c!='O'&&c!='U'){
+                        consonants++;
+                }
+        }
+        printf("Consonants=%d\nSpaces=%d",consonants,spaces);
+}
+```
