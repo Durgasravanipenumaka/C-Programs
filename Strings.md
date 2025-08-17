@@ -939,3 +939,39 @@ int main(){
                 printf("Not a palindrome");
 }
 ```
+## 41.Write a C program to reverse order of words in a given string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],word[50];
+        int m=0,k=0;
+        char arr[20][10];
+        printf("enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        for(int i=0; ;i++){
+                if(str[i]!=' '&&str[i]!='\0'){
+                        word[k++]=str[i];
+                }
+                else{
+                        word[k]='\0';
+                        strcpy(arr[m++],word);
+                        k=0;
+                }
+                if(str[i]=='\0')
+                        break;
+        }
+        for(int i=0,j=m-1;i<j;i++,j--){
+                char word[10];
+                strcpy(word,arr[i]);
+                strcpy(arr[i],arr[j]);
+                strcpy(arr[j],word);
+        }
+        for(int i=0;i<m;i++){
+                printf("%s ",arr[i]);
+        }
+
+}
+```
