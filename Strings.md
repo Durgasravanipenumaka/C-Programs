@@ -1002,7 +1002,7 @@ int main(){
 
 }
 ```
-## 43.. Write a C program to find the last occurrence of a character in a given string.
+## 43. Write a C program to find the last occurrence of a character in a given string.
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -1026,3 +1026,5 @@ int main(){
                 printf("Character is not found");
 }
 ```
+## 44.Write a C program to search all occurrences of a character in a given string.
+```c
