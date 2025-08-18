@@ -1186,3 +1186,33 @@ int main(){
         }
 }
 ```
+## 49.Write a C program to remove the first occurrence of a character from a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],ch;
+        int found=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the character:");
+        scanf("%c",&ch);
+        int len=strlen(str);
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]==ch && !found){
+                        found=1;
+                }
+                if(found && i<len-1){
+                        str[i]=str[i+1];
+                }
+        }
+        if(found){
+                str[len-1]='\0';
+                printf("string after removal=%s",str);
+        }
+        else
+                printf("character is not found");
+}
+
