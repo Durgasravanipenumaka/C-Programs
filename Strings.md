@@ -1049,3 +1049,27 @@ int main(){
                 printf("character is not found");
 }
 ```
+## 45.Write a C program to count occurrences of a character in a given string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],ch;
+        int count=0,found=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the character:");
+        scanf("%c",&ch);
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]==ch){
+                        count++;
+                }
+        }
+        if(count>0)
+                printf("Number of occurrences=%d",count);
+        else
+                printf("charcter is not found");
+}
+```
