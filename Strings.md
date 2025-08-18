@@ -1028,3 +1028,24 @@ int main(){
 ```
 ## 44.Write a C program to search all occurrences of a character in a given string.
 ```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],ch;
+        int found=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the character:");
+        scanf("%c",&ch);
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]==ch){
+                        printf("%c occurs at %d position\n",ch,i+1);
+                        found=1;
+                }
+        }
+        if(!found)
+                printf("character is not found");
+}
+```
