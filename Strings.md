@@ -1073,3 +1073,81 @@ int main(){
                 printf("charcter is not found");
 }
 ```
+## 46.Write a C program to find the highest frequency character in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int count=1;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int len=strlen(str);
+        int freq[len];
+        for(int i=0;i<len;i++){
+                freq[i]=-1;
+        }
+        for(int i=0;str[i]!='\0';i++){
+                if(freq[i]==-1){
+                        count=1;
+                        for(int j=i+1;str[j]!='\0';j++){
+                                if(str[i]==str[j]){
+                                        count++;
+                                        freq[j]=0;
+                                }
+                        }
+                        freq[i]=count;
+                }
+        }
+        int max=0;
+        char maxchar=str[0];
+        for(int i=0;i<len;i++){
+                if(freq[i]>max){
+                        max=freq[i];
+                        maxchar=str[i];
+                }
+        }
+        printf("Highest freq character=%c",maxchar);
+}
+```
+## 47.Write a C program to find the lowest frequency character in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int count=1;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int len=strlen(str);
+        int freq[len];
+        for(int i=0;i<len;i++){
+                freq[i]=-1;
+        }
+        for(int i=0;str[i]!='\0';i++){
+                if(freq[i]==-1){
+                        count=1;
+                        for(int j=i+1;str[j]!='\0';j++){
+                                if(str[i]==str[j]){
+                                        count++;
+                                        freq[j]=0;
+                                }
+                        }
+                        freq[i]=count;
+                }
+        }
+        int min=999;
+        char minchar;
+        for(int i=0;i<len;i++){
+                if(freq[i]!=0&&freq[i]<min){
+                        min=freq[i];
+                        minchar=str[i];
+                }
+        }
+        printf("Lowest freq character=%c",minchar);
+}
+```
