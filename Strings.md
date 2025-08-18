@@ -1215,4 +1215,35 @@ int main(){
         else
                 printf("character is not found");
 }
-
+```
+## 50.Write a C program to remove the last occurrence of a character from a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],ch;
+        int found=0,lastpos;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the character:");
+        scanf("%c",&ch);
+        int len=strlen(str);
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]==ch ){
+                        lastpos=i;
+                        found=1;
+                }
+        }
+        for(int i=lastpos;str[i]!='\0';i++){
+                str[i]=str[i+1];
+        }
+        if(found){
+                str[len-1]='\0';
+                printf("string after removal=%s",str);
+        }
+        else
+                printf("character not found");
+}
+```
