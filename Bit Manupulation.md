@@ -273,4 +273,20 @@ int main(){
     printf("After clearing of last set bit=%d",num);
 }
 ```
-
+## 19.Find the only odd-occurring number in an array where every other element occurs even times.
+```c
+#include<stdio.h>
+int main(){
+        int n;
+        printf("Enter the size of array:");
+        scanf("%d",&n);
+        int arr[n],result=0;
+        for(int i=0;i<n;i++){
+                scanf("%d",&arr[i]);
+        }
+        for(int i=0;i<n;i++){
+                result=result^arr[i];
+        }
+        printf("Odd Occurrence of element in an array:%d",result);
+}
+```
