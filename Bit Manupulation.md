@@ -290,3 +290,22 @@ int main(){
         printf("Odd Occurrence of element in an array:%d",result);
 }
 ```
+## 20.Reverse the bits of a number (Ex: 5 → 0101 → 1010 → 10).
+```c
+#include<stdio.h>
+int main(){
+        unsigned int num;
+        unsigned int rev=0;
+        int bitcount;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        printf("Enter the bit count:");
+        scanf("%d",&bitcount);
+        for(int i=0;i<bitcount;i++){
+                int lastbit=num&1;
+                rev=(rev<<1)|lastbit;
+                num=num>>1;
+        }
+        printf("Reversed number:%u\n",rev);
+}
+```
