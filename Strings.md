@@ -1353,3 +1353,30 @@ int main(){
                 printf("character is not found");
 }
 ```
+## 55.Write a C program to replace all occurrences of a character with another in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],ch,rep;
+        int found=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the character:");
+        scanf("%c",&ch);
+        printf("Enter replacement character:");
+        scanf(" %c",&rep);
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]==ch){
+                        str[i]=rep;
+                        found=1;
+                }
+        }
+        if(found)
+                printf("%s\n",str);
+        else
+                printf("character is not found");
+}
+```
