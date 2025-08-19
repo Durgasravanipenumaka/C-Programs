@@ -514,7 +514,37 @@ int main(){
         free(ptr);
 }
 ```
+## 23.Write a program for searching of an element using binary search algorithm.
+```c
+#include<stdio.h>
+int main(){
+        int n;
+        printf("Enter the array size:");
+        scanf("%d",&n);
+        int arr[n],search,right=n-1,left=0,mid,found=0;
+        printf("Enter the elements:\n");
+        for(int i=0;i<n;i++){
+                scanf("%d",&arr[i]);
+        }
+        printf("Enter the saerching element:");
+        scanf("%d",&search);
+        while(left<=right){
+                mid=(left+right)/2;
+                if(search==arr[mid]){
+                        printf("element found at position %d",mid);
+                        found=1;
+                        break;
+                }
+                else if(search<arr[mid])
+                        right=mid-1;
+                else if(search>arr[mid])
+                        left=mid+1;
+        }
+         if(found==0)
+                printf("Element is not found");
+}
+```
 
-
+        
 
 
