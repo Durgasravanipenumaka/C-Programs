@@ -36,10 +36,7 @@ int main(){
         printf("value pointed to pointer:%d",*p);
 }
 ```
-## 5. C program to illustrate pointer arithmetic.
-```c
-
-## 25. Implement a function to copy one string into another using pointers, without using any standard library functions.
+## 5. Implement a function to copy one string into another using pointers, without using any standard library functions.
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -59,7 +56,7 @@ int main(){
         printf("%s",str2);
 }
 ```
-##  Write a program to print array of pointer.
+## 6. Write a program to print array of pointer.
 ```c
 #include<stdio.h>
 int main(){
@@ -75,7 +72,7 @@ int main(){
         }
 }
 ```
-## Write a program to print pointer to an array.
+## 7.Write a program to print pointer to an array.
 ```c
 #include<stdio.h>
 int main(){
@@ -89,5 +86,28 @@ int main(){
         for(int i=0;i<5;i++){
                 printf("%d ",(*ptr)[i]);
         }
+}
+```
+## 8.Write a C program to remove all vowels in a string using pointer notations.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+        char str[100],res[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int k=0;
+        char *p=str;
+        while(*p!='\0'){
+                *p=tolower(*p);
+                if(*p!='a'&&*p!='e'&&*p!='i'&&*p!='o'&&*p!='u'){
+                        res[k++]=*p;
+                }
+                p++;
+        }
+        printf("string after removal of all vowels:%s",res);
 }
 ```
