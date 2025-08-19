@@ -493,7 +493,27 @@ int main(){
         printf("Second Smallest:%d",secondsmallest);
 }
 ```
-
+## 22.Write a C Program to dynamically allocate memory for an array of num integers,read the elements,and find their sum.Free the allocated memory at end.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+        int num,sum=0;
+        int *ptr;
+        printf("Enter the number of elements:");
+        scanf("%d",&num);
+        ptr=(int *)malloc(num*sizeof(int));
+        printf("Enter the elements:");
+        for(int i=0;i<num;i++){
+                scanf("%d",&ptr[i]);
+        }
+        for(int i=0;i<num;i++){
+                sum=sum+ptr[i];
+        }
+        printf("sum=%d",sum);
+        free(ptr);
+}
+```
 
 
 
