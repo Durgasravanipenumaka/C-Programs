@@ -249,7 +249,7 @@ int main(){
         printf("after toggling bit from %d to %d=%d\n",l,r,result);
 }
 ```
-## 17.Check whether the given number is power of 2 or not.
+## 17.Check whether the given number is power of 4 or not.
 ```c
 #include<stdio.h>
 int main(){
