@@ -1269,3 +1269,58 @@ int main(){
         printf("%s",str2);
 }
 ```
+## 52.Write a C program to remove all repeated characters from a given string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],result[100];
+        int k=0,found=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                found=0;
+                for(int j=0;j<k;j++){
+                        if(str[i]==result[j]){
+                                found=1;
+                                break;
+                        }
+                }
+                if(!found){
+                        result[k++]=str[i];
+                }
+        }
+        result[k]='\0';
+        printf("string after removing repeated character=%s\n",result);
+}
+```
+## 53.Write a C program to replace the first occurrence of a character with another in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],ch,rep;
+        int found=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the character:");
+        scanf("%c",&ch);
+        printf("Enter replacement character:");
+        scanf(" %c",&rep);
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]==ch){
+                        str[i]=rep;
+                        found=1;
+                        break;
+                }
+        }
+        if(found)
+                printf("%s\n",str);
+        else
+                printf("character is not found");
+}
+```
