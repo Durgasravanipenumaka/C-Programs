@@ -1247,3 +1247,25 @@ int main(){
                 printf("character not found");
 }
 ```
+## 51.Write a C program to remove all occurrences of a character from a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],ch,str2[100];
+        int j=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the character:");
+        scanf("%c",&ch);
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]!=ch){
+                        str2[j++]=str[i];
+                }
+        }
+        str2[j]='\0';
+        printf("%s",str2);
+}
+```
