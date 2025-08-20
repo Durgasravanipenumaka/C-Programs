@@ -575,6 +575,38 @@ int main(){
         printf("\n");
 }
 ```
+## 25.Insert an element at a given position in an array.
+```c
+#include<stdio.h>
+int main(){
+        int arr[100],n,pos,ele;
+        printf("Enter the array size:");
+        scanf("%d",&n);
+        printf("Enter the elements:\n");
+        for(int i=0;i<n;i++){
+                scanf("%d",&arr[i]);
+        }
+        printf("Enter the position:");
+        scanf("%d",&pos);
+        printf("Enter the element:");
+        scanf("%d",&ele);
+        if(pos<0||pos>n){
+                printf("Invalid");
+        }
+        else{
+              for(int i=n;i>pos;i--){
+                    arr[i]=arr[i-1];
+              }
+              arr[pos]=ele;
+              n++;
+              printf("Array after insertion:");
+              for(int i=0;i<n;i++){
+                      printf(" %d",arr[i]);
+              }
+              printf("\n");
+        }
+}
+```
         
 
 
