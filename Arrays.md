@@ -364,7 +364,7 @@ int main(){
         int len=sizeof(arr)/sizeof(arr[0]);
         for(int i=0;i<k;i++){
                 temp=arr[len-1];
-                for(int j=len;j>0;j--){
+                for(int j=len-1;j>0;j--){
                         arr[j]=arr[j-1];
                 }
                 arr[0]=temp;
