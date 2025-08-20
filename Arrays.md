@@ -544,7 +544,37 @@ int main(){
                 printf("Element is not found");
 }
 ```
-
+## 24.Merge two arrays into one sorted array.
+```c
+#include<stdio.h>
+int main(){
+        int arr1[]={1,3,4,6,2};
+        int arr2[]={5,7,9,3,8};
+        int len1=sizeof(arr1)/sizeof(arr1[0]);
+        int len2=sizeof(arr2)/sizeof(arr2[0]);
+        int arr[len1+len2],k=0;
+        for(int i=0;i<len1;i++){
+                arr[k++]=arr1[i];
+        }
+        for(int i=0;i<len2;i++){
+                arr[k++]=arr2[i];
+        }
+        for(int i=0;i<k;i++){
+                for(int j=i+1;j<k;j++){
+                        if(arr[i]>arr[j]){
+                                int temp=arr[i];
+                                arr[i]=arr[j];
+                                arr[j]=temp;
+                        }
+                }
+        }
+        printf("Merged and sorted array:");
+        for(int i=0;i<k;i++){
+                printf("%d ",arr[i]);
+        }
+        printf("\n");
+}
+```
         
 
 
