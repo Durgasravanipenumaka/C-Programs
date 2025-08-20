@@ -607,6 +607,24 @@ int main(){
         }
 }
 ```
-        
+ ## 26.Delete an element at a given position in an array.
+ ```c
+#include<stdio.h>
+int main(){
+        int arr[]={1,2,3,4,5,6};
+        int len=sizeof(arr)/sizeof(arr[0]);
+        int pos;
+        printf("Enter the position(index starts from 0):");
+        scanf("%d",&pos);
+        for(int i=pos;i<len;i++){
+                arr[i]=arr[i+1];
+        }
+        len--;
+        for(int i=0;i<len;i++){
+                printf(" %d",arr[i]);
+        }
+        printf("\n");
+}
+```
 
 
