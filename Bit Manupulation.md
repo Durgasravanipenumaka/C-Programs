@@ -309,3 +309,24 @@ int main(){
         printf("Reversed number:%u\n",rev);
 }
 ```
+## 21.Position of rightmost bit.
+```c
+#include<stdio.h>
+int main(){
+        int num,pos=-1,i=0;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        while(num>0){
+                if((num&1)==1){
+                        pos=i;
+                        break;
+                }
+                i++;
+                num=num>>1;
+        }
+        if(pos!=-1)
+               printf("Position of rightmost set bit:%d\n",pos);
+        else
+                printf("rightmost set bit is not found\n");
+}
+```
