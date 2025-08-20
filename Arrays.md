@@ -626,5 +626,38 @@ int main(){
         printf("\n");
 }
 ```
-
+## 27.Find the majority element (appears more than n/2 times).
+```c
+#include<stdio.h>
+int main(){
+        int arr[]={1,1,1,2,2};
+        int len=sizeof(arr)/sizeof(arr[0]);
+        int freq[len];
+        int count=1;
+        for(int i=0;i<len;i++){
+                freq[i]=-1;
+        }
+        for(int i=0;i<len;i++){
+                count=1;
+                if(freq[i]==-1){
+                     for(int j=i+1;j<len;j++){
+                        if(arr[i]==arr[j]){
+                                freq[j]=0;
+                                count++;
+                        }
+                     }
+                     freq[i]=count;
+                }
+        }
+        int found=0;
+        for(int i=0;i<len;i++){
+                if(freq[i]>(len/2)){
+                        printf("Majority element: %d\n",arr[i]);
+                        found=1;
+                }
+        }
+        if(!found)
+                printf("No Majority element in the array\n");
+}
+```
 
