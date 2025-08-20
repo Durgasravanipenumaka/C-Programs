@@ -309,7 +309,7 @@ int main(){
         printf("Reversed number:%u\n",rev);
 }
 ```
-## 21.Position of rightmost bit.
+## 21.Position of rightmost bit of a given number.
 ```c
 #include<stdio.h>
 int main(){ 
