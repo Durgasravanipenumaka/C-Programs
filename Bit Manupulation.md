@@ -312,7 +312,7 @@ int main(){
 ## 21.Position of rightmost bit.
 ```c
 #include<stdio.h>
-int main(){
+int main(){ 
         int num,pos=-1,i=0;
         printf("Enter the number:");
         scanf("%d",&num);
