@@ -690,3 +690,35 @@ int main(){
         printf("\n");
 }
 ```
+## 29.Find the intersection of two arrays.
+```c
+#include<stdio.h>
+int main(){
+        int arr1[]={1,2,3,4,5};
+        int arr2[]={3,4,5,6,7};
+        int n1=sizeof(arr1)/sizeof(arr1[0]);
+        int n2=sizeof(arr2)/sizeof(arr2[0]);
+        int arr[n1],k=0;
+        for(int i=0;i<n1;i++){
+                for(int j=0;j<n2;j++){
+                        if(arr1[i]==arr2[j]){
+                                int exit=0;
+                                for(int x=0;x<k;x++){
+                                        if(arr[x]==arr[i]){
+                                                exit=1;
+                                                break;
+                                        }
+                                }
+                                if(!exit){
+                                        arr[k++]=arr1[i];
+                                }
+                        }
+                }
+        }
+        printf("Intersection of two arrays:");
+        for(int i=0;i<k;i++){
+                printf("%d ",arr[i]);
+        }
+        printf("\n");
+}
+```
