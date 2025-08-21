@@ -660,4 +660,33 @@ int main(){
                 printf("No Majority element in the array\n");
 }
 ```
-
+## 28.Find the subarray with the maximum sum.
+```c
+#include<stdio.h>
+int main(){
+        int arr[]={-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        int n=sizeof(arr)/sizeof(arr[0]);
+        int maxsum=arr[0],currentsum=arr[0];
+        int start=0,end=0,tempstart=0;
+        for(int i=1;i<n;i++){
+                if(arr[i]>currentsum+arr[i]){
+                        currentsum=arr[i];
+                        tempstart=i;
+                }
+                else{
+                        currentsum=currentsum+arr[i];
+                }
+                if(currentsum>maxsum){
+                        maxsum=currentsum;
+                        start=tempstart;
+                        end=i;
+                }
+        }
+        printf("Maximumsum=%d\n",maxsum);
+        printf("Subarray:");
+        for(int k=start;k<=end;k++){
+                printf("%d ",arr[k]);
+        }
+        printf("\n");
+}
+```
