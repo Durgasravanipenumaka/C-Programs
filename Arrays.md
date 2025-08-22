@@ -751,7 +751,7 @@ int main(){
         }
 }
 ```
-## 33.Find the first repeating element in an array.
+## 31.Find the first repeating element in an array.
 ```c
 #include<stdio.h>
 int main(){
@@ -798,6 +798,44 @@ int main(){
         }
         if(!found){
                 printf("No repeating element found");
+        }
+}
+```
+## 33.Union of matrix.
+```c
+#include<stdio.h>
+int main(){
+        int arr1[3][3],arr2[3][3];
+        printf("Enter the elements in the matrix1:\n");
+        for(int i=0;i<3;i++){
+                for(int j=0;j<3;j++){
+                        scanf("%d",&arr1[i][j]);
+                }
+        }
+        printf("Enter the elements in the matrix2:\n");
+        for(int i=0;i<3;i++){
+                for(int j=0;j<3;j++){
+                        scanf("%d",&arr2[i][j]);
+                }
+        }
+        for(int i=0;i<3;i++){
+                for(int j=0;j<3;j++){
+                        for(int x=0;x<3;x++){
+                                for(int y=0;y<3;y++){
+                                        if(arr1[i][j]==arr2[x][y])
+                                                arr2[x][y]=0;
+                                }
+                        }
+                }
+        }
+        for(int i=0;i<3;i++){
+                for(int j=0;j<3;j++){
+                        printf("%3d",arr1[i][j]);
+                }
+                for(int j=0;j<3;j++){
+                        printf("%3d",arr2[i][j]);
+                }
+                printf("\n");
         }
 }
 ```
