@@ -751,3 +751,30 @@ int main(){
         }
 }
 ```
+## 32.Find the first non-repeating element in an array.
+```c
+#include<stdio.h>
+int main(){
+        int arr[]={10,5,3,4,3,10,5,6};
+        int element,found=0;
+        int len=sizeof(arr)/sizeof(arr[0]);
+        for(int i=0;i<len;i++){
+                int repeat=0;
+                for(int j=0;j<len;j++){
+                        if(i!=j && arr[i]==arr[j]){
+                                repeat=1;
+                                break;
+                        }
+                }
+                        if(repeat==0){
+                             element=arr[i];
+                             found=1;
+                             printf("First repeating element:%d\n",element);
+                             break;
+                }
+        }
+        if(!found){
+                printf("No repeating element found");
+        }
+}
+```
