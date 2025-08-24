@@ -330,3 +330,28 @@ int main(){
                 printf("rightmost set bit is not found\n");
 }
 ```
+## 22.Given two numbers, write a function to insert a number y in number x. The number y should occupy n bits in x starting at position p. Assume that number y can fit in these n bits.Suppose p=13, n=6, x=0x23173b4, y=0x2F
+```c
+#include<stdio.h>
+unsigned displaybits(int x);
+unsigned fun(unsigned x,unsigned y,int p,int n);
+int main(){
+     unsigned x=0x23173b4,y=0x2f,num;
+     int p=13,n=6;
+     num=fun(x,y,p,n);
+     displaybits(num);
+}
+unsigned fun(unsigned x,unsigned y,int p,int n){
+        int mask,num;
+        mask=~(~0<<n)<<(p-n+1);
+        num=(x&~mask)|(y<<(p-n+1));
+        return num;
+}
+unsigned displaybits(int x){
+        int mask;
+        for(int i=31;i>=0;i--){
+               mask=1<<i;
+               putchar(x&mask?'1':'0');
+        }
+}
+```
