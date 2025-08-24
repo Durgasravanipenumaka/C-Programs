@@ -377,3 +377,60 @@ unsigned displaybits(int x){
         printf("\n");
 }
 ```
+## 24.Write a C program that takes a 32-bit hexadecimal number, splits it into 4 bytes, performs nibble swap on the MSB, resets even bits on the 2nd MSB, swaps adjacent bits on the 2nd LSB, inverts all bits on the LSB, then reconstructs and prints the final 32-bit number in both hexadecimal and binary format.
+```c
+#include<stdio.h>
+unsigned char binarybits(unsigned char x){
+        int mask;
+        for(int i=7;i>=0;i--){
+                mask=1<<i;
+                putchar(x&mask?'1':'0');
+        }
+        printf("\n");
+}
+unsigned char swap(unsigned char x){
+        return (x&0x0f)<<4 | (x&0xf0)>>4;
+}
+unsigned char resetevenbits(unsigned char x){
+        return x&0xAA;
+}
+unsigned char swapadjbits(unsigned char x){
+        unsigned char even = (x&0xAA)>>1;
+        unsigned char odd = (x&0x55)<<1;
+        return even|odd;
+}
+unsigned char invertallbits(unsigned char x){
+        return ~x;
+}
+int main(){
+        unsigned int i=0x3ABC29A4;
+        unsigned char b1=i>>24 & 0xff;
+        unsigned char b2=i>>16 & 0xff;
+        unsigned char b3=i>>8 & 0xff;
+        unsigned char b4=i & 0xff;
+        printf("MSB (0x%x) before:",b1);
+        binarybits(b1);
+        b1=swap(b1);
+        printf("MSB after swapping:");
+        binarybits(b1);
+        printf("\n");
+        printf("2nd MSB (0x%x) before:",b2);
+        binarybits(b2);
+        b2=resetevenbits(b2);
+        printf("2nd MSB after resetting of evenbits:");
+        binarybits(b2);
+        printf("\n");
+        printf("2nd LSB (0x%x) before:",b3);
+        binarybits(b3);
+        b3=swapadjbits(b3);
+        printf("2nd LSB after swapping of adjacentbits:");
+        binarybits(b3);
+        printf("\n");
+        printf("LSB (0x%x) before:",b4);
+        binarybits(b4);
+        b4=invertallbits(b4);
+        printf("LSB after inverting all bits:");
+        binarybits(b4);
+        printf("\n");
+}
+```
