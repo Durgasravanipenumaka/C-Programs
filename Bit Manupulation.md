@@ -355,3 +355,25 @@ unsigned displaybits(int x){
         }
 }
 ```
+## 23.Write a program ro manipulate bits from position i to j in a number x. If i=2 and j=7 then the bits to be manipulated are 2nd, 3rd, 4h, 5th, 6th, 7th.
+```c
+#include<stdio.h>
+unsigned displaybits(int x);
+int main(){
+        int num,mask;
+        int i=2,j=7;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        mask=~(~0<<(j-i+1))<<i;
+        num=num|mask;
+        displaybits(num);
+}
+unsigned displaybits(int x){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(x&mask ? '1' :'0');
+        }
+        printf("\n");
+}
+```
