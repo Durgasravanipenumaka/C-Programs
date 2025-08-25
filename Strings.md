@@ -1509,3 +1509,16 @@ int main(){
         printf("string after reversing:%s\n",str);
 }
 ```
+## 61.Unlike gets (), the function fgets() doesn't delete the newline character entered at the end but retains it. What should we do if we don't want the newline character in the string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("String after removal of new line at end:%s\n",str);
+}
+```
