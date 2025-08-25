@@ -1422,7 +1422,7 @@ int main(){
         printf("%s",str);
 }
 ```
-## 58.. Write a C program to trim both leading and trailing white space characters from given string.
+## 58.Write a C program to trim both leading and trailing white space characters from given string.
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -1448,5 +1448,41 @@ int main(){
                         break;
         }
         printf("%s",str);
+}
+```
+## 59.Write a C program to remove all extra blank spaces from given string.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+        char str[100],result[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int i=0;
+        int j=0;
+        while(isspace(str[i])){
+                i++;
+        }
+        int spacebar=0;
+        while(str[i]!='\0'){
+                if(isspace(str[i])){
+                        if(!spacebar){
+                                result[j++]=' ';
+                                spacebar=1;
+                        }
+                }
+                else{
+                        result[j++]=str[i];
+                        spacebar=0;
+                }
+                i++;
+        }
+        if(j>0 && result[j-1]==' ')
+                j--;
+        result[j]='\0';
+        printf("String after removing of trailing spaces:%s",result);
 }
 ```
