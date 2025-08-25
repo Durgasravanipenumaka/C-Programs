@@ -434,3 +434,31 @@ int main(){
         printf("\n");
 }
 ```
+## 25.Write a function that reverses the bits in an integer.
+```c
+#include<stdio.h>
+void binarybits(int x){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(x & mask ? '1' : '0');
+        }
+        printf("\n");
+}
+unsigned int reverse(unsigned int num){
+        int rev=0;
+        for(int i=0;i<32;i++){
+                if(num & (1<<i)){
+                        rev=rev|(1<<(31-i));
+                }
+        }
+        return rev;
+}
+int main(){
+        unsigned int num;
+        printf("Enter the number:");
+        scanf("%u",&num);
+        binarybits(num);
+        binarybits(reverse(num));
+}
+```
