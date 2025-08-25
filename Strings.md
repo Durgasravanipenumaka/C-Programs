@@ -1486,3 +1486,26 @@ int main(){
         printf("String after removing of trailing spaces:%s",result);
 }
 ```
+## 60.Write a recursive function to reverse a string using bitwise operator’s.
+```c
+#include<stdio.h>
+#include<string.h>
+void reverse(char str[],int left,int right){
+        if(left>=right)
+                return;
+        str[left]=str[left]^str[right];
+        str[right]=str[left]^str[right];
+        str[left]=str[left]^str[right];
+
+        return reverse(str,left+1,right-1);
+}
+int main(){
+        char str[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        reverse(str,0,strlen(str)-1);
+        printf("string after reversing:%s\n",str);
+}
+```
