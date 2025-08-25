@@ -462,3 +462,23 @@ int main(){
         binarybits(reverse(num));
 }
 ```
+## 26.Write a program that inputs a binary pattern less than or equal to 32 bits and converts it to an integer.
+```c
+#include<stdio.h>
+int main(){
+        char bit;
+        int num=0;
+        printf("Enter the any bit pattern lessthan 32:");
+        for(int i=0;i<32;i++){
+                bit=getchar();
+                if(bit=='0')
+                        num=num<<1;
+                else if(bit=='1')
+                        num=(num<<1)+1;
+                else
+                        break;
+        }
+        printf("Number in Hexadecimal:%x\n",num);
+        printf("Number in decimal:%d\n",num);
+}
+```
