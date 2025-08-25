@@ -1380,3 +1380,73 @@ int main(){
                 printf("character is not found");
 }
 ```
+## 56.Write a C program to trim leading white space characters from a given string.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+        char str[100];
+        int i=0,j=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        while(isspace(str[i])){
+                i++;
+        }
+        while(str[i]!='\0'){
+                str[j++]=str[i++];
+        }
+        printf("%s",str);
+}
+```
+## 57.Write a C program to trim trailing white space characters from a given string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        for(int i=strlen(str)-1;i>=0;i--){
+                if(str[i]==' '||str[i]=='\t'){
+                        str[i]='\0';
+                }
+                else{
+                        break;
+                }
+        }
+        printf("%s",str);
+}
+```
+## 58.. Write a C program to trim both leading and trailing white space characters from given string.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+        char str[100];
+        int i=0,j=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        while(isspace(str[i])){
+                i++;
+        }
+        while(str[i]!='\0'){
+                str[j++]=str[i++];
+        }
+        str[j]='\0';
+        for(int i=strlen(str)-1;i>=0;i--){
+                if(str[i]==' '||str[i]=='\t')
+                        str[i]='\0';
+                else
+                        break;
+        }
+        printf("%s",str);
+}
+```
