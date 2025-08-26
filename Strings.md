@@ -1522,3 +1522,30 @@ int main(){
         printf("String after removal of new line at end:%s\n",str);
 }
 ```
+## 62.
+```c
+
+```
+## 63.Input a string and change it so that the characters are placed in alphabetical order. For example the string "Devanshi"should be changed to "aDehinsv".
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+        char str[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                for(int j=i+1;str[j]!='\0';j++){
+                        if(tolower(str[i])>tolower(str[j])){
+                                char temp=str[i];
+                                str[i]=str[j];
+                                str[j]=temp;
+                        }
+                }
+        }
+        printf("%s\n",str);
+}
+```
