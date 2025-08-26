@@ -14,7 +14,7 @@ int main(){
         printf("%d",phead->val);
 }
 ```
-## 2.Create 5 nodes using Linked List.
+## 2.Create  n nodes using Linked List.
 ```c
 #include<stdio.h>
 #include<stdlib.h>
@@ -51,11 +51,14 @@ void display(){
         }
 }
 int main(){
-        createnode(10);
-        createnode(20);
-        createnode(30);
-        createnode(40);
-        createnode(50);
+        int n,node;
+        printf("Enter the total number of nodes");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node%d:",i);
+                scanf("%d",&node);
+                createnode(node);
+        }
         display();
 }
 ```
