@@ -1522,9 +1522,43 @@ int main(){
         printf("String after removal of new line at end:%s\n",str);
 }
 ```
-## 62.
+## 62.Write a function to remove all leading and trailing blanks from a string.
 ```c
-
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+char removespaces(char str[],char result[100]){
+        int i=0,j=0;
+        while(isspace(str[i])){
+                i++;
+        }
+        int spaceflag=0;
+        while(str[i]!='\0'){
+                if(isspace(str[i])){
+                        if(!spaceflag){
+                                result[j++]=' ';
+                                spaceflag=1;
+                        }
+                }
+                else{
+                        result[j++]=str[i];
+                }
+                i++;
+        }
+        if(j>0 && result[j-1]==' '){
+                j--;
+        }
+        result[j]='\0';
+}
+int main(){
+        char str[100],result[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        removespaces(str,result);
+        printf("String after removing of trailing spaces:%s",result);
+}
 ```
 ## 63.Input a string and change it so that the characters are placed in alphabetical order. For example the string "Devanshi"should be changed to "aDehinsv".
 ```c
