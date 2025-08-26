@@ -1583,3 +1583,32 @@ int main(){
         printf("%s\n",str);
 }
 ```
+## 64.Write a program to abbreviate input text. For example if the input is "World Health Organization", then the output should be WHO.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],result[100];
+        int j=0;
+        printf("enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        if((str[0]>='A'&&str[0]<='Z')||(str[0]>='a'&&str[0]<='z')){
+                if(str[0]>='a'&&str[0]<='z')
+                        result[j++]=str[0]-32;
+                else
+                        result[j++]=str[0];
+        }
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i-1]==' ' &&((str[i]>='a'&&str[i]<='z')||(str[i]>='A'&&str[i]<='Z'))){
+                                if(str[i]>='a'&&str[i]<='z')
+                                      result[j++]=str[i]-32;
+                                else
+                                      result[j++]=str[i];
+                }
+        }
+        result[j]='\0';
+        printf("%s\n",result);
+}
+```
