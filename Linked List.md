@@ -1203,3 +1203,186 @@ int main(){
 ```
 ## 20.Write a function to move the smallest element to the beginning of a single linked list. 
 ```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void movesmalltobegin(){
+        if(phead==NULL && phead->nxt!=NULL)
+                return;
+        struct node *prev=NULL,*minprev=NULL,*minnode=phead,*currentnode=phead;
+        while(currentnode!=NULL){
+                if(currentnode->val < minnode->val){
+                        minnode=currentnode;
+                        minprev=prev;
+                }
+                prev=currentnode;
+                currentnode=currentnode->nxt;
+        }
+        if(minnode==phead)
+                return;
+        if(minprev!=NULL)
+                minprev->nxt=minnode->nxt;
+        minnode->nxt=phead;
+        phead=minnode;
+}
+void display(){
+        struct node *temp=phead;
+        while(temp!=NULL){
+                printf("%d\n",temp->val);
+                temp=temp->nxt;
+        }
+}
+int main(){
+        int n,node;
+        printf("Enter the total number of nodes");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node%d:",i);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        movesmalltobegin();
+        display();
+}
+```
+## 21. Write a program to remove first node of the list and insert it at the end, without changing info part of any node.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void display(){
+        struct node *temp=phead;
+        while(temp!=NULL){
+                printf("%d\n",temp->val);
+                temp=temp->nxt;
+        }
+}
+void movefirstnodetolastnode(){
+        struct node *ptrav=phead,*temp=phead;
+        while(ptrav->nxt!=NULL){
+                ptrav=ptrav->nxt;
+        }
+        phead=temp->nxt;
+        ptrav->nxt=temp;
+        temp->nxt=NULL;
+}
+int main(){
+        int n,node;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node%d:",i);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        movefirstnodetolastnode();
+        display();
+}
+```
+## 22. Write a program to remove the last node of the list and insert it in the beginning, without changing info part of any node.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void display(){
+        struct node *temp=phead;
+        while(temp!=NULL){
+                printf("%d\n",temp->val);
+                temp=temp->nxt;
+        }
+}
+void movelastnodetofirst(){
+        struct node *ptrav=phead,*prev=NULL;
+        while(ptrav->nxt!=NULL){
+                prev=ptrav;
+                ptrav=ptrav->nxt;
+        }
+        prev->nxt=NULL;
+        ptrav->nxt=phead;
+        phead=ptrav;
+}
+int main(){
+        int n,node;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node%d:",i);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        movelastnodetofirst();
+        display();
+}
+```
