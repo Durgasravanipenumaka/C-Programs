@@ -145,3 +145,26 @@ int main(){
                 printf("%d is a not a leap year\n",s1.year);
 }
 ```
+## 7.Define a structure to represent a complex number with real and imaginary parts (both floats). Write a function to add two complex numbers represented by structures.
+```c
+#include<stdio.h>
+struct comp{
+        float real;
+        float img;
+};
+struct comp Add(struct comp c1,struct comp c2){
+        struct comp result;
+        result.real=c1.real+c2.real;
+        result.img=c1.img+c2.img;
+        return result;
+}
+int main(){
+        struct comp c1,c2,sum;
+        printf("Enter first complex number(real imaginary):");
+        scanf("%f %f",&c1.real,&c1.img);
+        printf("Enter second complex number(real imaginary):");
+        scanf("%f %f",&c2.real,&c2.img);
+        sum=Add(c1,c2);
+        printf("sum=%.2f + %.2fi\n",sum.real,sum.img);
+}
+```
