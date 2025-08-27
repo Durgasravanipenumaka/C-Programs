@@ -1,30 +1,35 @@
 ## Create a structure to represent a student with the following members: name (string), roll number (int), and marks (float). Write a function to display the details of a student. 
 ```c
-##include<stdio.h>
+#include<stdio.h>
 #include<string.h>
-struct emp{
+struct student{
         char name[10];
-        int rollnumber;
-        float marks;
+        int rollNo;
+        float Marks;
 };
-void display(char *ptr,int id,float m);
-int main(){
-        struct emp e[3];
-        strcpy(e[0].name,"sai");
-        e[0].rollnumber=1;
-        e[0].marks=78.9;
-        display(e[0].name,e[0].rollnumber,e[0].marks);
-        strcpy(e[1].name,"krishna");
-        e[1].rollnumber=2;
-        e[1].marks=98.7;
-        display(e[1].name,e[1].rollnumber,e[1].marks);
-        strcpy(e[2].name,"narayan");
-        e[2].rollnumber=3;
-        e[2].marks=98.6;
-        display(e[2].name,e[2].rollnumber,e[2].marks);
+void display(struct student s){
+        printf("Name:%s\n",s.name);
+        printf("Roll NO:%d\n",s.rollNo);
+        printf("Marks:%.2f\n",s.Marks);
 }
-void display(char *ptr,int id,float m){
-        printf("%s %d %f\n",ptr,id,m);
+int main(){
+        struct student s[3];
+        for(int i=0;i<3;i++){
+                printf("Enter the name:");
+                fgets(s[i].name,sizeof(s[i].name),stdin);
+                if(s[i].name[strlen(s[i].name)-1]=='\n')
+                        s[i].name[strlen(s[i].name)-1]='\0';
+                printf("Enter the Roll no:");
+                scanf("%d",&s[i].rollNo);
+                getchar();
+                printf("Enter the Marks:");
+                scanf("%f",&s[i].Marks);
+                getchar();
+        }
+        printf("-----Student Details-----\n");
+        for(int i=0;i<3;i++){
+                display(s[i]);
+        }
 }
 ```
 ## 21. Create a structure to represent a book with the following members: title (string), author (string),ISBN (long int), and number of pages (int). Write a function to accept details of a book from the user and store them in a structure variable. 
