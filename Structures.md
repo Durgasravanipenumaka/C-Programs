@@ -96,7 +96,7 @@ int main(){
         printf("size of the structure=%ld\n",(long)p);
 }
 ```
-## 5.. Define a structure to represent a point in 2D space with x and y coordinates (both integers). Write a function to check if two points are equal (have the same x and y coordinates).
+## 5. Define a structure to represent a point in 2D space with x and y coordinates (both integers). Write a function to check if two points are equal (have the same x and y coordinates).
 ```c
 #include<stdio.h>
 struct point{
@@ -119,5 +119,29 @@ int main(){
                 printf("The points are equal");
         else
                 printf("The points are not equal");
+}
+```
+## 6.Define a structure to represent a date with day, month, and year (all integers). Write a function to check if a given year is a leap year. 
+```c
+#include<stdio.h>
+struct date{
+        int date;
+        int month;
+        int year;
+};
+int leapyearornot(int year){
+       if((year%400==0) || (year%4==0 && year%100!=0))
+               return 1;
+       else
+               return 0;
+}
+int main(){
+        struct date s1;
+        printf("Enter the date, month and year:");
+        scanf("%d %d %d",&s1.date,&s1.month,&s1.year);
+        if(leapyearornot(s1.year))
+                printf("%d is a leap year\n",s1.year);
+        else
+                printf("%d is a not a leap year\n",s1.year);
 }
 ```
