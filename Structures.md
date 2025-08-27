@@ -228,3 +228,35 @@ int main(){
                 printf("Invalid\n");
 }
 ```
+## 10.Implement a function that takes a structure representing a time (hours, minutes, seconds) and performs basic time arithmetic (e.g., adding two time durations). 
+```c
+#include<stdio.h>
+struct Time{
+        int hrs;
+        int min;
+        int sec;
+};
+struct Time Add(struct Time t1,struct Time t2){
+        struct Time result;
+        result.sec=t1.sec+t2.sec;
+        result.min=result.sec/60;
+        result.sec=result.sec%60;
+
+        result.min=result.min+t1.min+t2.min;
+        result.hrs=result.min/60;
+        result.min=result.min%60;
+
+        result.hrs=result.hrs+t1.hrs+t2.hrs;
+
+        return result;
+}
+int main(){
+        struct Time t1,t2,sum;
+        printf("Enter the time1(hrs min sec):");
+        scanf("%d %d %d",&t1.hrs,&t1.min,&t1.sec);
+        printf("Enter the time2(hrs min sec):");
+        scanf("%d %d %d",&t2.hrs,&t2.min,&t2.sec);
+        sum=Add(t1,t2);
+        printf("Sum of the times= %d:%d:%d\n",sum.hrs,sum.min,sum.sec);
+}
+```
