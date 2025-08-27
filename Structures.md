@@ -96,5 +96,28 @@ int main(){
         printf("size of the structure=%ld\n",(long)p);
 }
 ```
-
-
+## 5.. Define a structure to represent a point in 2D space with x and y coordinates (both integers). Write a function to check if two points are equal (have the same x and y coordinates).
+```c
+#include<stdio.h>
+struct point{
+        int x;
+        int y;
+};
+int equalornot(struct point p1,struct point p2){
+        if(p1.x==p2.x && p1.y==p2.y)
+                return 1;
+        else
+                return 0;
+}
+int main(){
+        struct point s1,s2;
+        printf("Enter the coordinates of first point(x,y):");
+        scanf("%d %d",&s1.x,&s1.y);
+        printf("Enter the coordinates of second point(x,y):");
+        scanf("%d %d",&s2.x,&s2.y);
+        if(equalornot(s1,s2))
+                printf("The points are equal");
+        else
+                printf("The points are not equal");
+}
+```
