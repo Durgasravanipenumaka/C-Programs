@@ -193,3 +193,38 @@ int main(){
         printf("root : %d, Left : %d, Right : %d",root->data,root->left->data,root->right->data);
 }
 ```
+## 9.Implement a function that takes a structure representing a date (day, month, year) and checks if the date is valid (e.g., not exceeding the number of days in a month). 
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct Date{
+        int day;
+        int month;
+        int year;
+};
+int leapyear(int year){
+        return((year%400)==0 ||(year%4==0 && year%100!=0));
+}
+int validornot(struct Date s){
+        int daysinmonth[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+        if(s.year<1)
+                return 0;
+        if(s.month<1 || s.month>12)
+                return 0;
+        if(leapyear(s.year))
+                daysinmonth[2]=29;
+        if(s.day < 1 || s.day > daysinmonth[s.month])
+                return 0;
+        return 1;
+
+}
+int main(){
+        struct Date s;
+        printf("Enter the day, Month and year:");
+        scanf("%d %d %d",&s.day,&s.month,&s.year);
+        if(validornot(s))
+                printf("Valid\n");
+        else
+                printf("Invalid\n");
+}
+```
