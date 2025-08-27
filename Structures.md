@@ -1,4 +1,4 @@
-## Create a structure to represent a student with the following members: name (string), roll number (int), and marks (float). Write a function to display the details of a student. 
+## 1.Create a structure to represent a student with the following members: name (string), roll number (int), and marks (float). Write a function to display the details of a student. 
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -166,5 +166,30 @@ int main(){
         scanf("%f %f",&c2.real,&c2.img);
         sum=Add(c1,c2);
         printf("sum=%.2f + %.2fi\n",sum.real,sum.img);
+}
+```
+## 8.Define a self-referential structure to represent a binary tree node. Each node should have data (integer) and pointers to left and right child nodes. 
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int data;
+        struct node *left;
+        struct node *right;
+};
+int main(){
+        struct node *root=(struct node*)malloc(sizeof(struct node));
+        root->data=10;
+        root->left=NULL;
+        root->right=NULL;
+        root->left=(struct node*)malloc(sizeof(struct node));
+        root->left->data=20;
+        root->left->left=NULL;
+        root->left->right=NULL;
+        root->right=(struct node*)malloc(sizeof(struct node));
+        root->right->data=30;
+        root->right->left=NULL;
+        root->right->right=NULL;
+        printf("root : %d, Left : %d, Right : %d",root->data,root->left->data,root->right->data);
 }
 ```
