@@ -973,3 +973,154 @@ int main(){
         return 0;
 }
 ```
+## 17.Write a function to find the smallest and largest element of a single linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+void insertnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void display(){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d ",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+}
+void findminmax(){
+        if(phead==NULL){
+                printf("List is empty");
+                return;
+        }
+        struct node *ptrav=phead;
+        int min=ptrav->val;
+        int max=ptrav->val;
+        while(ptrav!=NULL){
+                if(ptrav->val<min){
+                        min=ptrav->val;
+                }
+                if(ptrav->val>max){
+                        max=ptrav->val;
+                }
+                ptrav=ptrav->nxt;
+        }
+        printf("Smallest element in the linked list:%d\n",min);
+        printf("Largest element in the linked list:%d\n",max);
+}
+int main(){
+        int n,node,count,value;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node%d :",i);
+                scanf("%d",&node);
+                insertnode(node);
+        }
+        printf("Valuse in the linked list are:");
+        display();
+        printf("\n");
+        findminmax();
+}
+```
+## 18.Write a function to create a copy of a single linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void insertnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+struct node* copylist(struct node *phead){
+        if(phead==NULL)
+                return NULL;
+        struct node *pnew,*ptrav,*pcopyhead=NULL,*pcopytail=NULL;
+        ptrav=phead;
+        while(ptrav!=NULL){
+                pnew=(struct node*)malloc(sizeof(struct node));
+                if(pnew==NULL){
+                        printf("Malloc error");
+                        return NULL;
+                }
+                pnew->val=ptrav->val;
+                pnew->nxt=NULL;
+                if(pcopyhead==NULL){
+                        pcopyhead=pnew;
+                        pcopytail=pnew;
+                }
+                else{
+                        pcopytail->nxt=pnew;
+                        pcopytail=pnew;
+                }
+                ptrav=ptrav->nxt;
+        }
+        return pcopyhead;
+}
+void display(struct node *phead){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d ",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+}
+int main(){
+        int n,node;
+        struct node *copied;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node%d :",i);
+                scanf("%d",&node);
+                insertnode(node);
+        }
+        printf("Values in the linked list are:");
+        display(phead);
+        printf("\n");
+        printf("Values in the linked list after copying:");
+        copied=copylist(phead);
+        display(copied);
+}
+```
