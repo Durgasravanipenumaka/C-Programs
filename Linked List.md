@@ -924,9 +924,9 @@ struct node{
 struct node *phead=NULL;
 void insertnode(int d){
         struct node *pnew,*ptrav;
-        pnew=(struct node *)malloc(sizeof(struct node));
+        pnew=(struct node*)malloc(sizeof(struct node));
         if(pnew==NULL){
-                printf("malloc error");
+                printf("Malloc error");
                 return;
         }
         pnew->val=d;
@@ -943,34 +943,40 @@ void insertnode(int d){
                 ptrav->nxt=pnew;
         }
 }
-void count(){
-        struct node *ptrav;
-        int count=0;
-        ptrav=phead;
-        while(ptrav!=NULL){
-                ptrav=ptrav->nxt;
-                count++;
-        }
-        printf("count of the nodes:%d\n",count);
-}
 void display(){
-        struct node *ptrav;
-        ptrav=phead;
+        struct node *ptrav=phead;
         while(ptrav!=NULL){
                 printf("%d ",ptrav->val);
                 ptrav=ptrav->nxt;
         }
-        printf("\n");
+}
+int countoccurrences(int key){
+        struct node *ptrav=phead;
+        int count=0;
+        while(ptrav!=NULL){
+                if(ptrav->val==key){
+                        count++;
+                }
+                ptrav=ptrav->nxt;
+        }
+        return count;
 }
 int main(){
-        insertnode(10);
-        insertnode(20);
-        insertnode(30);
-        insertnode(40);
-        insertnode(50);
+        int n,node,count,value;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node%d :",i);
+                scanf("%d",&node);
+                insertnode(node);
+        }
+        printf("Valuse in the linked list are:");
         display();
-        count();
-        return 0;
+        printf("\n");
+        printf("Enter the value to count its occurrences:");
+        scanf("%d",&value);
+        count=countoccurrences(value);
+        printf("%d occurrs in %d times\n",value,count);
 }
 ```
 ## 17.Write a function to find the smallest and largest element of a single linked list.
@@ -1124,3 +1130,76 @@ int main(){
         display(copied);
 }
 ```
+## 19. Write a function to move the largest element to the end of a single linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void display(){
+        struct node *temp=phead;
+        while(temp!=NULL){
+                printf("%d\n",temp->val);
+                temp=temp->nxt;
+        }
+}
+void movelargernode(){
+        if(phead==NULL && phead->nxt==NULL)
+                return;
+        struct node *maxprev=NULL,*maxnode=phead;
+        struct node *prev=NULL,*current=phead;
+        while(current!=NULL){
+                if(current->val > maxnode->val){
+                        maxprev=prev;
+                        maxnode=current;
+                }
+                prev=current;
+                current=current->nxt;
+        }
+        if(maxnode->nxt==NULL)
+                return;
+        if(maxprev!=NULL)
+                maxprev->nxt=maxnode->nxt;
+        else
+                phead=maxnode->nxt;
+        prev->nxt=maxnode;
+        maxnode->nxt=NULL;
+}
+int main(){
+        int n,node;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node%d:",i);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        movelargernode();
+        display();
+}
+```
+## 20.Write a function to move the smallest element to the beginning of a single linked list. 
+```c
