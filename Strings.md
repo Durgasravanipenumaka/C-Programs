@@ -1716,3 +1716,83 @@ int main(){
         printf("%s",result);
 }
 ```
+## 67.Write your own pointer versions of the library functions strncpy() , strncmp (), strncat ().
+## strncpy():
+```c
+#include<stdio.h>
+#include<string.h>
+char* mystrcpy(char *src,char *dest,int n){
+        char *temp=dest;
+        while(n>0 && *src!='\0'){
+                *dest++=*src++;
+                n--;
+        }
+        while(n>0){
+                *dest++='\0';
+                n--;
+        }
+        return temp;
+}
+int main(){
+        char str1[100],str2[100];
+        printf("Enter the string1:");
+        fgets(str1,sizeof(str1),stdin);
+        if(str1[strlen(str1)-1]=='\n')
+                str1[strlen(str1)-1]='\0';
+        mystrcpy(str1,str2,5);
+        printf("String after copy:%s",str2);
+}
+```
+## strncmp():
+```c
+int mystrcmp(char *s1,char *s2,int n){
+        while(n>0 && *s1 && (*s1==*s2)){
+                s1++;
+                s2++;
+                n--;
+        }
+        if(n==0)
+                return 0;
+        return (unsigned char)*s1 - (unsigned char)*s2;
+}
+int main(){
+        char str1[100],str2[100],str[100];
+        printf("Enter the string1:");
+        fgets(str1,sizeof(str1),stdin);
+        if(str1[strlen(str1)-1]=='\n')
+                str1[strlen(str1)-1]='\0';
+        printf("Enter the string2:");
+        fgets(str2,sizeof(str2),stdin);
+        if(str2[strlen(str2)-1]=='\n')
+                str2[strlen(str2)-1]='\0';
+        if(!mystrcmp(str1,str2,3))
+                printf("strings are equal");
+        else
+                printf("strings are not equal");
+}
+```
+## strncat():
+```c
+char* mystrcat(char *s1,char *s2,int n){
+        char *temp=s1;
+        while(*s1!='\0')
+                s1++;
+        while(n-- > 0 && *s2!='\0')
+                *s1++=*s2++;
+        *s1='\0';
+        return temp;
+}
+int main(){
+        char str1[100],str2[100];
+        printf("Enter the string1:");
+        fgets(str1,sizeof(str1),stdin);
+        if(str1[strlen(str1)-1]=='\n')
+                str1[strlen(str1)-1]='\0';
+        printf("Enter the string2:");
+        fgets(str2,sizeof(str2),stdin);
+        if(str2[strlen(str2)-1]=='\n')
+                str2[strlen(str2)-1]='\0';
+        mystrcat(str1,str2,5);
+        printf("String after concatination:%s",str1);
+}
+```
