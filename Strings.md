@@ -1612,3 +1612,39 @@ int main(){
         printf("%s\n",result);
 }
 ```
+## 65.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+        char str[100],result[100];
+        int i=0,j=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int spaceflag;
+        while(isspace(str[i])){
+                i++;
+        }
+        spaceflag=0;
+        while(str[i]!='\0'){
+                if(isspace(str[i])){
+                        if(!spaceflag){
+                                result[j++]=' ';
+                                spaceflag=1;
+                        }
+                }
+                else{
+                        result[j++]=str[i];
+                        spaceflag=0;
+                }
+                i++;
+        }
+        if(j>0 && result[j-1]==' ')
+                j--;
+        result[j]='\0';
+        printf("String after removing the extra spaces:%s",result);
+}
+```
