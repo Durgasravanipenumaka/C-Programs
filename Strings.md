@@ -1612,7 +1612,7 @@ int main(){
         printf("%s\n",result);
 }
 ```
-## 65.
+## 65. Write a function to replace adjacent multiple spaces in a string by a single space. 
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -1646,5 +1646,42 @@ int main(){
                 j--;
         result[j]='\0';
         printf("String after removing the extra spaces:%s",result);
+}
+```
+## 66.Write a program to find the number of occurrences of a particular word in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+        char str[100],word[20],pword[20];
+        int count=0,k=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the word:");
+        fgets(pword,sizeof(pword),stdin);
+        if(pword[strlen(pword)-1]=='\n')
+                pword[strlen(pword)-1]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                str[i]=tolower(str[i]);
+        }
+        for(int i=0;pword[i]!='\0';i++){
+                pword[i]=tolower(pword[i]);
+        }
+        for(int i=0; ;i++){
+                if(str[i]!=' '&&str[i]!='\0')
+                        word[k++]=str[i];
+                else{
+                        word[k]='\0';
+                        if(strcmp(word,pword)==0)
+                               count++;
+                        k=0;
+                }
+                if(str[i]=='\0')
+                        break;
+        }
+        printf("Total occurences of given word:%d",count);
 }
 ```
