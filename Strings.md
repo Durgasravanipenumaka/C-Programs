@@ -1685,3 +1685,34 @@ int main(){
         printf("Total occurences of given word:%d",count);
 }
 ```
+## 67.Write a program to replace all occurrences of the word "Bangalore" by "Bengaluru" in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],word[20],result[100];
+        int k=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        for(int i=0; ;i++){
+                if(str[i]!=' '&&str[i]!='\0')
+                        word[k++]=str[i];
+                else{
+                        word[k]='\0';
+                        if(strcmp(word,"Bangalore")==0)
+                              strcat(result,"Bengaluru");
+                        else
+                                strcat(result,word);
+                        k=0;
+                }
+                if(str[i]==' ')
+                        strcat(result," ");
+                if(str[i]=='\0')
+                        break;
+        }
+
+        printf("%s",result);
+}
+```
