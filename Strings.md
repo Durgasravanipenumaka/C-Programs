@@ -1830,3 +1830,23 @@ int main(){
 
 }
 ```
+## 69.Write a recursive function to reverse a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int reverse(char *s){
+        if(*s=='\0')
+                return -1;
+        reverse(s+1);
+        printf("%c",*s);
+}
+int main(){
+        char str[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        reverse(str);
+        printf("\n");
+}
+```
