@@ -1850,3 +1850,27 @@ int main(){
         printf("\n");
 }
 ```
+## 70. Write a recursive function to return the index of the first occurrence of a character in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int focc(char *s,char ch,int i){
+        if(*s=='\0')
+                return -1;
+        if(*s==ch)
+                return i;
+        focc(s+1,ch,i+1);
+}
+
+int main(){
+        char str[100],ch;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the character:");
+        scanf("%c",&ch);
+        printf("First Occurrence=%d",focc(str,ch,0));
+        printf("\n");
+}
+```
