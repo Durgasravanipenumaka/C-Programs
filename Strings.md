@@ -2054,3 +2054,28 @@ int main(){
         printf("No of vowels:%d",count);
 }
 ```
+## 75. Write a recursive function to replace each occurrence of a character by another character in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+char* replace(char *s,char c){
+        if(*s=='\0')
+                return s;
+        if(*s==c)
+                *s='s';
+        replace(s+1,c);
+        return s;
+}
+
+int main(){
+        char str[100],ch;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the character:");
+        scanf("%c",&ch);
+        char *res=replace(str,ch);
+        printf("%s\n",res);
+}
+```
