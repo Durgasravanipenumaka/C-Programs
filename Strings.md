@@ -1926,3 +1926,36 @@ int main(){
                 printf("Not a palindrome");
 }
 ```
+## 73.Write a function stratr_r() which takes two strings as arguments and returns a pointer to the beginning of the last occurrence of the second string in the first string.
+```c
+#include<stdio.h>
+#include<string.h>
+char* stratr_r(char *s,char *sstr){
+        char *lastoccurrence=NULL;
+        char *current;
+        if(*sstr=='\0')
+                return (char*)s;
+        current=strstr(s,sstr);
+        while(current!=NULL){
+                lastoccurrence=current;
+                current=strstr(current+1,sstr);
+        }
+        return lastoccurrence;
+}
+int main(){
+        char str[100],substr[20];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the substring:");
+        fgets(substr,sizeof(substr),stdin);
+        if(substr[strlen(substr)-1]=='\n')
+                substr[strlen(substr)-1]='\0';
+        char *result=stratr_r(str,substr);
+        if(result!=NULL)
+                printf("Last Occurrence found at:%s",result);
+        else
+                printf("Substring not found");
+}
+```
