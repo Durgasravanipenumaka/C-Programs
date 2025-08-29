@@ -1796,3 +1796,37 @@ int main(){
         printf("String after concatination:%s",str1);
 }
 ```
+## 68.Write a function find_indexF () which takes two strings as arguments and returns the index of the first occurrence of the second string in the first string. Write a similar function find_indexF() that returns the index of the last occurrence of the second string in the first string.
+```c
+#include<stdio.h>
+#include<string.h>
+int str_start(char *s,char *subs,int n){
+        return(strncmp(s,subs,n)==0);
+}
+int str_end(char *s,char *subs){
+        int len1=strlen(s);
+        int len2=strlen(subs);
+        return(strncmp(s+len1-len2,subs,len2)==0);
+}
+int main(){
+        char str[100],substr[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the sunstring:");
+        fgets(substr,sizeof(substr),stdin);
+        if(substr[strlen(substr)-1]=='\n')
+                substr[strlen(substr)-1]='\0';
+        int len=strlen(substr);
+        /*if(str_start(str,substr,len-1))
+                printf("Present\n");
+        else
+                printf("Not present\n");*/
+        if(str_end(str,substr))
+                printf("present\n");
+        else
+                printf("Not present\n");
+
+}
+```
