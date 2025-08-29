@@ -2033,3 +2033,24 @@ int main(){
         printf("string2 after removal of common characters:%s\n",res2);
 }
 ```
+## 76.Write a recursive function to count the number of vowels in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int vowels(char *s,int c){
+        if(*s=='\0')
+                return c;
+        if(*s=='a'||*s=='e'||*s=='i'||*s=='o'||*s=='u'||*s=='A'||*s=='E'||*s=='I'||*s=='O'||*s=='U')
+                c++;
+        return vowels(s+1,c);
+}
+int main(){
+        char str[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int count=vowels(str,0);
+        printf("No of vowels:%d",count);
+}
+```
