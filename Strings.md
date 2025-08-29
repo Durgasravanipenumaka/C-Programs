@@ -1959,7 +1959,7 @@ int main(){
                 printf("Substring not found");
 }
 ```
-## 74.. Write a function find_indexF () which takes two strings as arguments and returns the index of the first occurrence of the second string in the first string. Write a similar function find_indexF() that returns the index of the last occurrence of the second string in the first string.
+## 74.Write a function find_indexF () which takes two strings as arguments and returns the index of the first occurrence of the second string in the first string. Write a similar function find_indexF() that returns the index of the last occurrence of the second string in the first string.
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -1994,5 +1994,42 @@ int main(){
         int res2=find_last(str,substr);
         printf("First Occurence of substring:%d\n",res1);
         printf("Last occurrence of substring:%d\n",res2);
+}
+```
+## 75.Write a program to input two strings and remove all the common characters from both the strings. Display the resultant strings.
+```c
+#include<stdio.h>
+#include<string.h>
+int ispresent(char str[],char ch){
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]==ch)
+                        return 1;
+        }
+        return 0;
+}
+int main(){
+        char str1[100],str2[100],res1[100],res2[100];
+        printf("Enter the string1:");
+        fgets(str1,sizeof(str1),stdin);
+        if(str1[strlen(str1)-1]=='\n')
+                str1[strlen(str1)-1]='\0';
+        printf("Enter the string2:");
+        fgets(str2,sizeof(str2),stdin);
+        if(str2[strlen(str2)-1]=='\n')
+                str2[strlen(str2)-1]='\0';
+        int j=0;
+        for(int i=0;str2[i]!='\0';i++){
+                if(!ispresent(str1,str2[i]))
+                        res2[j++]=str2[i];
+        }
+        res2[j]='\0';
+        int k=0;
+        for(int i=0;str1[i]!='\0';i++){
+                if(!ispresent(str2,str1[i]))
+                        res1[k++]=str1[i];
+        }
+        res1[k]='\0';
+        printf("String1 after removal of common characters:%s\n",res1);
+        printf("string2 after removal of common characters:%s\n",res2);
 }
 ```
