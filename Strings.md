@@ -1900,3 +1900,29 @@ int main(){
         printf("\n");
 }
 ```
+## 72.Write a recursive function to find whether a string is palindrome or not. A palindrome is a string that is read the same way forward and backward for example "radar", "hannah", "madam".
+```c
+#include<stdio.h>
+#include<string.h>
+int palindrome(char *s,int f,int l){
+        if(l<f)
+                return 1;
+        if(s[f]==s[l])
+                palindrome(s,f+1,l-1);
+        else
+                return 0;
+}
+
+int main(){
+        char str[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int len=strlen(str);
+        if(palindrome(str,0,len-1))
+                printf("palindrome");
+        else
+                printf("Not a palindrome");
+}
+```
