@@ -1959,3 +1959,40 @@ int main(){
                 printf("Substring not found");
 }
 ```
+## 74.. Write a function find_indexF () which takes two strings as arguments and returns the index of the first occurrence of the second string in the first string. Write a similar function find_indexF() that returns the index of the last occurrence of the second string in the first string.
+```c
+#include<stdio.h>
+#include<string.h>
+int find_index(char *s,char *sstr){
+        char *pos=strstr(s,sstr);
+        if(pos==NULL)
+                return -1;
+        return (int)(pos-s);
+}
+int find_last(char *s,char *sstr){
+        char *pos=strstr(s,sstr);
+        char *last=NULL;
+        while(pos!=NULL){
+                last=pos;
+                pos=strstr(pos+1,sstr);
+        }
+        if(last==NULL)
+                return -1;
+        return (int)(last-s);
+}
+int main(){
+        char str[100],substr[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        printf("Enter the substring:");
+        fgets(substr,sizeof(substr),stdin);
+        if(substr[strlen(substr)-1]=='\n')
+                substr[strlen(substr)-1]='\0';
+        int res1=find_index(str,substr);
+        int res2=find_last(str,substr);
+        printf("First Occurence of substring:%d\n",res1);
+        printf("Last occurrence of substring:%d\n",res2);
+}
+```
