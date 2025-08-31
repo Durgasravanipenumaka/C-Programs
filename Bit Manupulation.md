@@ -581,3 +581,28 @@ int main(){
                 printf("%d is not less than 50\n",num);
 }
 ```
+## 31.Implement a C program to check if the given number is a palindrome in binary representation using bitwise operators.
+```c
+#include<stdio.h>
+int main(){
+        int num,flag=1;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        int msb=31;
+        while(msb > 0 && ((num>>msb) & 1) == 0){
+                msb--;
+        }
+        for(int i=0,j=msb;j>i;i++,j--){
+                int rightbit=num>>i&1;
+                int leftbit=num>>j&1;
+                if(rightbit!=leftbit){
+                        flag=0;
+                        break;
+                }
+        }
+        if(flag)
+                printf("%d is palindrome",num);
+        else
+                printf("%d is not a Palindrome",num);
+}
+```
