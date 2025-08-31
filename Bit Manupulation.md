@@ -566,3 +566,18 @@ int main(){
                 printf("%d is not divisible by 6 and 9",num);
 }
 ```
+## 30.Implement a program that checks if a number is less than 50 without using the less than operator.
+```c
+#include<stdio.h>
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        int diff;
+        diff=num-50;
+        if((diff>>31)&1)
+                printf("%d is less than 50\n",num);
+        else
+                printf("%d is not less than 50\n",num);
+}
+```
