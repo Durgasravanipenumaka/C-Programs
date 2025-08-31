@@ -512,3 +512,30 @@ int main(){
         binarybits(num);
 }
 ```
+## 28.Swap all even and odd bits.
+```c
+#include<stdio.h>
+int binarybits(int n){
+        int mask;
+        for(int i=7;i>=0;i--){
+                mask=1<<i;
+                putchar(n&mask ? '1' : '0');
+        }
+        printf("\n");
+}
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        printf("Number in Binary format:");
+        binarybits(num);
+        int oddbits=num&0x55;
+        int evenbits=num&0xAA;
+        oddbits=oddbits<<1;
+        evenbits=evenbits>>1;
+        num=oddbits|evenbits;
+        printf("Number after swapping even and odd bits:%d\n",num);
+        printf("Number after swapping in binary format");
+        binarybits(num);
+}
+```
