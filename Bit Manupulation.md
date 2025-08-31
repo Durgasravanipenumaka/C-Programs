@@ -539,3 +539,30 @@ int main(){
         binarybits(num);
 }
 ```
+## 29.Write a C program that uses the bitwise operators to check if a given positive integer is divisible by both 6 and 9.
+```c
+#include<stdio.h>
+int subtract(int a,int b){
+        while(b!=0){
+                int borrow = (~a) & b;
+                a = a ^ b;
+                b = borrow<<1;
+        }
+        return a;
+}
+int isdivisibleby9(int n){
+        while(n>0){
+                n=subtract(n,9);
+        }
+        return (n==0);
+}
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        if(((num&1)==0) && isdivisibleby9(num))
+                printf("%d is divisible by 6 and 9",num);
+        else
+                printf("%d is not divisible by 6 and 9",num);
+}
+```
