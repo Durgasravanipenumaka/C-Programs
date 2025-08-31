@@ -482,3 +482,33 @@ int main(){
         printf("Number in decimal:%d\n",num);
 }
 ```
+## 27.Swap two bits at a given position in an integer
+```c
+#include<stdio.h>
+int binarybits(int n){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(n&mask ? '1' : '0');
+        }
+        printf("\n");
+}
+int main(){
+        int num,bit1,bit2,i,j;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        binarybits(num);
+        printf("Enter the position1:");
+        scanf("%d",&i);
+        printf("Enter the position2:");
+        scanf("%d",&j);
+        bit1=num<<i;
+        bit2=num<<j;
+        if(bit1!=bit2){
+                num=num^(1<<i);
+                num=num^(1<<j);
+        }
+        printf("After swapping the number in binary format:");
+        binarybits(num);
+}
+```
