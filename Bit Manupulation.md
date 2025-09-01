@@ -692,8 +692,36 @@ int main(){
 }
 ```
 ## 35.Write a C program to check if the given number is a perfect square using bitwise operators.
-
-
+```c
+#include<stdio.h>
+int perfectornot(int n){
+        if(n<0)
+                return 0;
+        if(n==0 || n==1)
+                return 1;
+        int low=1,high=n/2;
+        while(low <= high){
+                int mid=(low+high)>>1;
+                long long sq =(long long)mid*mid;
+                if(sq==n)
+                        return 1;
+                else if(sq<n)
+                        low=mid+1;
+                else
+                        high=mid-1;
+        }
+        return 0;
+}
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        if(perfectornot(num))
+                printf("%d is a perfect square",num);
+        else
+                printf("%d is not a perfect square",num);
+}
+```
 ## 36. Implement a C program to swap the first and last bits of a given number using bitwise operators.
 ```c
 #include<stdio.h>
