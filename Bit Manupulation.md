@@ -661,3 +661,33 @@ int main(){
                 printf("%d donot have alternative bits set\n",num);
 }
 ```
+## 34.Implement a C program to count the number of bits needed to convert integer A to integer B using bitwise operators.
+```c
+#include<stdio.h>
+int binarybits(int n){
+        int mask;
+        for(int i=7;i>=0;i--){
+                mask=1<<i;
+                putchar(n&mask ? '1' : '0');
+        }
+}
+int main(){
+        int num1,num2;
+        int count=0;
+        printf("Enter the A:");
+        scanf("%d",&num1);
+        printf("%d in binaryform:",num1);
+        binarybits(num1);
+        printf("\nEnter the B:");
+        scanf("%d",&num2);
+        printf("%d in binaryform:",num2);
+        binarybits(num2);
+        int num=num1^num2;
+        while(num>0){
+                if(num&1)
+                        count++;
+                num=num>>1;
+        }
+        printf("\nNumber of bits need to convert from %d to %d = %d",num1,num2,count);
+}
+```
