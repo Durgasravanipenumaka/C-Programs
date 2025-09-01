@@ -606,7 +606,7 @@ int main(){
                 printf("%d is not a Palindrome",num);
 }
 ```
-## Implement a C program to reverse the bits of a given number using bitwise operators.
+## 32.Implement a C program to reverse the bits of a given number using bitwise operators.
 ```c
 #include<stdio.h>
 int binarybits(int n){
@@ -635,5 +635,29 @@ int main(){
         printf("%d in binary form :",rev);
         binarybits(rev);
         printf("\n");
+}
+```
+## 33.Write a C program to check if the given number has alternate bits set or not using bitwise operators.
+```c
+#include<stdio.h>
+int binarybits(int n){
+        int mask;
+        for(int i=7;i>=0;i--){
+                mask=1<<i;
+                putchar(n&mask ? '1' : '0');
+        }
+}
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        printf("Number in binary form:");
+        binarybits(num);
+        printf("\n");
+        int x=num^(num>>1);
+        if(!(x&(x+1)))
+                printf("%d have alternative bits set\n",num);
+        else
+                printf("%d donot have alternative bits set\n",num);
 }
 ```
