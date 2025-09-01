@@ -691,3 +691,4 @@ int main(){
         printf("\nNumber of bits need to convert from %d to %d = %d",num1,num2,count);
 }
 ```
+## 35.Write a C program to check if the given number is a perfect square using bitwise operators.
