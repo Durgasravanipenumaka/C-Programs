@@ -692,3 +692,37 @@ int main(){
 }
 ```
 ## 35.Write a C program to check if the given number is a perfect square using bitwise operators.
+
+
+## 36. Implement a C program to swap the first and last bits of a given number using bitwise operators.
+```c
+#include<stdio.h>
+int binarybits(int n){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(n&mask ? '1' : '0');
+        }
+        printf("\n");
+}
+int swapmsbandlsb(int n){
+        int lsb=n&(1<<0);
+        int msb=n&(1<<31);
+        if(lsb!=msb){
+                n=n^(1<<0);
+                n=n^(1<<31);
+        }
+        return n;
+}
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        printf("%d in binary form:",num);
+        binarybits(num);
+        int n=swapmsbandlsb(num);
+        printf("%d after swapping=%d\n",num,n);
+        printf("%d in binary form:",n);
+        binarybits(n);
+}
+```
