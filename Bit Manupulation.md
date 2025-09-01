@@ -606,3 +606,34 @@ int main(){
                 printf("%d is not a Palindrome",num);
 }
 ```
+## Implement a C program to reverse the bits of a given number using bitwise operators.
+```c
+#include<stdio.h>
+int binarybits(int n){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(n&mask ? '1' : '0');
+        }
+}
+int reverse(int n){
+        int rev=0;
+        for(int i=31;i>=0;i--){
+                if(n&(1<<i))
+                        rev=rev|(1<<(31-i));
+        }
+        return rev;
+}
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        printf("%d in binary format:",num);
+        binarybits(num);
+        int rev=reverse(num);
+        printf("\nNumber after reversing the bits:%d\n",rev);
+        printf("%d in binary form :",rev);
+        binarybits(rev);
+        printf("\n");
+}
+```
