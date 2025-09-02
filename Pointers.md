@@ -36,6 +36,15 @@ int main(){
         printf("value pointed to pointer:%d",*p);
 }
 ```
+## 6.Write a program to declare an integer variable a, assign it a value, then declare a pointer variable, assign it the address of a, and finally print the value of a using the pointer variable.
+```c
+#include<stdio.h>
+int main(){
+        int a=10;
+        int *ptr=&a;
+        printf("%d\n",*ptr);
+}
+```
 ## 5. Implement a function to copy one string into another using pointers, without using any standard library functions.
 ```c
 #include<stdio.h>
@@ -111,3 +120,4 @@ int main(){
         printf("string after removal of all vowels:%s",res);
 }
 ```
+
