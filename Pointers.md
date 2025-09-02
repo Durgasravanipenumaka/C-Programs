@@ -56,6 +56,37 @@ int main(){
         printf("%d\n",*ptr);
 }
 ```
+## 7.Write a program to print postfix/prefix increment/decrement in a pointer variable of base type int*.
+```c
+#include<stdio.h>
+int main(){
+        int *ptr;
+        printf("Intially ptr address  : %x\n",ptr);
+        printf("After pre-increment of ptr address : %x\n",++ptr);
+        printf("After post-increment of ptr address : %x\n",ptr++);
+        printf("After pre-decrement of ptr address : %x\n",--ptr);
+        printf("After post-decrement of ptr address : %x\n",ptr--);
+}
+```
+## 8.Write a Program to print the value and address of elements of an array using pointers notation.
+```c
+#include<stdio.h>
+int main(){
+        int n;
+        printf("Enter the size of the array:");
+        scanf("%d",&n);
+        int arr[n];
+        printf("Enter the elements in the array:");
+        for(int i=0;i<n;i++){
+                scanf("%d",&arr[i]);
+        }
+        int *ptr=arr;
+        printf("Values and their address\n");
+        for(int i=0;i<n;i++){
+                printf("Value=%d  Address=%x\n",arr[i],ptr++);
+        }
+}
+```
 ## 5. Implement a function to copy one string into another using pointers, without using any standard library functions.
 ```c
 #include<stdio.h>
