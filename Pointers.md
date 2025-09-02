@@ -36,6 +36,17 @@ int main(){
         printf("value pointed to pointer:%d",*p);
 }
 ```
+## 5.C program to illustrate pointer arithmetic.
+```c
+#include<stdio.h>
+int main(){
+        int *ptr;
+        printf("Initially address in p : %x\n",ptr);
+        printf("Address after p+1 : %x\n",ptr+1);
+        printf("Address after p+2 : %x\n",ptr+2);
+        printf("Address after p+3 : %x\n",ptr+3);
+}
+```
 ## 6.Write a program to declare an integer variable a, assign it a value, then declare a pointer variable, assign it the address of a, and finally print the value of a using the pointer variable.
 ```c
 #include<stdio.h>
