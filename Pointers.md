@@ -178,7 +178,7 @@ int main(){
         }
 }
 ```
-## 5. Implement a function to copy one string into another using pointers, without using any standard library functions.
+## 13. Implement a function to copy one string into another using pointers, without using any standard library functions.
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -198,7 +198,7 @@ int main(){
         printf("%s",str2);
 }
 ```
-## 6. Write a program to print array of pointer.
+## 14. Write a program to print array of pointer.
 ```c
 #include<stdio.h>
 int main(){
@@ -214,7 +214,7 @@ int main(){
         }
 }
 ```
-## 7.Write a program to print pointer to an array.
+## 15.Write a program to print pointer to an array.
 ```c
 #include<stdio.h>
 int main(){
@@ -230,7 +230,7 @@ int main(){
         }
 }
 ```
-## 8.Write a C program to remove all vowels in a string using pointer notations.
+## 16. Write a C program to remove all vowels in a string using pointer notations.
 ```c
 #include<stdio.h>
 #include<string.h>
