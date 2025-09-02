@@ -87,6 +87,97 @@ int main(){
         }
 }
 ```
+## 9.Write a program to print the value of array elements using pointers and subscript notation.
+```c
+#include<stdio.h>
+int main(){
+        int n;
+        printf("Enter the size of the array:");
+        scanf("%d",&n);
+        int arr[n];
+        printf("Enter the elements in the array:\n");
+        for(int i=0;i<n;i++){
+                scanf("%d",&arr[i]);
+        }
+        int *ptr=arr;
+        printf("values in the array:\n");
+        for(int i=0;i<n;i++){
+                printf("Value:%d\n",ptr[i]);
+        }
+}
+```
+## 10. program to print the values and address of elements of 2-d array.
+```c
+#include<stdio.h>
+int main(){
+        int r,c;
+        printf("Enter the number of rows and columns:");
+        scanf("%d %d",&r,&c);
+        int arr[r][c];
+        printf("Enter the elements in 2D array:");
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        int *ptr=&arr[0][0];
+        printf("Values and its address:\n");
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        printf("values of arr[%d][%d]=%d\tAddress=%p\n",i,j,*(ptr+i*c+j),(ptr+i*c+j));
+                }
+        }
+}
+```
+## 11.Program to print elements of a 2-D array by subscripting a pointer to an array variable.
+```c
+#include<stdio.h>
+int main(){
+        int arr[3][3];
+        for(int i=0;i<3;i++){
+                for(int j=0;j<3;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        int (*ptr)[3];
+        ptr=arr;
+        for(int i=0;i<3;i++){
+                for(int j=0;j<3;j++){
+                        printf("%2d",ptr[i][j]);
+                }
+                printf("\n");
+        }
+}
+```
+## 12.Program to print elements of a 3-D array using pointer notation.
+```c
+#include<stdlib.h>
+int main(){
+        int x,y,z;
+        printf("Enter the x,y and z values:");
+        scanf("%d %d %d",&x,&y,&z);
+        int *arr=(int *)malloc(x*y*z*sizeof(int));
+        if(arr==NULL){
+                printf("malloc error");
+                return 0;
+        }
+        printf("Enter the elements in 3D array:\n");
+        for(int i=0;i<x;i++){
+                for(int j=0;j<y;j++){
+                        for(int k=0;k<z;k++){
+                                scanf("%d",arr+i*y*z+j*z+k);
+                        }
+                }
+        }
+        for(int i=0;i<x;i++){
+                for(int j=0;j<y;j++){
+                        for(int k=0;k<z;k++){
+                                printf("Value at arr[%d][%d][%d]=%d\tAddress=%p\n",i,j,k,*(arr+i*(y*x)+j*x+k),(arr+i*(y*x)+j*x+k));
+                        }
+                }
+        }
+}
+```
 ## 5. Implement a function to copy one string into another using pointers, without using any standard library functions.
 ```c
 #include<stdio.h>
