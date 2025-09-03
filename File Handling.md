@@ -83,6 +83,30 @@ int main(){
 }
 ```
 ## 3. Develop a program to read a text file and count the number of words in it.
-```c
+```
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+        FILE *fp;
+        char ch;
+        int inword=0,count=0;
+        fp=fopen("abc.txt","r");
+        if(fp==NULL){
+                printf("Error in opening a file");
+                exit(1);
+        }
+        while((ch=getc(fp))!=EOF){
+                if(ch==' '||ch=='\t'||ch=='\n'){
+                        inword=0;
+                }
+                else if(inword==0){
+                        inword=1;
+                        count++;
+                }
 
+        }
+        fclose(fp);
+        printf("Total Words in file:%d\n",count);
+}
+```
 
