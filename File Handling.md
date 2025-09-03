@@ -34,6 +34,8 @@ void main(){
 ```
 ## 1.Write a C program to read content from one file and write it to another file.
 ```c
+#include<stdio.h>
+#include<string.h>
 #include<stdlib.h>
 int main(){
         FILE *fp1,*fp2;
@@ -49,13 +51,13 @@ int main(){
                 printf("Error in opening file");
                 return 0;
         }
-        while(!feof(fp1)){
-        fgets(str,sizeof(str),fp1);
+        while(fgets(str,sizeof(str),fp1)!=NULL){
         fprintf(fp2,"%s",str);
         }
         fclose(fp1);
         fclose(fp2);
 }
+
 ```
 ## 2.Create a program that reads integers from a file and calculates their sum, then writes the sum to another file.
 ```c
