@@ -122,3 +122,55 @@ int main(){
 }
 
 ```
+## 5.WRITE A C PROGRAM TO CHECK WHETHER A GIVEN NUMBER IS A PALINDROME IN BOTH DECIMAL AND BINARY REPRESENTATIONS USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+int main(){
+        int num,rem,arr1[15],arr2[15];
+        int temp;
+        int flag=1;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        temp=num;
+        int rev=0;
+        int original=num;
+        while(num>0){
+                rem=num%10;
+                rev=rev*10+rem;
+                num=num/10;
+        }
+        if(original==rev)
+                printf("Palindrome\n");
+        else
+                printf("Not a Palindrome\n");
+        int k=0;
+        while(temp>0){
+                arr1[k++]=temp%2;
+                temp=temp/2;
+        }
+        printf("Binary format of %d is : ",original);
+        for(int i=0;i<k;i++){
+                printf("%d",arr1[i]);
+        }
+        int j=0;
+        for(int i=k-1;i>=0;i--){
+                arr2[j++]=arr1[i];
+        }
+        printf("\nBinary format of %d after revesing:",original);
+        for(int i=0;i<j;i++){
+                printf("%d",arr2[i]);
+        }
+        printf("\n");
+        for(int i=0;i<j;i++){
+                if(arr1[i]!=arr2[i]){
+                        flag=0;
+                        break;
+                }
+        }
+        if(flag)
+                printf("Two binary formats are equal\n");
+        else
+                printf("Binary formats are not equal\n");
+
+}
+```
