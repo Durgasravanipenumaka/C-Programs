@@ -82,3 +82,7 @@ int main(){
         fclose(fp2);
 }
 ```
+## 3. Develop a program to read a text file and count the number of words in it.
+```c
+
+
