@@ -32,3 +32,28 @@ void main(){
         return;
 }
 ```
+## 1.Write a C program to read content from one file and write it to another file.
+```c
+#include<stdlib.h>
+int main(){
+        FILE *fp1,*fp2;
+        char str[100];
+        char ch;
+        fp1=fopen("abc.txt","r");
+        if(fp1==NULL){
+                printf("Error in opening file");
+                return 0;
+        }
+        fp2=fopen("cde.txt","w");
+        if(fp2==NULL){
+                printf("Error in opening file");
+                return 0;
+        }
+        while(!feof(fp1)){
+        fgets(str,sizeof(str),fp1);
+        fprintf(fp2,"%s",str);
+        }
+        fclose(fp1);
+        fclose(fp2);
+}
+```
