@@ -57,3 +57,28 @@ int main(){
         fclose(fp2);
 }
 ```
+## 2.Create a program that reads integers from a file and calculates their sum, then writes the sum to another file.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+        FILE *fp1,*fp2;
+        int num,sum=0;
+        fp1=fopen("int.txt","r");
+        if(fp1==NULL){
+                printf("Error in opening file");
+                exit(1);
+        }
+        while(fscanf(fp1,"%d",&num)==1){
+                sum=sum+num;
+        }
+        fclose(fp1);
+        fp2=fopen("sum.txt","w");
+        if(fp2==NULL){
+                printf("Error in opening file");
+                exit(1);
+        }
+        fprintf(fp2,"%d",sum);
+        fclose(fp2);
+}
+```
