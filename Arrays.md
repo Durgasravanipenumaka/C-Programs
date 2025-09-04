@@ -64,7 +64,7 @@ int main(){
         }
         for(int i=0;i<c;i++){
                 for(int j=0;j<r;j++){
-                        rev[i][j]=tran[i][r-1-j];
+                        rev[i][j]=tran[c-1-i][c];
                 }
         }
         printf("Matrix after Rotated to 90 degrees in clockwise\n");
@@ -95,7 +95,7 @@ int main(){
         }
         for(int i=0;i<c;i++){
                 for(int j=0;j<r;j++){
-                        rev[i][j]=tran[c-1-i][j];
+                        rev[i][j]=tran[r][r-1-j];
                 }
         }
         printf("Matrix after Rotated to 90 degrees in anticlockwise\n");
