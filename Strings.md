@@ -2079,5 +2079,4 @@ int main(){
         printf("%s\n",res);
 }
 ```
-## 76.Write a C program to reverse order of words in a given string.
-```c
+
