@@ -754,3 +754,131 @@ int main(){
         binarybits(n);
 }
 ```
+## 37.Write a C program to check if the given number is a power of 8 using bitwise operators.
+```c
+#include<stdio.h>
+int ispowerof8(unsigned int n){
+        if(n==0)
+                return 0;
+        if((n&(n-1))!=0)
+                return 0;
+        int pos=0;
+        while(n>1){
+                n=n>>1;
+                pos++;
+        }
+        return (pos%3==0);
+}
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        if(ispowerof8(num))
+                printf("%d is power of 8\n",num);
+        else
+                printf("%d is not power of 8\n",num);
+}
+```
+## 38.Implement a C program to set all the bits at odd positions in a given number using bitwise operators.
+```c
+#include<stdio.h>
+void binarybits(int num){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(num&mask ? '1' : '0');
+                if(i%4==0)
+                        printf(" ");
+        }
+        printf("\n");
+}
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        printf("\nNumber in binary format:");
+        binarybits(num);
+        num=num | 0xAAAAAAAA;
+        printf("\nNumber after setting all odd positions:");
+        binarybits(num);
+}
+```
+## 39.Write a C program to count the number of bits set to 1 in the binary representation of the sum of two numbers using bitwise operators.
+```c
+#include<stdio.h>
+void binarybits(int num){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(num&mask ? '1' : '0');
+                if(i%4==0)
+                        printf(" ");
+        }
+        printf("\n");
+}
+int main(){
+        int num1,num2,sum;
+        int count=0;
+        printf("Enter the number 1 and number2:");
+        scanf("%d %d",&num1,&num2);
+        sum=num1+num2;
+        printf("Sum=%d",sum);
+        printf("sum in binary format:");
+        binarybits(sum);
+        while(sum>0){
+                if(sum&1)
+                        count++;
+                sum=sum>>1;
+        }
+        printf("Number of set bits:%d",count);
+}
+```
+## 40.Implement a C program to check if the given number is a power of 16 using bitwise operators.
+```c
+#include<stdio.h>
+int ispowerof16(unsigned int n){
+        if(n==0)
+                return 0;
+        if((n&(n-1))!=0)
+                return 0;
+        int pos=0;
+        while(n>1){
+                n=n>>1;
+                pos++;
+        }
+        return (pos%4==0);
+}
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        if(ispowerof16(num))
+                printf("%d is power of 16\n",num);
+        else
+                printf("%d is not power of 16\n",num);
+}
+```
+## 41.Implement a C program to toggle the bits at odd positions in the binary representation of a given number using bitwise operators.
+```c
+#include<stdio.h>
+void binarybits(int num){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(num&mask ? '1' : '0');
+                if(i%4==0)
+                        printf(" ");
+        }
+        printf("\n");
+}
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        printf("Orinal Number in Binaryformat:");
+        binarybits(num);
+        num = num ^ 0xAAAAAAAA;
+        printf("Number after toggling of odd positions:");
+        binarybits(num);
+}
+```
