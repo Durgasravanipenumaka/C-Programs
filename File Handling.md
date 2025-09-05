@@ -85,7 +85,7 @@ int main(){
 }
 ```
 ## 3. Develop a program to read a text file and count the number of words in it.
-```
+```c
 #include<stdio.h>
 #include<stdlib.h>
 int main(){
