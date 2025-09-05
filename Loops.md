@@ -96,9 +96,11 @@ int main(){
                 break;
             }
         }
-        if(found==1)
-        printf("%d ",i);
+        if(found==1){
+            sum=sum+i;
+         }
     }
+    printf("%d",sum);
 }
 ```
 ## 4.Write a C Program to reverse a given number.
@@ -172,5 +174,207 @@ int main(){
         else
                 printf("Binary formats are not equal\n");
 
+}
+```
+## 6.WRITE A C PROGRAM TO ENTER WEEK NUMBER AND PRINT DAY OF WEEK?
+```c
+#include<stdio.h>
+int main(){
+        int n;
+        printf("Enter the number of day:");
+        scanf("%d",&n);
+        switch(n){
+                case 1:printf("Monday");
+                         break;
+                case 2:printf("Tuesday");
+                         break;
+                case 3:printf("Wednesday");
+                         break;
+                case 4:printf("Thrusday");
+                         break;
+                case 5:printf("Friday");
+                         break;
+                case 6:printf("Saturday");
+                         break;
+                case 7:printf("Sunday");
+                         break;
+                default :printf("Invalid");
+        }
+}
+```
+## 7.WRITE A C PROGRAM TO FIND NUMBER OF DAYS IN MONTH?
+```c
+#include<stdio.h>
+int main(){
+        int n,year;
+        printf("Enter the month number:");
+        scanf("%d",&n);
+        printf("Enter the year:");
+        scanf("%d",&year);
+        switch(n){
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:printf("31 Days\n");
+                        break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:printf("30 Days\n");
+                        break;
+                case 2:
+                        if(year%400==0||(year%4==0 && year%100!=0)){
+                                printf("29 Days\n");
+                        }
+                        else{
+                                printf("28 Days\n");
+                        }
+                        break;
+                default :printf("Inavalid Input\n");
+        }
+}
+```
+## 8.WRITE A C PROGRAM TO FIND MAXIMUM BETWEEN TWO NUMBERS USING SWITCH CASE?
+```c
+#include<stdio.h>
+int main(){
+        int a,b;
+        printf("Enter the a and values:");
+        scanf("%d %d",&a,&b);
+        switch(a>b){
+                case 1 :printf("Maximum number:%d\n",a);
+                        break;
+                case 0 :
+                        switch(b>a){
+                                case 1:printf("Maximum number:%d\n",b);
+                                       break;
+                                case 0:printf("Both numbers are equal\n");
+                                       break;
+                        }
+                        break;
+                }
+}
+```
+## 9.WRITE A C PROGRAM TO FIND THE FACTORIAL OF A GIVEN NUMBER USING A FOR LOOP?
+```c
+#include<stdio.h>
+int main(){
+        int n,fact=1;
+        printf("Enter the number:");
+        scanf("%d",&n);
+        if(n<0){
+                printf("Factrorial is not defined for negative numbers\n");
+        }
+        else{
+                   for(int i=1;i<=n;i++){
+                        fact=fact*i;
+                   }
+                   printf("factorial of %d : %d\n",n,fact);
+        }
+}
+```
+## 10.WRITE A C PROGRAM TO CHECK WHETHER A GIVEN NUMBER IS PRIME OR NOT USING A WHILE LOOP?
+```c
+#include<stdio.h>
+int main(){
+        int n,flag=0;
+        printf("Enter the number:");
+        scanf("%d",&n);
+        if(n<=1)
+                printf("%d is not a prime number\n",n);
+        int i=2;
+        while(i<=n/2){
+                if(n%i==0){
+                        flag=1;
+                        break;
+                }
+                i++;
+        }
+        if(flag)
+                printf("%d is not a prime number\n",n);
+        else
+                printf("%d is a prime number\n",n);
+}
+```
+## 11.WRITE A C PROGRAM TO PRINT FIBONACCI SERIES UP TO N TERMS USING A FOR LOOP?
+```c
+#include<stdio.h>
+int main(){
+        int a,b,c,n;
+        a=0,b=1;
+        printf("Enter the number:");
+        scanf("%d",&n);
+        printf("Fibanacci series:");
+        for(int i=1;i<=n;i++){
+                printf("%d ",a);
+                c=a+b;
+                a=b;
+                b=c;
+        }
+        printf("\n");
+}
+```
+## 12.WRITE A C PROGRAM TO FIND THE POWER OF A NUMBER USING A FOR LOOP?
+```c
+#include<stdio.h>
+int main(){
+        int base,exp,i=1;
+        int result=1;
+        printf("Enter the base:");
+        scanf("%d",&base);
+        printf("Enter the exponent:");
+        scanf("%d",&exp);
+        if(exp<0)
+                printf("power should be a non-negative number\n");
+        else{
+                while(i<=exp){
+                        result=result*base;
+                        i++;
+                }
+                printf("%d^%d = %d\n",base,exp,result);
+        }
+}
+```
+## 13.WRITE A C PROGRAM TO CHECK WHETHER A GIVEN NUMBER IS A PERFECT SQUARE OR NOT USING LOOPS AND IF-ELSE STATEMENTS.
+```c
+#include<stdio.h>
+int main(){
+        int n,flag=0;
+        printf("Enter the number:");
+        scanf("%d",&n);
+        int i=1;
+        if(n<=0)
+                printf("%d is not a perfect square\n",n);
+        while(i*i<=n){
+                if(i*i==n){
+                        flag=1;
+                        break;
+                }
+                i++;
+        }
+        if(flag)
+                printf("%d is a perfect square\n",n);
+        else
+                printf("%d is not a perfect square\n",n);
+}
+```
+## 13.WRITE A C PROGRAM TO FIND THE ASCII VALUE OF A CHARACTER USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+int main(){
+        char ch;
+        int i=0;
+        printf("Enter the character:");
+        scanf("%c",&ch);
+        while(i<=127){
+                if(ch==i){
+                        printf("Ascii value of %c is %d\n",ch,i);
+                        break;
+                }
+                i++;
+        }
 }
 ```
