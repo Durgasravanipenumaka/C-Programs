@@ -1,5 +1,5 @@
 ## 1.Write a function to swap to numbers using call by reference.
-```
+```c
 #include<stdio.h>
 int swap(int *x,int *y){
     int temp;
