@@ -839,4 +839,51 @@ int main(){
         }
 }
 ```
-## 34.
+## 34. C Program to Find Union  of Two Array
+```c
+#include<stdio.h>
+int main(){
+        int arr1[]={1,2,3,4,5};
+        int arr2[]={2,3,4,6,8};
+        int a[10],k=0,flag=0;
+        for(int i=0;i<5;i++){
+                a[k++]=arr1[i];
+        }
+        for(int i=0;i<5;i++){
+                flag=0;
+                for(int j=0;j<5;j++){
+                        if(arr2[i]==a[j]){
+                                flag=1;
+                                break;
+                        }
+                }
+                if(flag==0)
+                        a[k++]=arr2[i];
+        }
+        printf("Union of two arrays:");
+        for(int i=0;i<k;i++){
+                printf("%d ",a[i]);
+        }
+        printf("\n");
+}
+```
+## 35.C Program to Find Intersection  of Two Array
+```c
+#include<stdio.h>
+int main(){
+        int arr1[]={1,2,3,4,5};
+        int arr2[]={2,3,4,6,8};
+        int a[10],k=0;
+        for(int i=0;i<5;i++){
+                for(int j=0;j<5;j++){
+                        if(arr1[i]==arr2[j])
+                                a[k++]=arr1[i];
+                }
+        }
+        printf("Intersection of two arrays:");
+        for(int i=0;i<k;i++){
+                printf("%d ",a[i]);
+        }
+        printf("\n");
+}
+```
