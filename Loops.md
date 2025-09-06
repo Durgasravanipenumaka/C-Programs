@@ -569,4 +569,66 @@ int main(){
         }
 }
 ```
-
+## 23..WRITE A C PROGRAM TO PRINT THE PATTERN OF STARS IN A HOLLOW SQUARE SHAPE USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+int main(){
+        int n;
+        printf("Enter the size of square:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                        if(i==0||i==n-1||j==0||j==n-1)
+                                printf("* ");
+                        else
+                                printf("  ");
+                }
+                printf("\n");
+        }
+}
+```
+## 24.WRITE A C PROGRAM TO PRINT THE PATTERN OF STARS IN A RIGHT TRIANGLE SHAPE USING LOOPS AND IF-ELSE STATEMENTS.
+```c
+#include<stdio.h>
+#define r 3
+#define c 3
+int main(){
+        for(int i=0;i<r;i++){
+                for(int j=0;j<=i;j++){
+                        printf("* ");
+                }
+                printf("\n");
+        }
+}
+```
+## 25.WRITE A C PROGRAM TO PRINT THE PATTERN OF STARS IN A LEFT RIGHT TRIANGLE SHAPE USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+#define r 3
+#define c 3
+int main(){
+        for(int i=0;i<r;i++){
+                for(int j=c-1;j>=i;j--){
+                        printf("* ");
+                }
+                printf("\n");
+        }
+}
+```
+## 26.WRITE A C PROGRAM TO PRINT THE PATTERN OF STARS IN A MIRRORED RIGHT TRIANGLE SHAPE USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+#define r 3
+#define c 3
+int main(){
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        if(j<c-i-1)
+                                printf("  ");
+                        else
+                                printf("* ");
+                }
+                printf("\n");
+        }
+}
+```
