@@ -525,3 +525,48 @@ int main(){
                 printf("Not an identity matrix\n");
 }
 ```
+## 21.WRITE A PROGRAM IN C TO FIND THE SUM OF ELEMENTS IN EACH ROW OF A MATRIX USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+#define r 3
+#define c 3
+int main(){
+        int arr[r][c],sum=0;
+        printf("Enter the elements in the matrix:\n");
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<r;i++){
+                sum=0;
+                for(int j=0;j<c;j++){
+                        sum+=arr[i][j];
+                }
+                printf("sum of %d row : %d\n",i,sum);
+        }
+}
+```
+## 22.WRITE A PROGRAM IN C TO FIND THE SUM OF ELEMENTS IN EACH COLUMN OF A MATRIX USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+#define r 3
+#define c 3
+int main(){
+        int arr[r][c],sum=0;
+        printf("Enter the elements in the matrix:\n");
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<r;i++){
+                sum=0;
+                for(int j=0;j<c;j++){
+                        sum+=arr[j][i];
+                }
+                printf("sum of %d column : %d\n",i,sum);
+        }
+}
+```
+
