@@ -378,3 +378,150 @@ int main(){
         }
 }
 ```
+## 14.WRITE A C PROGRAM TO FIND THE LARGEST ELEMENT IN AN ARRAY USING A FOR LOOP?
+```c
+#include<stdio.h>
+#include<limits.h>
+int main(){
+        int arr[]={2,3,6,4,9,1};
+        int i=0,max=INT_MIN;
+        int len=sizeof(arr)/sizeof(arr[0]);
+        while(i<len){
+                if(arr[i]>max){
+                        max=arr[i];
+                }
+                i++;
+        }
+        printf("Largest element in an array:%d\n",max);
+}
+```
+## 15.WRITE A C PROGRAM TO FIND THE SMALLEST ELEMENT IN AN ARRAY USING A WHILE LOOP?
+```c
+#include<stdio.h>
+#include<limits.h>
+int main(){
+        int arr[]={2,3,6,4,9,1};
+        int i=0,min=INT_MAX;
+        int len=sizeof(arr)/sizeof(arr[0]);
+        while(i<len){
+                if(arr[i]<min){
+                        min=arr[i];
+                }
+                i++;
+        }
+        printf("Smallest element in an array:%d\n",min);
+}
+```
+## 16.WRITE A C PROGRAM TO PRINT ALL THE ELEMENTS OF AN ARRAY USING A FOR LOOP?
+```c
+#include<stdio.h>
+int main(){
+        int n;
+        printf("Enter array size:");
+        scanf("%d",&n);
+        int arr[n];
+        printf("Enter the elements in the array:");
+        for(int i=0;i<n;i++){
+                scanf("%d",&arr[i]);
+        }
+        printf("\n");
+        printf("Elements in array are:");
+        for(int i=0;i<n;i++){
+                printf("%d ",arr[i]);
+        }
+        printf("\n");
+}
+```
+## 17.WRITE A C PROGRAM TO FIND THE SUM OF ELEMENTS IN AN ARRAY USING A WHILE LOOP?
+```c
+#include<stdio.h>
+int main(){
+        int n,sum=0;
+        printf("Enter array size:");
+        scanf("%d",&n);
+        int arr[n];
+        printf("Enter the elements in the array:");
+        for(int i=0;i<n;i++){
+                scanf("%d",&arr[i]);
+        }
+        for(int i=0;i<n;i++){
+                sum+=arr[i];
+        }
+        printf("sum of the elements:%d\n",sum);
+}
+```
+## 18.WRITE A PROGRAM IN C TO FIND THE SUM OF ELEMENTS IN THE LOWER TRIANGULAR MATRIX USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+#define r 3
+#define c 3
+int main(){
+        int arr[r][c],sum=0;
+        printf("Enter the elements in the matrix:\n");
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        scanf("%d",arr[i][j]);
+                }       
+        }       
+        for(int i=0;i<r;i++){
+                for(int j=0;j<=i;j++){
+                        sum+=arr[i][j];
+                }       
+        }       
+        printf("sum of elements in lower triangular matrix:%d",sum);
+}
+```
+## 19.WRITE A PROGRAM IN C TO FIND THE SUM OF ELEMENTS IN THE UPPER TRIANGULAR MATRIX USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+#define r 3
+#define c 3
+int main(){
+        int arr[r][c],sum=0;
+        printf("Enter the elements in the matrix:\n");
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<r;i++){
+                for(int j=i;j<c;j++){
+                        sum+=arr[i][j];
+                }
+        }
+        printf("sum of elements in upper triangular matrix:%d\n",sum);
+}
+```
+## 20.WRITE A PROGRAM IN C TO CHECK WHETHER A MATRIX IS AN IDENTITY MATRIX OR NOT USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+#define r 3
+#define c 3
+int main(){
+        int arr[r][c],flag=0;
+        printf("Enter the elements in the matrix:\n");
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        if(i==j && arr[i][j]!=1){
+                                flag=1;
+                                break;
+                        }
+                        if(i!=j && arr[i][j]!=0){
+                                flag=1;
+                                break;
+                        }
+                }
+                if(flag==1)
+                        break;
+        }
+        if(flag==0)
+                printf("Identity matrix\n");
+        else
+                printf("Not an identity matrix\n");
+}
+```
