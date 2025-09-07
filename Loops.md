@@ -800,3 +800,57 @@ int main(){
         }
 }
 ```
+## 35.WRITE A C PROGRAM TO PRINT THE PATTERN OF ALPHABETS IN A PYRAMID SHAPE USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+int main(){
+        int n;
+        printf("Enter the number of rows:");
+        scanf("%d",&n);
+        for(int i=1;i<=n;i++){
+        for(int j=1;j<=n-i;j++){
+                printf(" ");
+        }
+        for(int j=1;j<=i;j++){
+                printf("%c ",j+64);
+        }
+        printf("\n");
+        }
+}
+```
+## 36.WRITE A C PROGRAM TO PRINT THE PATTERN OF ALPHABETS IN A MIRRORED PYRAMID SHAPE USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+int main(){
+        int n;
+        printf("Enter the number of rows:");
+        scanf("%d",&n);
+        for(int i=1;i<=n;i++){
+        for(int j=1;j<=n-i;j++){
+                printf("  ");
+        }
+        for(int j=1;j<=i;j++){
+                printf("%c ",j+64);
+        }
+        for(int j=i-1;j>=1;j--){
+                printf("%c ",j+64);
+        }
+        printf("\n");
+        }
+}
+```
+## 37.WRITE A C PROGRAM TO PRINT THE PATTERN OF ALPHABETS IN A RIGHT TRIANGLE SHAPE USING LOOPS AND IF-ELSE STATEMENTS?
+```c
+#include<stdio.h>
+int main(){
+        int n;
+        printf("Enter the number of rows:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                for(int j=0;j<=i;j++){
+                        printf("%c ",j+65);
+                }
+                printf("\n");
+        }
+}
+```
