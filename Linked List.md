@@ -644,70 +644,81 @@ struct node{
         int val;
         struct node *nxt;
 };
-struct node *phead=NULL;
-void insertnode(int d){
+struct node *phead1=NULL;
+struct node *phead2=NULL;
+struct node* merge(struct node *phead1,struct node *phead2){
+        if(phead1==NULL)
+                return phead2;
+        if(phead2==NULL)
+                return phead1;
+        struct node *result;
+        if(phead1->val<=phead2->val){
+                result=phead1;
+                result->nxt=merge(phead1->nxt,phead2);
+        }
+        else{
+                result=phead2;
+                result->nxt=merge(phead1,phead2->nxt);
+        }
+        return result;
+}
+int createnode(int d,struct node **phead){
         struct node *pnew,*ptrav;
         pnew=(struct node*)malloc(sizeof(struct node));
         if(pnew==NULL){
                 printf("Malloc error");
-                return;
+                return 0;
         }
         pnew->val=d;
         pnew->nxt=NULL;
-        if(phead==NULL){
-                phead=pnew;
-                return;
+        if(*phead==NULL){
+                *phead=pnew;
+                return 0;
         }
         else{
-                ptrav=phead;
+                ptrav=*phead;
                 while(ptrav->nxt!=NULL){
                         ptrav=ptrav->nxt;
                 }
                 ptrav->nxt=pnew;
         }
 }
-void sorted(){
-        struct node *i,*j;
-        int temp;
-        for(i=phead;i!=NULL;i=i->nxt){
-                for(j=i->nxt;j!=NULL;j=j->nxt){
-                        if(i->val>j->val){
-                                temp=i->val;
-                                i->val=j->val;
-                                j->val=temp;
-                        }
-                }
-        }
-}
-void display(){
-        struct node *ptrav;
-        ptrav=phead;
+void display(struct node *phead){
+        struct node *ptrav=phead;
         while(ptrav!=NULL){
-                printf("%d ",ptrav->val);
+                printf("%d->",ptrav->val);
                 ptrav=ptrav->nxt;
         }
+        printf("NULL");
 }
-
 int main(){
-        int n1,n2,data;
-        printf("Enter the nodes in list1:\n");
+        struct node *result;
+        int n1,n2,node;
+        printf("Enter the total number of nodes in linkedlist1:");
         scanf("%d",&n1);
         for(int i=0;i<n1;i++){
-                printf("Enter the node:");
-                scanf("%d",&data);
-                insertnode(data);
+                printf("Enter the node%d:",i+1);
+                scanf("%d",&node);
+                createnode(node,&phead1);
         }
-        printf("Enter the nodes in list2:\n");
+        printf("1st Linked list : ");
+        display(phead1);
+        printf("\n");
+        printf("Enter the total number of nodes in linkedlist2:");
         scanf("%d",&n2);
         for(int i=0;i<n2;i++){
-                printf("Enter the node:");
-                scanf("%d",&data);
-                insertnode(data);
+                printf("Enter the node%d:",i+1);
+                scanf("%d",&node);
+                createnode(node,&phead2);
         }
-        printf("Sorted Array:");
-        sorted();
-        display();
+        printf("2nd Linked list : ");
+        display(phead2);
+        printf("\n");
+        result=merge(phead1,phead2);
+        display(result);
+        printf("\n");
 }
+
 ```
 ## 13.Count the number of nodes in a linked list.
 ```c
