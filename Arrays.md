@@ -1011,3 +1011,50 @@ int main(){
                 printf("Matrix multiplication is not possible");
 }
 ```
+## 39.Write a program in C to find the sum of the left diagonals of a matrix.
+```c
+#include<stdio.h>
+#define r 3 
+#define c 3
+int main(){
+        int arr[r][c],sum=0;
+        printf("Enter the elements in the 2D array:");
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        if(i==j){
+                                sum += arr[i][j];
+                        }
+                }
+        }
+        printf("Sum of the left diagonals:%d\n",sum);
+}
+```
+## 40.Write a program in C to find the sum of the right diagonals of a matrix
+```c
+#include<stdio.h>
+#define r 3 
+#define c 3
+int main(){
+        int arr[r][c],sum=0;
+        printf("Enter the elements in the 2D array:");
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        if(i+j==c-1){
+                                sum += arr[i][j];
+                        }
+                }
+        }
+        printf("Sum of the right diagonals:%d\n",sum);
+}
+```
+## 41.
