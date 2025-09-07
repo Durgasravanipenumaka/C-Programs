@@ -887,3 +887,127 @@ int main(){
         printf("\n");
 }
 ```
+## 36.Write a program in C for adding two matrices of the same size.
+```c
+#include<stdio.h>
+#define r1 3
+#define c1 3
+#define r2 3
+#define c2 3
+int main(){
+        int arr1[r1][c1],arr2[r2][c2],arr[r1][c1];
+        printf("Enter the elements in matrix1:");
+        for(int i=0;i<r1;i++){
+                for(int j=0;j<c1;j++){
+                        scanf("%d",&arr1[i][j]);
+                }
+        }
+        printf("Enter the elements in matrix2:");
+        for(int i=0;i<r2;i++){
+                for(int j=0;j<c2;j++){
+                        scanf("%d",&arr2[i][j]);
+                }
+        }
+        if(r1==r2 && c1==c2){
+                printf("Matrix after addition:\n");
+                for(int i=0;i<r1;i++){
+                     for(int j=0;j<c1;j++){
+                        arr[i][j]=arr1[i][j]+arr2[i][j];
+                     }
+                }
+                for(int i=0;i<r1;i++){
+                for(int j=0;j<c1;j++){
+                        printf("%d ",arr[i][j]);
+                }
+                printf("\n");
+                }
+        }
+        else
+                printf("Matrix addition is not possible");
+}
+```
+## 37.Write a program in C for the subtraction of two matrices.
+```c
+#include<stdio.h>
+#define r1 3
+#define c1 3
+#define r2 3
+#define c2 3
+int main(){
+        int arr1[r1][c1],arr2[r2][c2],arr[r1][c1];
+        printf("Enter the elements in matrix1:");
+        for(int i=0;i<r1;i++){
+                for(int j=0;j<c1;j++){
+                        scanf("%d",&arr1[i][j]);
+                }
+        }
+        printf("Enter the elements in matrix2:");
+        for(int i=0;i<r2;i++){
+                for(int j=0;j<c2;j++){
+                        scanf("%d",&arr2[i][j]);
+                }
+        }
+        if(r1==r2 && c1==c2){
+                printf("Matrix after subtraction:\n");
+                for(int i=0;i<r1;i++){
+                     for(int j=0;j<c1;j++){
+                        arr[i][j]=arr1[i][j]-arr2[i][j];
+                     }
+                }
+                for(int i=0;i<r1;i++){
+                for(int j=0;j<c1;j++){
+                        printf("%d ",arr[i][j]);
+                }
+                printf("\n");
+                }
+        }
+        else
+                printf("Matrix subtraction is not possible");
+}
+```
+## 38.Write a program in C for the multiplication of two square matrices.
+```c
+#include<stdio.h>
+#define r1 3
+#define c1 3
+#define r2 3
+#define c2 3
+int main(){
+        int arr1[r1][c1],arr2[r2][c2],arr[r1][c1];
+        printf("Enter the elements in matrix1:");
+        for(int i=0;i<r1;i++){
+                for(int j=0;j<c1;j++){
+                        scanf("%d",&arr1[i][j]);
+                }
+        }
+        printf("Enter the elements in matrix2:");
+        for(int i=0;i<r2;i++){
+                for(int j=0;j<c2;j++){
+                        scanf("%d",&arr2[i][j]);
+                }
+        }
+        if(c1==r2){
+                for(int i=0;i<r1;i++){
+                        for(int j=0;j<c2;j++){
+                                arr[i][j]=0;
+                        }
+                }
+                printf("Matrix after multiplication:\n");
+                for(int i=0;i<r1;i++){
+                        for(int j=0;j<c2;j++){
+                                for(int k=0;k<c1;k++){
+                                        arr[i][j] += arr1[i][k] * arr2[k][j];
+                                }
+                        }
+                }
+                for(int i=0;i<r1;i++){
+                        for(int j=0;j<c2;j++){
+                                printf("%d ",arr[i][j]);
+                        }
+                        printf("\n");
+                }
+        }
+        else
+                printf("Matrix multiplication is not possible");
+}
+```
