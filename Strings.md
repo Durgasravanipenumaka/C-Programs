@@ -2079,4 +2079,25 @@ int main(){
         printf("%s\n",res);
 }
 ```
-
+## 76.Write a recursive function to convert a string of numbers to an integer.
+```c
+#include<stdio.h>
+#include<string.h>
+int strtoint(char str[],int n){
+        if(n==1)
+                return str[0]-'0';
+        int smallans = strtoint(str,n-1);
+        int lastdigit = str[n-1]-'0';
+        return smallans*10+lastdigit;
+}
+int main(){
+        char str[100],res;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int len=strlen(str);
+        res=strtoint(str,len);
+        printf("Converted integer: %d\n",res);
+}
+```
