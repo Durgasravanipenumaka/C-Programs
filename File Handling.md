@@ -153,4 +153,99 @@ int main(){
         fclose(fpout);
 }
 ```
+## 5.Implement a file management system that allows users to create, read, update, and delete files using C functions.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+void createfile(){
+        char filename[100],str[100];
+        FILE *fp;
+        printf("Enter the filename:");
+        scanf("%s",filename);
+        fp=fopen(filename,"w");
+        if(fp==NULL){
+                printf("Error");
+                return;
+        }
+        printf("File %s created successfully",filename);
+        printf("\nEnter the string:");
+        getchar();
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        fprintf(fp,"%s",str);
+        fclose(fp);
+}
+void readfile(){
+        char filename[100],ch;
+        FILE *fp;
+        printf("\nEnter the filename:");
+        scanf("%s",filename);
+        fp=fopen(filename,"r");
+        if(fp==NULL){
+                printf("Error");
+                return;
+        }
+        printf("Contents of file:");
+        while((ch=fgetc(fp))!=EOF){
+                putchar(ch);
+        }
+        fclose(fp);
+}
+void appendfile(){
+        char filename[100],data[100];
+        FILE *fp;
+        printf("\nEnter the filename:");
+        scanf("%s",filename);
+        fp=fopen(filename,"a");
+        if(fp==NULL){
+                printf("Error");
+                return;
+        }
+        int i=0;
+        printf("append the string that ends with !:");
+        while((data[i]=getchar())!='!'){
+                i++;
+        }
+        data[i]='\0';
+        fprintf(fp,"%s",data);
+        fclose(fp);
+}
+void deletefile(){
+        char filename[100];
+        printf("Enter the file name:");
+        scanf("%s",filename);
+        if(remove(filename)==0)
+                printf("File removed successfully");
+        else
+                printf("Error in removing file");
+}
 
+int main(){
+        int choice;
+        printf("----File Management System------\n");
+        printf("1.Create file\n");
+        printf("2.Read file\n");
+        printf("3.Append file\n");
+        printf("4.Delete file\n");
+        printf("Enter the choice:");
+        scanf("%d",&choice);
+        switch(choice){
+                case 1 :
+                        createfile();
+                        break;
+                case 2 :
+                        readfile();
+                        break;
+                case 3 :
+                        appendfile();
+                        break;
+                case 4 :
+                        deletefile();
+                        break;
+                default :
+                        printf("Invalid");
+        }
+}
+```
