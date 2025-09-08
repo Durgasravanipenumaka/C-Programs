@@ -2101,3 +2101,35 @@ int main(){
         printf("Converted integer: %d\n",res);
 }
 ```
+## 77.Write a C program to multiply two positive numbers as strings. Return a string representation of the product.
+```c
+#include<stdio.h>
+#include<string.h>
+int strtoint(char str[],int n){
+        int digit,res=0;
+        for(int i=0;i<n;i++){
+                digit=str[i]-'0';
+                res=res*10+digit;
+        }
+        return res;
+}
+
+int main(){
+        char str1[100],str2[100];
+        int res1,res2,result;
+        printf("Enter the string1:");
+        fgets(str1,sizeof(str1),stdin);
+        if(str1[strlen(str1)-1]=='\n')
+                str1[strlen(str1)-1]='\0';
+        printf("Enter the string2:");
+        fgets(str2,sizeof(str2),stdin);
+        if(str2[strlen(str2)-1]=='\n')
+                str2[strlen(str2)-1]='\0';
+        int len1=strlen(str1);
+        int len2=strlen(str2);
+        res1=strtoint(str1,len1);
+        res2=strtoint(str2,len2);
+        result=res1*res2;
+        printf("Result : %d\n",result);
+}
+```
