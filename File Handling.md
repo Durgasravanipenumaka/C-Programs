@@ -111,4 +111,46 @@ int main(){
         printf("Total Words in file:%d\n",count);
 }
 ```
+## 4.Write a C program using file handling to compress a string by replacing consecutive repeating characters with the character followed by their count.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main(){
+        FILE *fpin,*fpout;
+        char str[100],res[100];
+        fpin=fopen("a.txt","w");
+        if(fpin==NULL){
+                printf("Error");
+                exit(1);
+        }
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        fprintf(fpin,"%s",str);
+        int len=strlen(str);
+        int count=1,k=0;
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]==str[i+1])
+                        count++;
+                else{
+                        res[k++]=str[i];
+                        if(count>1){
+                                res[k++]=count+'0';
+                        }
+                        count=1;
+                }
+        }
+        res[k]='\0';
+        fpout=fopen("res.txt","w");
+         if(fpout==NULL){
+                printf("Error");
+                exit(1);
+        }
+        fprintf(fpout,"%s",res);
+        fclose(fpin);
+        fclose(fpout);
+}
+```
 
