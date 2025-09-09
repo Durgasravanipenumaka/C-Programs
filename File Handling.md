@@ -283,3 +283,19 @@ int main(){
                 printf("Error");
 }
 ```
+## 8. Develop a C program that handles errors while opening files and prints appropriate error messages.
+```c
+#include<stdio.h>
+#include<errno.h>
+#include<string.h>
+int main(){
+        FILE *fp;
+        fp=fopen("Cde.txt","r");
+        if(fp==NULL){
+                perror("File doesnot open\n");
+                printf("Error:%s\n",strerror(errno));
+                return 1;
+        }
+        printf("File opened successfully");
+}
+```
