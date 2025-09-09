@@ -249,3 +249,18 @@ int main(){
         }
 }
 ```
+
+## 7.Create a C program to rename a file.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+        char newname[100];
+        printf("Enter the newname of file:");
+        scanf("%s",newname);
+        if(rename("cde.txt",newname)==0)
+                printf("File name changed successfully");
+        else
+                printf("Error");
+}
+```
