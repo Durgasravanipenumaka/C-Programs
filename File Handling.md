@@ -249,7 +249,26 @@ int main(){
         }
 }
 ```
-
+## 6.Write a program that checks whether a file exists or not.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+        char filename[100];
+        printf("Enter the filename:");
+        scanf("%s",filename);
+        FILE *fp;
+        fp=fopen(filename,"r");
+        if(fp==NULL){
+                printf("Error in opening file");
+                exit(1);
+        }
+        else{
+                printf("File Opened successfully");
+                fclose(fp);
+        }
+}
+```
 ## 7.Create a C program to rename a file.
 ```c
 #include<stdio.h>
