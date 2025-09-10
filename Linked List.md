@@ -306,15 +306,16 @@ struct node{
 struct node *phead=NULL;
 void createnode(int d){
         struct node *pnew,*ptrav;
-        pnew=(struct node *)malloc(sizeof(struct node));
+        pnew=(struct node*)malloc(sizeof(struct node));
         if(pnew==NULL){
-                printf("malloc error");
+                printf("Error");
                 return;
         }
         pnew->val=d;
         pnew->nxt=NULL;
         if(phead==NULL){
                 phead=pnew;
+                return;
         }
         else{
                 ptrav=phead;
@@ -324,50 +325,60 @@ void createnode(int d){
                 ptrav->nxt=pnew;
         }
 }
-void insertnode(int d,int x){
-        struct node *ptrav,*pnew;
-        ptrav=phead;
-        while(ptrav!=NULL){
-                if(ptrav->val==x){
-                   pnew=(struct node*)malloc(sizeof(struct node));
-                   if(pnew==NULL){
-                       printf("Malloc error");
-                       return;
-                    }
-                   pnew->val=d;
-                   pnew->nxt=ptrav->nxt;
-                   ptrav->nxt=pnew;
-                   ptrav=pnew;
+void insertnode(int pos,int n,int d){
+        struct node *temp,*pnew,*ins;
+        if(pos>n || pos<1){
+                printf("Invalid position");
+                return;
+        }
+        else{
+                pnew=(struct node*)malloc(sizeof(struct node));
+                if(pnew==NULL){
+                        printf("Error");
+                        return;
+                }
+                pnew->val=d;
+                pnew->nxt=NULL;
+                if(pos==1){
+                        temp=phead;
+                        phead=pnew;
+                        pnew->nxt=temp;
                 }
                 else{
-                        ptrav=ptrav->nxt;
+                        temp=phead;
+                        for(int i=1;i<pos-1;i++){
+                                temp=temp->nxt;
+                        }
+                        ins=temp->nxt;
+                        temp->nxt=pnew;
+                        pnew->nxt=ins;
                 }
-
         }
 }
 void display(){
-        struct node *ptemp;
-        ptemp=phead;
-        while(ptemp!=NULL){
-                printf("%d ",ptemp->val);
-                ptemp=ptemp->nxt;
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d->",ptrav->val);
+                ptrav=ptrav->nxt;
         }
+        printf("NULL");
 }
 int main(){
-        int n,data,in,x;
-        printf("Enter the total number of nodes: ");
+        int n,node,pos,d;
+        printf("Enter total number of nodes:");
         scanf("%d",&n);
         for(int i=0;i<n;i++){
-                printf("Enter the data in the node:");
-                scanf("%d",&data);
-                createnode(data);
+                printf("Enter the node%d : ",i+1);
+                scanf("%d",&node);
+                createnode(node);
         }
-        printf("Enter the insertion value:");
-        scanf("%d",&in);
-        printf("Enter the target");
-        scanf("%d",&x);
-        insertnode(in,x);
-        printf("The elements in the list are:");
+        display();
+        printf("\n");
+        printf("Enter the position to insert:");
+        scanf("%d",&pos);
+        printf("Enter the element to insert:");
+        scanf("%d",&d);
+        insertnode(pos,n,d);
         display();
 }
 ```
