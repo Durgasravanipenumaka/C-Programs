@@ -327,3 +327,35 @@ int main(){
         fclose(fpout);
 }
 ```
+## 10. Create a program to delete a specific line from a text file.
+```c
+#include<stdio.h>
+#include<unistd.h>
+#include<stdlib.h>
+#include<string.h>
+int main(){
+        FILE *fpin,*fpout;
+        int n;
+        char line[100];
+        printf("Enter the line number:");
+        scanf("%d",&n);
+        fpin=fopen("read.txt","r");
+        if(fpin==NULL){
+                printf("Error");
+                exit(1);
+        }
+        fpout=fopen("ss.txt","w");
+        if(fpout==NULL){
+                printf("Error");
+                exit(1);
+        }
+        int count=0;
+        while(fgets(line,sizeof(line),fpin)!=NULL){
+                count++;
+                if(count!=n)
+                        fprintf(fpout,"%s",line);
+        }
+        fclose(fpin);
+        fclose(fpout);
+}
+```
