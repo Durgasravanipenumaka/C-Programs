@@ -1057,4 +1057,37 @@ int main(){
         printf("Sum of the right diagonals:%d\n",sum);
 }
 ```
-## 41.
+## 41.Write a C program to read a 4×4 matrix from the user and print its elements in spiral order traversal (clockwise).
+```c
+#include<stdio.h>
+int main(){
+        int arr[4][4];
+        printf("Enter the elements in the array:");
+        for(int i=0;i<4;i++){
+                for(int j=0;j<4;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        int top=0,bottom=3,left=0,right=3;
+        while(left<=right && top<=bottom){
+                for(int i=left;i<=right;i++){
+                        printf("%d->",arr[top][i]);
+                }
+                top++;
+                for(int i=top;i<=bottom;i++){
+                        printf("%d->",arr[i][right]);
+                }
+                right--;
+                for(int i=right;i>=left;i--){
+                        printf("%d->",arr[bottom][i]);
+                }
+                bottom--;
+                for(int i=bottom;i>=top;i--){
+                        printf("%d->",arr[i][left]);
+                }
+                left++;
+        }
+        printf("NULL\n");
+}
+```
+
