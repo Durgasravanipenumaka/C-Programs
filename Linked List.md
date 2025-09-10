@@ -1579,3 +1579,79 @@ int main(){
         display();
 }
 ```
+## Write a C program to create a singly linked list, display it, and delete all occurrences of a given node value.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt != NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void display(){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d->",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+        printf("NULL");
+}
+void deletenode(int data){
+        struct node *ptrav=phead,*prev=NULL;
+        while(ptrav!=NULL){
+                if(ptrav->val==data){
+                        if(prev==NULL){
+                                phead=ptrav->nxt;
+                                free(ptrav);
+                                ptrav=phead;
+                        }
+                        else{
+                                prev->nxt=ptrav->nxt;
+                                free(ptrav);
+                                ptrav=prev->nxt;
+                        }
+                }
+                else{
+                        prev=ptrav;
+                        ptrav=ptrav->nxt;
+                }
+        }
+}
+int main(){
+        int n,node,data;
+        printf("Enter total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node%d : ",i+1);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        display();
+        printf("\n");
+        printf("Enter the node to delete:");
+        scanf("%d",&data);
+        deletenode(data);
+        display();
+}
+```
