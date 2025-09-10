@@ -299,3 +299,31 @@ int main(){
         printf("File opened successfully");
 }
 ```
+## 9. Write a program that reads a file line by line and prints each line along with its line number.
+```c
+#include<string.h>
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+        FILE *fpin,*fpout;
+        char line[256];
+        fpin=fopen("read.txt","r");
+        if(fpin==NULL){
+                printf("Error");
+                exit(1);
+        }
+        fpout=fopen("Newfile.txt","w");
+        if(fpout==NULL){
+                printf("Error");
+                exit(1);
+        }
+        int count=0;
+        while((fgets(line,sizeof(line),fpin))!=NULL){
+                count++;
+                line[strcspn(line,"\n")]='\0';
+                fprintf(fpout,"%d %s\n",count,line);
+        }
+        fclose(fpin);
+        fclose(fpout);
+}
+```
