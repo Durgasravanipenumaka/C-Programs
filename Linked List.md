@@ -62,7 +62,7 @@ int main(){
         display();
 }
 ```
-## 3.Adding an employee node at the end of the linked list
+## 3.Adding a node at the end of the linked list
 ```c
 #include<stdio.h>
 #include<stdlib.h>
@@ -128,7 +128,7 @@ int main(){
         display();
 }
 ```
-## 4. Adding an employee node at the beginning of the linked list.
+## 4. Adding a node at the beginning of the linked list.
 ```c
 #include<stdio.h>
 #include<stdlib.h>
@@ -992,7 +992,7 @@ int main(){
                 scanf("%d",&node);
                 insertnode(node);
         }
-        printf("Valuse in the linked list are:");
+        printf("Values in the linked list are:");
         display();
         printf("\n");
         printf("Enter the value to count its occurrences:");
@@ -1495,6 +1495,87 @@ int main(){
         printf("\n");
         sort();
         removeduplicates();
+        display();
+}
+```
+## Delete node at particular position of the linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt != NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void display(){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d->",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+        printf("NULL");
+}
+void deletenode(int pos,int n){
+        struct node *ptrav=phead,*temp,*del;
+        if(pos>n||pos<1){
+                printf("Position is outof limit");
+                return;
+        }
+        else{
+                if(pos==1){
+                        temp=phead;
+                        phead=temp->nxt;
+                        printf("Deleting node at %d : %d\n",pos,temp->val);
+                        free(temp);
+                }
+                else{
+                        temp=phead;
+                        for(int i=1;i<pos-1;i++){
+                                temp=temp->nxt;
+                        }
+                        del=temp->nxt;
+                        temp->nxt=del->nxt;
+                        printf("Deleting node at %d : %d\n",pos,del->val);
+                        free(del);
+                }
+        }
+
+}
+int main(){
+        int n,node,pos;
+        printf("Enter total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node%d : ",i+1);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        display();
+        printf("\n");
+        printf("Enter the position to delete:");
+        scanf("%d",&pos);
+        deletenode(pos,n);
         display();
 }
 ```
