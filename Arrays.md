@@ -1090,4 +1090,24 @@ int main(){
         printf("NULL\n");
 }
 ```
-
+## 42.Write a program to create an array next_ge for an unsorted array arr containing n elements such that next_ge[i] = next greater element of arr [1] in array arr i.e. first greater element on the right of arr[i]. -1 if no such element exists.
+```c
+#include<stdio.h>
+int main(){
+        int arr[]={3,1,6,2,5,8,9,4,7};
+        int next_ge[10];
+        int len=sizeof(arr)/sizeof(arr[0]);
+        for(int i=0;i<len;i++){
+                next_ge[i]=-1;
+                for(int j=i+1;j<len;j++){
+                        if(arr[j]>arr[i]){
+                                next_ge[i]=arr[j];
+                                break;
+                        }
+                }
+        }
+        for(int i=0;i<len;i++){
+                printf("%d ",next_ge[i]);
+        }
+}
+```
