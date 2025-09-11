@@ -1136,3 +1136,6 @@ int main(){
 
 }
 ```
+## 44.Write a program to reverse a portion of an array.
+```c
+
