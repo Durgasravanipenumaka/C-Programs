@@ -1138,4 +1138,23 @@ int main(){
 ```
 ## 44.Write a program to reverse a portion of an array.
 ```c
-
+#include<stdio.h>
+int main(){
+        int arr[]={1,2,3,4,5,6,7,8,9};
+        int len=sizeof(arr)/sizeof(arr[0]);
+        int startindex,endindex;
+        printf("Enter the strating index value:");
+        scanf("%d",&startindex);
+        printf("Enter the ending index value:");
+        scanf("%d",&endindex);
+        for(int i=startindex,j=endindex;j>i;i++,j--){
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+        }
+        printf("Array after reversing of particular portion of array:");
+        for(int i=0;i<len;i++){
+                printf("%d ",arr[i]);
+        }
+}
+```
