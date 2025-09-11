@@ -1111,3 +1111,28 @@ int main(){
         }
 }
 ```
+## 43.Write a program to find the kth smallest element in an array.
+```c
+#include<stdio.h>
+int main(){
+        int arr[]={2,4,6,9,3};
+        int len=sizeof(arr)/sizeof(arr[0]);
+        int k;
+        printf("enter the k values:");
+        scanf("%d",&k);
+        for(int i=0;i<len;i++){
+                for(int j=i+1;j<len;j++){
+                        if(arr[i]>arr[j]){
+                                int temp=arr[i];
+                                arr[i]=arr[j];
+                                arr[j]=temp;
+                        }
+                }
+        }
+        if(k>0 && k<=len)
+                printf("%d\n",arr[k-1]);
+        else
+                printf("Invalid k value outf bound");
+
+}
+```
