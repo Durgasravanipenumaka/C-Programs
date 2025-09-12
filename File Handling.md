@@ -491,3 +491,32 @@ int main(){
         fclose(fp);
 }
 ```
+## 15.Write a C program to read the last n lines of a text file.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+        FILE *fp;
+        int pos,n,count=0;
+        char ch;
+        fp=fopen("read.txt","r");
+        if(fp==NULL){
+                printf("error");
+                exit(1);
+        }
+        fseek(fp,0,SEEK_END);
+        pos=ftell(fp);
+        printf("Enter number of lines:");
+        scanf("%d",&n);
+        while(pos>0 && count<=n){
+                fseek(fp,--pos,SEEK_SET);
+                ch=fgetc(fp);
+                if(ch=='\n')
+                        count++;
+        }
+        while((ch=fgetc(fp))!=EOF){
+                putchar(ch);
+        }
+        fclose(fp);
+}
+```
