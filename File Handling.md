@@ -359,3 +359,89 @@ int main(){
         fclose(fpout);
 }
 ```
+## 11.Write a C program to store and retrieve student records using binary file handling.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct student{
+        char name[20];
+        int id;
+        float marks;
+};
+void addRecord(){
+        struct student s;
+        FILE *fp;
+        fp=fopen("student.txt","ab");
+        if(fp==NULL){
+                printf("Error");
+                exit(1);
+        }
+        printf("Enter the student ID:");
+        scanf("%d",&s.id);
+        printf("Enter the student name:");
+        scanf("%s",s.name);
+        printf("Enter the marks:");
+        scanf("%f",&s.marks);
+        fwrite(&s,sizeof(s),1,fp);
+        fclose(fp);
+        printf("Record added successfully");
+}
+void displayRecord(){
+        struct student s;
+        FILE *fp;
+        fp=fopen("student.txt","rb");
+        if(fp==NULL){
+                printf("No data found");
+                exit(1);
+        }
+        while(fread(&s,sizeof(s),1,fp)==1){
+                printf("Roll No:%d\tName:%s\tMarks:%f\n",s.id,s.name,s.marks);
+        }
+        fclose(fp);
+}
+int main(){
+        int choice;
+        printf("1.Add Record\n");
+        printf("2.Display Record\n");
+        printf("3.exit\n");
+        printf("Enter the choice:");
+        scanf("%d",&choice);
+        switch(choice){
+                case 1:
+                        addRecord();
+                        break;
+                case 2:
+                        displayRecord();
+                        break;
+                case 3:
+                        exit(1);
+                        break;
+                default:
+                        printf("Invalid");
+        }
+}
+```
+## 12.Implement a program that copies the contents of one binary file to another.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+        FILE *fpin,*fpout;
+        char ch;
+        fpin=fopen("read.txt","rb");
+        if(fpin==NULL){
+                printf("Error");
+                exit(1);
+        }
+        fpout=fopen("sr.txt","wb");
+        if(fpout==NULL){
+                printf("Error");
+                exit(1);
+        }
+        while((ch=fgetc(fpin))!=EOF){
+                fputc(ch,fpout);
+        }
+        fclose(fpin);
+        fclose(fpout);
+}
+```
