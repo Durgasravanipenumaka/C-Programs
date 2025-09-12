@@ -473,3 +473,21 @@ int main(){
         }
 }
 ```
+## 14.Create a program to open a file and move the file pointer to the end of the file and determine the file size.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+        FILE *fp;
+        int size;
+        fp=fopen("read.txt","r");
+        if(fp==NULL){
+                printf("error");
+                exit(1);
+        }
+        fseek(fp,0,SEEK_END);
+        size=ftell(fp);
+        printf("Size of file:%d\n",size);
+        fclose(fp);
+}
+```
