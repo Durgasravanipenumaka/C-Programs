@@ -520,3 +520,32 @@ int main(){
         fclose(fp);
 }
 ```
+## 16.Implement a program to search for a specific string in a text file and print its line number.
+```c
+#include<stdlib.h>
+#include<string.h>
+int main(){
+        FILE *fp;
+        char str[256],word[100];
+        int count=0,found=0;
+        printf("Enter the specifice word :");
+        fgets(word,sizeof(word),stdin);
+        if(word[strlen(word)-1]=='\n')
+                word[strlen(word)-1]='\0';
+        fp=fopen("read.txt","r");
+        if(fp==NULL){
+                printf("error");
+                exit(1);
+        }
+        while(fgets(str,sizeof(str),fp)!=NULL){
+                count++;
+                if((strstr(str,word)!=NULL)){
+                        printf("%s found at %d line\n",word,count);
+                        found=1;
+                }
+        }
+        if(!found)
+                printf("String not present");
+        fclose(fp);
+}
+```
