@@ -445,3 +445,31 @@ int main(){
         fclose(fpout);
 }
 ```
+## 13.Develop a program that reads a binary file containing integer data and finds the maximum and minimum values.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<limits.h>
+int main(){
+        FILE *fp;
+        int num,min=INT_MAX,max=INT_MIN;
+        fp=fopen("read.txt","r");
+        if(fp==NULL){
+                printf("Error");
+                exit(1);
+        }
+        while(fread(&num,sizeof(num),1,fp)==1){
+                if(num>max)
+                        max=num;
+                if(num<min)
+                        min=num;
+        }
+        fclose(fp);
+        if(min==INT_MAX && max==INT_MIN)
+                printf("File is empty or not contain integers");
+        else{
+                printf("Maximum element: %d\n",max);
+                printf("Minimum element: %d\n",min);
+        }
+}
+```
