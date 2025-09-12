@@ -570,3 +570,77 @@ int main(){
         fclose(fp);
 }
 ```
+## 18.Write a program that appends the current date and time to a log file each time it is run.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+int main(){
+        FILE *fp;
+        time_t currenttime;
+        char timestr[100];
+        fp=fopen("log.txt","a");
+        if(fp==NULL){
+                printf("error");
+                exit(1);
+        }
+        currenttime=time(NULL);
+        struct tm *local=localtime(&currenttime);
+        strftime(timestr,sizeof(timestr),"%y-%m-%d %H %M %S",local);
+        fprintf(fp,"Program run at %s\n",timestr);
+        fclose(fp);
+}
+```
+## 19.Create a program that allows users to input text and appends it to a file until they enter "exit".
+```c
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main(){
+        FILE *fp;
+        char str[100];
+        fp=fopen("read.txt","a");
+        if(fp==NULL){
+                printf("error");
+                exit(1);
+        }
+        while(1){
+        printf("Enter the string(type exit you want to exit):");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        if(strcmp(str,"exit")==0){
+                break;
+        }
+        fprintf(fp,"%s\n",str);
+        }
+        fclose(fp);
+        printf("All input has been saved to read.txt\n");
+}
+```
+## 20.Write a C program to merge the words alternately from both files.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+        FILE *fp,*fp1,*fp2;
+        char str1[100],str2[100];
+        fp1=fopen("file1.txt","r");
+        if(fp==NULL){
+                printf("Error");
+                exit(1);
+        }
+        fp2=fopen("file2.txt","r");
+        if(fp2==NULL){
+                printf("Error");
+                exit(1);
+        }
+        fp=fopen("file.txt","w");
+        while(fscanf(fp1,"%s",str1)==1 && fscanf(fp2,"%s",str2)==1){
+                fprintf(fp,"%s %s ",str1,str2);
+        }
+        fclose(fp1);
+        fclose(fp2);
+        fclose(fp);
+}
+```
