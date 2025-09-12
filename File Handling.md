@@ -549,3 +549,24 @@ int main(){
         fclose(fp);
 }
 ```
+## 17.Develop a C program that appends data to an existing text file.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main(){
+        FILE *fp;
+        fp=fopen("read.txt","a");
+        if(fp==NULL){
+                printf("Error");
+                exit(1);
+        }
+        char str[100];
+        printf("Enter the string to append:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        fprintf(fp,"\n%s",str);
+        fclose(fp);
+}
+```
