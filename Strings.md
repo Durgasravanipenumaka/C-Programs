@@ -938,38 +938,35 @@ int main(){
 ```
 ## 41.Write a C program to reverse order of words in a given string.
 ```c
-#include<stdio.h>
+include<stdio.h>
 #include<string.h>
+#include<ctype.h>
 int main(){
-        char str[100],word[50];
-        int m=0,k=0;
-        char arr[20][10];
-        printf("enter the string:");
-        fgets(str,sizeof(str),stdin);
-        if(str[strlen(str)-1]=='\n')
-                str[strlen(str)-1]='\0';
-        for(int i=0; ;i++){
-                if(str[i]!=' '&&str[i]!='\0'){
-                        word[k++]=str[i];
-                }
-                else{
-                        word[k]='\0';
-                        strcpy(arr[m++],word);
-                        k=0;
-                }
-                if(str[i]=='\0')
-                        break;
+    char str[100],word[100][100];
+    int k=0,j=0;
+    printf("Enter the string1:");
+    fgets(str,sizeof(str),stdin);
+    if(str[strlen(str)-1]=='\n')
+    str[strlen(str)-1]='\0';
+    int len=strlen(str);
+    for(int i=0;i<len;i++){
+        if(str[i]!=' '){
+            word[k][j++]=str[i];
         }
-        for(int i=0,j=m-1;i<j;i++,j--){
-                char word[10];
-                strcpy(word,arr[i]);
-                strcpy(arr[i],arr[j]);
-                strcpy(arr[j],word);
+        else{
+            word[k][j]='\0';
+            k++;
+            j=0;
         }
-        for(int i=0;i<m;i++){
-                printf("%s ",arr[i]);
+    }
+    word[k][j]='\0';
+    k++;
+    for(int i=k-1;i>=0;i--){
+        printf("%s",word[i]);
+        if(i>0){
+            printf(" ");
         }
-
+    }
 }
 ```
 ## 42.Write a C program to find the first occurrence of a character in a given string.
