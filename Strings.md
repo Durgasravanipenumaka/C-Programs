@@ -769,36 +769,33 @@ int main(){
 ```c
 #include<stdio.h>
 #include<string.h>
+#include<limits.h>
 int main(){
-        char str[100];
-        fgets(str,sizeof(str),stdin);
-        if(str[strlen(str)-1]=='\n')
-                str[strlen(str)-1]='\0';
-        int len,maxlen=0;
-        char longest[100];
-        len=strlen(str);
-        for(int i=0;i<len;i++){
-                char current[100];
-                int count=0;
-                for(int j=0;j<len;j++){
-                        int k;
-                        for(k=0;k<count;k++){
-                                if(str[j]==current[k])
-                                        break;
-                        }
-                        if(k!=count)
-                                break;
-                        current[k]=str[j];
-                        count++;
-                }
-                current[count]='\0';
-                if(count>maxlen){
-                        maxlen=count;
-                        strcpy(longest,current);
-                }
+    char str[100],longest[100];
+    int maxlen=INT_MIN;
+    printf("Enter the string:");
+    fgets(str,sizeof(str),stdin);
+    if(str[strlen(str)-1]=='\n')
+    str[strlen(str)-1]='\0';
+    int n=strlen(str);
+    for(int i=0;i<n;i++){
+        int count=0;
+        char current[100]="";
+        int visited[256]={0};
+        for(int j=i;j<n;j++){
+            if(visited[(unsigned char)str[j]]){
+                break;
+            }
+            visited[(unsigned char)str[j]]=1;
+            current[count++]=str[j];
         }
-        printf("Longest substring without repeating characters=%s\n",longest);
-        printf("Length of the substring=%d\n",maxlen);
+        current[count]='\0';
+        if(count>maxlen){
+            maxlen=count;
+            strcpy(longest,current);
+        }
+    }
+    printf("String=%s \t length=%d",longest,maxlen);
 }
 ```
 ## 36.Write a program in C to read a file and remove the spaces between two words of its content.
