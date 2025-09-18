@@ -2153,3 +2153,6 @@ int main(){
         printf("%s",res);
 }
 ```
+## 78.Longest substring without repeating characters.
+```c
+
