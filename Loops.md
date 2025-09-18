@@ -854,3 +854,15 @@ int main(){
         }
 }
 ```
+## 38.A program in C to check whether the system stores data in Big Endian or Little Endian format.
+```c
+#include<stdio.h>
+int main(){
+        int num=1;
+        char *p=(char *)&num;
+        if(*p==1)
+                printf("Little indian");
+        else
+                printf("Big indian");
+}
+```
