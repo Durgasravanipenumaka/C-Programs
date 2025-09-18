@@ -2155,4 +2155,34 @@ int main(){
 ```
 ## 78.Longest substring without repeating characters.
 ```c
+```
+
+## 79.Write a C Program given string consisting of words and spaces return the length of the last word.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],res[100];
+        int k=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        for(int i=len-1;i>=0;i--){
+                if(str[i]==' '||str[i]=='\n')
+                        str[i]='\0';
+                else
+                        break;
+        }
+        int alen=strlen(str);
+        for(int i=alen-1;i>=0;i--){
+                if(str[i]!=' '){
+                        k++;
+                }
+                else
+                        break;
+        }
+        printf("Length of the last word:%d",k);
+}
+```
 
