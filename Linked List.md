@@ -1498,7 +1498,7 @@ int main(){
         display();
 }
 ```
-## Delete node at particular position of the linked list.
+## 24.Delete node at particular position of the linked list.
 ```c
 #include<stdio.h>
 #include<stdlib.h>
@@ -1579,7 +1579,7 @@ int main(){
         display();
 }
 ```
-## Write a C program to create a singly linked list, display it, and delete all occurrences of a given node value.
+## 25.Write a C program to create a singly linked list, display it, and delete all occurrences of a given node value.
 ```c
 #include<stdio.h>
 #include<stdlib.h>
@@ -1653,5 +1653,71 @@ int main(){
         scanf("%d",&data);
         deletenode(data);
         display();
+}
+```
+## 26.Check if a linked list is palindrome or not.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void palindromeornot(){
+        int arr[100],k=0;
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                arr[k++]=ptrav->val;
+                ptrav=ptrav->nxt;
+        }
+        for(int i=0,j=k-1;i<j;i++,j--){
+                if(arr[i]!=arr[j]){
+                        printf("Not a palindrome\n");
+                        return;
+                }
+        }
+        printf("Palindrome\n");
+}
+void display(){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d->",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+        printf("NULL\n");
+}
+int main(){
+        int n,node;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node %d :",i+1);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        display();
+        palindromeornot();
 }
 ```
