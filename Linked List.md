@@ -1721,3 +1721,88 @@ int main(){
         palindromeornot();
 }
 ```
+## 27. create, detect and delete the loop.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        else{
+                ptrav=phead;
+                while(ptrav->nxt!=NULL){
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void createloop(int x){
+        struct node *ptrav,*ptemp;
+        int count=0;
+        ptrav=phead;
+        while(count != x){
+                count++;
+                ptrav=ptrav->nxt;
+        }
+        ptemp=ptrav;
+        ptrav=phead;
+        while(ptrav->nxt!=NULL){
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=ptemp;
+        printf("Loop is created\n");
+}
+void detectionanddeletion(){
+        struct node *slow=phead,*fast=phead;
+        while(fast!=NULL && fast->nxt!=NULL){
+                slow=slow->nxt;
+                fast=fast->nxt->nxt;
+                if(slow==fast){
+                        printf("Loop is detected\n");
+                slow=phead;
+                while(slow!=fast){
+                     slow=slow->nxt;
+                     fast=fast->nxt;
+                }
+                struct node *loopstart=slow;
+                struct node *ptrav=loopstart;
+                while(ptrav->nxt != loopstart){
+                       ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=NULL;
+                printf("Loop is removed\n");
+                return;
+             }
+        }
+        printf("No loop is found");
+}
+int main(){
+        int n,node,x;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the node %d :",i+1);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        printf("Enter the value where you want to create loop:");
+        scanf("%d",&x);
+        createloop(x);
+        detectionanddeletion();
+}
+```
