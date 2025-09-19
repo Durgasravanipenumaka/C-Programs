@@ -253,4 +253,28 @@ int main(){
         printf("string after removal of all vowels:%s",res);
 }
 ```
-
+## 17.Write a C program to Swap two arrays using pointers.
+```c
+#include<stdio.h>
+int main(){
+        int arr1[]={1,2,3,4,5};
+        int arr2[]={6,7,8,9,10};
+        int len1=sizeof(arr1)/sizeof(arr1[0]);
+        int len2=sizeof(arr2)/sizeof(arr2[0]);
+        int *ptr1=arr1;
+        int *ptr2=arr2;
+        for(int i=0;i<len1;i++){
+                int temp=*(ptr1+i);
+                *(ptr1+i)=*(ptr2+i);
+                *(ptr2+i)=temp;
+        }
+        printf("Arrays after swapping:\n");
+        for(int i=0;i<len1;i++){
+                printf("%d ",arr1[i]);
+        }
+        printf("\n");
+        for(int i=0;i<len2;i++){
+                printf("%d ",arr2[i]);
+        }
+}
+```
