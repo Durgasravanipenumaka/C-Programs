@@ -644,3 +644,37 @@ int main(){
         fclose(fp);
 }
 ```
+## 21.. Develop a program that compresses a text file using simple compression techniques (e.g.,run-length encoding) and saves the compressed data to another file.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        FILE *fp1,*fp2;
+        char str[100],res[100];
+        int count=1,k=0;
+        fp1=fopen("file.txt","r");
+        fp2=fopen("Compress.txt","w");
+        if(fp1==0 || fp2==0){
+                printf("Error in opening file");
+                return 1;
+        }
+        fscanf(fp1,"%s",str);
+        fclose(fp1);
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]==str[i+1]){
+                        count++;
+                }
+                else{
+                        res[k++]=str[i];
+                        if(count>1){
+                              res[k++]=count+'0';
+                              count=1;
+                        }
+                }
+        }
+        res[k]='\0';
+        fprintf(fp2,"%s",res);
+        fclose(fp2);
+        //printf("compressed string:%s\n",res);
+}
+```
