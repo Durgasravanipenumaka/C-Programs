@@ -715,3 +715,35 @@ int main(){
         fclose(fp2);
 }
 ```
+
+## 23.;Implement a C program that reads data from a CSV (comma-separated values) file, parses it,and performs specific operations (e.g., calculate average, find maximum/minimum).
+```c
+#include<stdio.h>
+#include<limits.h>
+int main(){
+        FILE *fp;
+        int i;
+        fp=fopen("csv.txt","r");
+        if(fp==NULL){
+                printf("Error");
+                return 1;
+        }
+        float sum=0;
+        int count=0;
+        int min=INT_MAX;
+        int max=INT_MIN;
+        while(fscanf(fp,"%d,",&i)==1){
+                if(i>max){
+                        max=i;
+                }
+                if(i<min){
+                        min=i;
+                }
+                sum=sum+i;
+                count++;
+        }
+        printf("Average=%.2f\n",sum/count);
+        printf("maximum=%d\n",max);
+        printf("Minimum=%d\n",min);
+}
+```
