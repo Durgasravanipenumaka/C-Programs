@@ -676,3 +676,42 @@ int main(){
 ```
 ## 22.Write a program that decompresses a compressed file and restores the original text.
 ```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+        FILE *fp1,*fp2;
+        char str[100],res[1000];
+        int k=0;
+        char prevchar;
+        fp1=fopen("Compress.txt","r");
+        fp2=fopen("original.txt","w");
+        if(fp1==NULL || fp2==NULL){
+                printf("Error in opening file");
+                return 1;
+        }
+        fgets(str,100,fp1);
+        for(int i=0;str[i]!='\0';i++){
+                if(isalpha(str[i])){
+                                prevchar=str[i];
+                                res[k++]=str[i];
+                }
+                else if(isdigit(str[i])){
+                      int num=0;
+                      while(isdigit(str[i])){
+                        num = num*10 + (str[i]-'0');
+                        i++;
+                      }
+                      i--;
+                      for(int j=0;j<num;j++){
+                        res[k++]=prevchar;
+                      }
+                }
+        }
+        res[k]='\0';
+        fprintf(fp2,"%s",res);
+        printf("%s",res);
+        fclose(fp1);
+        fclose(fp2);
+}
+```
