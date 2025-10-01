@@ -644,7 +644,7 @@ int main(){
         fclose(fp);
 }
 ```
-## 21.. Develop a program that compresses a text file using simple compression techniques (e.g.,run-length encoding) and saves the compressed data to another file.
+## 21. Develop a program that compresses a text file using simple compression techniques (e.g.,run-length encoding) and saves the compressed data to another file.
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -674,3 +674,5 @@ int main(){
         fclose(fp2);
 }
 ```
+## 22.Write a program that decompresses a compressed file and restores the original text.
+```c
