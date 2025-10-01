@@ -650,11 +650,11 @@ int main(){
 #include<string.h>
 int main(){
         FILE *fp1,*fp2;
-        char str[100],res[100];
-        int count=1,k=0;
+        char str[100];
+        int count=1;
         fp1=fopen("file.txt","r");
         fp2=fopen("Compress.txt","w");
-        if(fp1==0 || fp2==0){
+        if(fp1==NULL || fp2==NULL){
                 printf("Error in opening file");
                 return 1;
         }
@@ -665,16 +665,12 @@ int main(){
                         count++;
                 }
                 else{
-                        res[k++]=str[i];
-                        if(count>1){
-                              res[k++]=count+'0';
-                              count=1;
-                        }
+                        fprintf(fp2,"%c",str[i]);
+                        if(count>=1)
+                              fprintf(fp2,"%d",count);
+                        count=1;
                 }
         }
-        res[k]='\0';
-        fprintf(fp2,"%s",res);
         fclose(fp2);
-        //printf("compressed string:%s\n",res);
 }
 ```
