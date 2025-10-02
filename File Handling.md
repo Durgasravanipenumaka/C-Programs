@@ -716,7 +716,7 @@ int main(){
 }
 ```
 
-## 23.;Implement a C program that reads data from a CSV (comma-separated values) file, parses it,and performs specific operations (e.g., calculate average, find maximum/minimum).
+## 23.Implement a C program that reads data from a CSV (comma-separated values) file, parses it,and performs specific operations (e.g., calculate average, find maximum/minimum).
 ```c
 #include<stdio.h>
 #include<limits.h>
@@ -745,5 +745,33 @@ int main(){
         printf("Average=%.2f\n",sum/count);
         printf("maximum=%d\n",max);
         printf("Minimum=%d\n",min);
+}
+```
+
+## 24.Write a program in C to create and store information in a text file.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int id;
+        float Marks;
+        FILE *fp;
+        fp=fopen("textfile.txt","w");
+        if(fp==NULL){
+                printf("Error");
+                return 1;
+        }
+        printf("Enter the Name:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        fprintf(fp,"Name : %s\n",str);
+        printf("Enter the Number:");
+        scanf("%d",&id);
+        fprintf(fp,"Id : %d\n",id);
+        printf("Enter the marks:");
+        scanf("%f",&Marks);
+        fprintf(fp,"Marks : %f\n",Marks);
+
 }
 ```
