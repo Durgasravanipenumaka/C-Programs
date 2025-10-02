@@ -823,3 +823,27 @@ int main(){
 }
 ```
 
+## 27..Write a program in C to read the file and store the lines in an array.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char arr[100][200];
+        int count=0;
+        FILE *fp;
+        fp=fopen("textfile.txt","r");
+        if(fp==NULL){
+                printf("Error");
+                return 1;
+        }
+        while(fgets(arr[count],sizeof(arr[count]),fp) != NULL){
+                arr[count][strcspn(arr[count],"\n")]='\0';
+                count++;
+        }
+        fclose(fp);
+        printf("File has %d lines :\n",count);
+        for(int i=0;i<count;i++){
+                printf("%s\n",arr[i]);
+        }
+}
+```
