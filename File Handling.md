@@ -775,3 +775,24 @@ int main(){
 
 }
 ```
+
+## 25. Write a program in C to read an existing file.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        FILE *fp;
+        fp=fopen("textfile.txt","r");
+        if(fp==NULL){
+                printf("Error");
+                return 1;
+        }
+        /*while((ch=fgetc(fp))!=EOF){
+                printf("%c",ch);
+        }*/
+        while(fgets(str,sizeof(str),fp)!=NULL){
+                printf("%s",str);
+        }
+}
+```
