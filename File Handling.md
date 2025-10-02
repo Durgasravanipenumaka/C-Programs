@@ -794,6 +794,7 @@ int main(){
         while(fgets(str,sizeof(str),fp)!=NULL){
                 printf("%s",str);
         }
+        fclose(fp);
 }
 ```
 
@@ -847,3 +848,51 @@ int main(){
         }
 }
 ```
+
+## 28.Write a program in C to find the number of lines in a text file.
+```c
+#include<stdio.h>
+int main(){
+        FILE *fp;
+        char str[100];
+        int count=0;
+        fp=fopen("textfile.txt","r");
+        if(fp==NULL){
+                printf("Error");
+                return 1;
+        }
+        while(fgets(str,sizeof(str),fp)!=NULL){
+                count++;
+        }
+        fclose(fp);
+        printf("Number of lines in text file :%d\n",count);
+}
+```
+
+## 29.Write a program in C to count the number of words and characters in a file.
+```c
+#include<stdio.h>
+int main(){
+        FILE *fp;
+        char str[100];
+        char ch;
+        fp=fopen("textfile.txt","r");
+        if(fp==NULL){
+                printf("Error");
+                return 1;
+        }
+        int wordc=0,charc=0;
+        while(fscanf(fp,"%s",str)==1){
+                wordc++;
+        }
+        rewind(fp);
+        while((ch=getc(fp))!=EOF){
+                charc++;
+        }
+        fclose(fp);
+        printf("Number of words:%d\n",wordc);
+        printf("Number of characters:%d\n",charc);
+}
+```
+
+## 30.
