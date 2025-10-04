@@ -895,4 +895,35 @@ int main(){
 }
 ```
 
-## 30.
+## 30. Write a program in C to delete a specific line from a file.
+```c
+#include<stdio.h>
+int main(){
+        FILE *fp1,*fp2;
+        char c;
+        int line,count=1;
+        fp1=fopen("textfile.txt","r");
+        if(fp1==NULL){
+                printf("Error");
+                return 1;
+        }
+        fp2=fopen("filee.txt","w");
+        if(fp2==NULL){
+                printf("Error");
+                return 1;
+        }
+        printf("Enter the line number to delete:");
+        scanf("%d",&line);
+        c=getc(fp1);
+        while(c!=EOF){
+                if(c=='\n')
+                        count++;
+                if(count != line)
+                        putc(c,fp2);
+                c=getc(fp1);
+        }
+        fclose(fp1);
+        fclose(fp2);
+        printf("Line %d deleted successfully.\n",line);
+}
+```
