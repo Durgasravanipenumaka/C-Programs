@@ -927,3 +927,45 @@ int main(){
         printf("Line %d deleted successfully.\n",line);
 }
 ```
+
+## 31.Write a program in C to replace a specific line with another text in a file.
+```c
+#include<stdio.h>
+int main(){
+        FILE *fp1,*fp2;
+        char str[]="The sun rises in the east";
+        char c;
+        int line,count=1;
+        fp1=fopen("textfile.txt","r");
+        if(fp1==NULL){
+                printf("Error");
+                return 1;
+        }
+        fp2=fopen("filee.txt","w");
+        if(fp2==NULL){
+                printf("Error");
+                return 1;
+        }
+        printf("Enter the line number to replace:");
+        scanf("%d",&line);
+        c=getc(fp1);
+        while(c!=EOF){
+                if(count==line){
+                        fprintf(fp2,"%s\n",str);
+                        while(c != '\n' && c != EOF)
+                                c=getc(fp1);
+                        if(c != EOF)
+                                c=getc(fp1);
+                        count++;
+                }
+                if(c!=EOF){
+                     putc(c,fp2);
+                     if(c=='\n')
+                             count++;
+                     c=getc(fp1);
+               }
+        }
+        fclose(fp1);
+        fclose(fp2);
+}
+```
