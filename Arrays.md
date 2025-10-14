@@ -1201,3 +1201,48 @@ int main(){
         printf("No equlibrium element found.\n");
 }
 ```
+
+## Stimulation of stack.
+```c
+#include<stdio.h>
+int arr[100];
+int top=0;
+void push(int x){
+        arr[top]=x;
+        top++;
+}
+void pop(){
+        top--;
+}
+void display(){
+        for(int i=0;i<top;i++){
+                printf("%d ",arr[i]);
+        }
+        printf("\n");
+}
+int main(){
+        int choice,value;
+        while(1){
+                printf("\n1.push 2.pop 3.Display 4.Exit\n");
+                printf("Enter the choice:");
+                scanf("%d",&choice);
+                switch(choice){
+                        case 1:
+                                printf("Enter the value to push:");
+                                scanf("%d",&value);
+                                push(value);
+                                break;
+                        case 2:
+                                pop();
+                                break;
+                        case 3:
+                                display();
+                                break;
+                        case 4:
+                                return 0;
+                        default :
+                                printf("Invalid choice!");
+                }
+        }
+}
+```
