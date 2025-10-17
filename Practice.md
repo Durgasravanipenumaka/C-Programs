@@ -76,8 +76,69 @@ int main(){
         printf("Final count value:%d\n",count);
 }
 ```
-
 ## Rotate matrix 90 degree clockwise.
+```c
+
+```
+## POINTERS :
+
+## Write a program to print the address of a variable using a pointer.
+```c
+#include<stdio.h>
+int main(){
+    int a=10;
+    printf("Address of %d is %p",a,&a);
+}
+```
+
+## Declare an integer variable and a pointer to it. Print the value using both the variable and the pointer.
+```c
+#include<stdio.h>
+int main(){
+   int a=10;
+   int *ptr=&a;
+   printf("Value = %d\nAddress = %p",*ptr,ptr);
+}
+```
+
+## Demonstrate incrementing and decrementing a pointer.
+```c
+#include<stdio.h>
+int main(){
+    int arr[]={10,20,30};
+    int *ptr=arr;
+    printf("Pointer initially points to value : %d\n",*ptr);
+    ptr++;
+    printf("After increment, pointer points to value : %d\n",*ptr);
+    ptr++;
+    printf("After another increment, pointer points to value: %d\n",*ptr);
+    ptr--;
+    printf("After decrement, pointer points to value : %d\n",*ptr);
+}
+```
+
+## Write a program to swap two integers using pointers (without using a third variable directly in main).
+```c
+#include<stdio.h>
+void swap(int *a,int *b){
+    *a = *a + *b;
+    *b = *a - *b;
+    *a = *a - *b;
+    
+}
+int main(){
+    int a,b;
+    printf("Enter first number :");
+    scanf("%d",&a);
+    printf("Enter the second number :");
+    scanf("%d",&b);
+    printf("Numbers before swapping : %d %d\n",a,b);
+    swap(&a,&b);
+    printf("Numbers after swapping : %d %d\n",a,b);
+}
+```
+
+## Write a program to access and print all elements of an array using a pointer (without using array indexing).
 ```c
 
 
