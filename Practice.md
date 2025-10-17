@@ -243,4 +243,230 @@ int main(){
     }
     printf("Sum of the array:%d\n",sum);
 }
- ```
+```
+
+## Reverse an array using pointers.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int n;
+    int sum=0;
+    printf("Enter the size :");
+    scanf("%d",&n);
+    int *arr=(int *)malloc(n*sizeof(int));
+    printf("Enter elements in the array:");
+    for(int i=0;i<n;i++){
+        scanf("%d",(arr+i));
+    }
+    for(int i=0,j=n-1;i<j;i++,j--){
+        int temp=*(arr+i);
+        *(arr+i)=*(arr+j);
+        *(arr+j)=temp;
+    }
+    printf("Array after reversing of array:");
+    for(int i=0;i<n;i++){
+        printf("%d ",arr[i]);
+    }
+}
+```
+
+## Copy a string using pointers.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int n;
+    int sum=0;
+    printf("Enter the size :");
+    scanf("%d",&n);
+    int *arr=(int *)malloc(n*sizeof(int));
+    printf("Enter elements in the array:");
+    for(int i=0;i<n;i++){
+        scanf("%d",(arr+i));
+    }
+    int copiedarr[n];
+    for(int i=0;i<n;i++){
+        copiedarr[i]=*(arr+i);
+        
+    }
+    printf("Array copied array:");
+    for(int i=0;i<n;i++){
+        printf("%d ",copiedarr[i]);
+    }
+}
+```
+
+## Find length of string using pointer traversal.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    char str[]="Helloworld";
+    char *ptr=str;
+    int len=0;
+    while(*ptr != '\0'){
+        len++;
+        ptr++;
+    }
+    printf("Length of the string:%d\n",len);
+}
+```
+
+## Create a structure Student and use a pointer to access and print its members.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct student{
+    char name[10];
+    int id;
+    float marks;
+};
+int main(){
+    struct student s;
+    struct student *ptr=&s;
+    printf("Enter Id:");
+    scanf("%d",&ptr->id);
+    printf("Enter Name:");
+    scanf("%s",&ptr->name);
+    printf("Enter Marks:");
+    scanf("%f",&ptr->marks);
+    printf("Student Details:");
+    printf("ID:%d\n",ptr->id);
+    printf("Name:%s\n",ptr->name);
+    printf("Marks:%.2f\n",ptr->marks);
+}
+```
+
+## Store multiple Student records using an array of structure pointers.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct student{
+    char name[10];
+    int id;
+    float marks;
+};
+int main(){
+    struct student *ptr[3];
+    for(int i=0;i<3;i++){
+        ptr[i]=(struct student *)malloc(sizeof(struct student));
+    }
+    for(int i=0;i<3;i++){
+        printf("Enter details for sttudent %d :\n",i+1);
+        printf("Enter Id:"); 
+        scanf("%d",&ptr[i]->id);
+        printf("Enter Name:");
+        scanf("%s",&ptr[i]->name);
+        printf("Enter Marks:");
+        scanf("%f",&ptr[i]->marks);
+    }
+    printf("Student details:\n");
+    for(int i=0;i<3;i++){
+        printf("ID:%d, ",ptr[i]->id);
+        printf("Name:%s, ",ptr[i]->name);
+        printf("Marks:%.2f\n",ptr[i]->marks);
+    }
+}
+```
+
+## Write a function that returns a pointer to the largest element in an array.
+```c
+lude<stdio.h>
+int* largestelement(int a[],int s){
+    int *max=&a[0];
+    for(int i=0;i<s;i++){
+        if(a[i]>*max){
+            max=&a[i];
+        }
+    }
+    return max;
+}
+int main(){
+    int n;
+    printf("Enter the size of the array:");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter the elements in the array:");
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    int *ele=largestelement(arr,n);
+    printf("Largest element in the array:%d\n",*ele);
+}
+```
+
+## Write a function that swaps two integers by accepting pointers to pointers as arguments.
+```c
+#include<stdio.h>
+void swapping(int **a,int **b){
+    int temp=**a;
+    **a=**b;
+    **b=temp;
+}
+int main(){
+    int a,b;
+    int *ptr1,*ptr2;
+    printf("Enter a and b values:");
+    scanf("%d %d",&a,&b);
+    ptr1=&a;
+    ptr2=&b;
+    printf("Numbers before swapping:%d %d\n",a,b);
+    swapping(&ptr1,&ptr2);
+    printf("Numbers after swapping:%d %d\n",a,b);
+    
+}
+```
+
+## Demonstrate a pointer to a function that adds two numbers.
+```c
+#include<stdio.h>
+void add(int a,int b){
+    int sum=0;
+    sum=a+b;
+    printf("Sum=%d\n",sum);
+}
+int main(){
+    int a,b;
+    printf("Enter a value:");
+    scanf("%d",&a);
+    printf("Enter b value:");
+    scanf("%d",&b);
+    void (*ptr)(int,int)=add;
+    ptr(a,b);
+}
+```
+
+## Demonstrate how a void pointer can store the address of different data types.
+```c
+#include<stdio.h>
+int main(){
+    int a=10;
+    char ch='c';
+    float b=10.02;
+    void *ptr=&a;
+    printf("Integer Value: %d\n",*(int *)ptr);
+    ptr=&ch;
+    printf("Character value:%c\n",*(char *)ptr);
+    ptr=&b;
+    printf("Float value:%.2f\n",*(float *)ptr);
+}
+```
+
+## Access elements of a 2D array using pointer arithmetic.
+```c
+#include<stdio.h>
+int main(){
+    int arr[3][3]={{1,2,3},{4,5,6},{7,8,9}};
+    printf("Elements in 2D array using pointer arithmetic:\n");
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            printf("%d ",*(*(arr+i)+j));
+        }
+        printf("\n");
+    }
+}
+```
+
+## Write a program that causes and fixes a dangling pointer issue.
+```c
