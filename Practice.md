@@ -140,6 +140,107 @@ int main(){
 
 ## Write a program to access and print all elements of an array using a pointer (without using array indexing).
 ```c
+#include<stdio.h>
+int main(){
+    int n;
+    printf("Enter the size:");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter the elements in the array:");
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    printf("Elements in the array are :");
+    for(int i=0;i<n;i++){
+        printf("%d ",*(arr+i));
+    }
+}
+```
 
+## Write a program to calculate the sum of all elements in an array using pointers (do not use array indexing).
+```c
+#include<stdio.h>
+int main(){
+    int n;
+    int sum=0;
+    printf("Enter the size:");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter the elements in the array:");
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    printf("Elements in the array are :");
+    for(int i=0;i<n;i++){
+        sum += *(arr+i);
+    }
+    printf("Sum of the array elements:%d\n",sum);
+}
+```
 
+## Print a string using a character pointer.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char str[]="HelloWorld";
+    char *ptr=str;
+    int len=strlen(str);
+    for(int i=0;i<len;i++){
+        printf("%c",*(ptr+i));
+    }
+}
+```
 
+## Double a Number Using Pointer in Function.
+```c
+#include<stdio.h>
+void doubleval(int *n){
+    *n = 2 * (*n);
+}
+int main(){
+    int n;
+    printf("Enter the number:");
+    scanf("%d",&n);
+    printf("Value before doubling:%d\n",n);
+    doubleval(&n);
+    printf("Value after doubling:%d\n",n);
+    
+}
+```
+
+## Pointer to Pointer.
+```c
+#include<stdio.h>
+int main(){
+    int n;
+    printf("Enter the number:");
+    scanf("%d",&n);
+    int *ptr=&n;
+    int **pptr=&ptr;
+    printf("Value of number:%d\n",n);
+    printf("Address of number:%d\n",(void*)ptr);
+    printf("Value using pointer to pointer:%d\n",**pptr);
+}
+```
+
+## Write a program to dynamically allocate memory for an integer array, take input, and print the sum of all elements using pointers. Use malloc().
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int n;
+    int sum=0;
+    printf("Enter the size :");
+    scanf("%d",&n);
+    int *arr=(int *)malloc(n*sizeof(int));
+    printf("Enter elements in the array:");
+    for(int i=0;i<n;i++){
+        scanf("%d",(arr+i));
+    }
+    for(int i=0;i<n;i++){
+        sum += *(arr+i);
+    }
+    printf("Sum of the array:%d\n",sum);
+}
+ ```
