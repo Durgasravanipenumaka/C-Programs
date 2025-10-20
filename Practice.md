@@ -44,6 +44,7 @@ int main(){
 }
 ```
 ## Loops :
+
 ## Write a program to print the sum of smallest and largest prime in the given range ?
 ```c
 #include<stdio.h>
@@ -101,6 +102,7 @@ int main(){
 }
 ```
 ## Bit Manupulation :
+
 ## Write a program to print the largest series of 1's in the given number ?
 ```c
 #include<stdio.h>
@@ -142,7 +144,56 @@ int main(){
 }
 ```
 
+## Strings :
 
+## Write a program to hide first and last vowel in every word in the given string ?
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+    char str[100];
+    char word[20],ch;
+    int pos1,pos2, k=0;
+    printf("Enter the string:");
+    fgets(str,sizeof(str),stdin);
+    str[strcspn(str,"\n")]='\0';
+    for(int i=0;;i++){
+        if(str[i]!=' ' && str[i]!='\0'){
+            word[k++]=str[i];
+        }
+        else{
+            word[k]='\0';
+            pos1=-1;
+            pos2=-1;
+            for(int j=0;word[j]!='\0';j++){
+                ch=tolower(word[j]);
+                if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u'){
+                    pos1=j;
+                    break;
+                }
+            }
+            for(int j=0;word[j]!='\0';j++){
+                ch=tolower(word[j]);
+                if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u'){
+                    pos2=j;
+                }
+            }
+            if(pos1!=-1){
+                word[pos1]='*';
+            }
+            if(pos2!=-1 && pos2!=pos1){
+                word[pos2]='*';
+            }
+            printf("%s ",word);
+            k=0;
+        }
+        if(str[i]=='\0'){
+            break;
+        }
+    }
+}
+```
 
 
 ## Rotate matrix 90 degree clockwise.
