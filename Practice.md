@@ -1,3 +1,5 @@
+## Arrays :
+
 ## Write a C program to perform k left rotations on an array.
 ```c
 #include<stdio.h>
@@ -41,6 +43,46 @@ int main(){
         printf("\n");
 }
 ```
+## Write a program to print the sum of smallest and largest prime in the given range ?
+```c
+#include<stdio.h>
+#include<limits.h>
+int isprime(int n){
+    if(n<2){
+        return 0;
+    }
+    for(int i=2;i*i <= n;i++){
+        if(n%i==0){
+            return 0;
+        }
+    }
+    return 1;
+}
+int main(){
+    int min=INT_MAX,max=INT_MIN;
+    for(int i=4;i<20;i++){
+        if(isprime(i)){
+            if(min > i){
+                min=i;
+            }
+            if(max < i){
+                max=i;
+            }
+        }
+    }
+    printf("Smallest prime number :%d\n",min);
+    printf("Largest prime number :%d\n",max);
+    printf("Sum=%d\n",(max+min));
+    
+}
+```
+
+## Rotate matrix 90 degree clockwise.
+```c
+
+```
+
+## THreads :
 ## avoid race condition using spinlock.
 ```c
 #include<stdio.h>
@@ -76,10 +118,7 @@ int main(){
         printf("Final count value:%d\n",count);
 }
 ```
-## Rotate matrix 90 degree clockwise.
-```c
 
-```
 ## POINTERS :
 
 ## Write a program to print the address of a variable using a pointer.
