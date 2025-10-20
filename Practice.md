@@ -43,6 +43,7 @@ int main(){
         printf("\n");
 }
 ```
+## Loops :
 ## Write a program to print the sum of smallest and largest prime in the given range ?
 ```c
 #include<stdio.h>
@@ -76,14 +77,81 @@ int main(){
     
 }
 ```
+## Write a program to print the next number of the highest number which can be formed with the given number.
+```c
+#include<stdio.h>
+#include<limits.h>
+int main(){
+    int arr[]={1,5,4,9};
+    int sum=0;
+    int min=INT_MAX;
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            if(arr[i]>arr[j]){
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+            }
+        }
+    }
+    for(int i=0;i<4;i++){
+        sum=sum*10+arr[i];
+    }
+    printf("Number=%d",sum+1);
+}
+```
+## Bit Manupulation :
+## Write a program to print the largest series of 1's in the given number ?
+```c
+#include<stdio.h>
+#include<limits.h>
+void binarybits(int n){
+    int mask;
+    for(int i=15;i>=0;i--){
+        mask=1<<i;
+        putchar(n&mask ? '1' : '0');
+    }
+    printf("\n");
+}
+int main(){
+    int num;
+    printf("Enter the number:");
+    scanf("%d",&num);
+    printf("Number in binary form:");
+    binarybits(num);
+    int count=0;
+    int max=0;
+    for(int i=15;i>=0;i--){
+        if(num&(1<<i)){
+            count++;
+        }
+        else{
+            if(max < count){
+                max=count;
+            }
+            count=0;
+        }
+    }
+    if(max<count){
+        max=count;
+    }
+    printf("Longest series of 1's in given number :");
+    for(int i=0;i<max;i++){
+        printf("1");
+    }
+}
+```
+
+
+
 
 ## Rotate matrix 90 degree clockwise.
 ```c
 
 ```
 
-## THreads :
-## avoid race condition using spinlock.
+## Threads :
+## Avoid race condition using spinlock.
 ```c
 #include<stdio.h>
 #include<pthread.h>
