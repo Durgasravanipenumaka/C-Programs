@@ -688,3 +688,213 @@ int main(){
 
 ## Write a program that causes and fixes a dangling pointer issue.
 ```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int *ptr=(int *)malloc(sizeof(int));
+    if(ptr==NULL){
+        printf("malloc error");
+        exit(1);
+    }
+    *ptr=42;
+    printf("Number=%d\n",*ptr);
+    free(ptr);
+    printf("Accessing pointer after become dangling pointer %p\n",(void *)ptr);
+    ptr=NULL;
+    if(ptr==NULL){
+        printf("Pointer is now NULL(safe to use)\n");
+    }
+}
+```
+## Linked List :
+
+## Insert a node:
+- At the beginning
+- At the end
+- At a given position
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void addnodeatbeginning(int b){
+        struct node *pnew,*ptemp;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("malloc error");
+                return;
+        }
+        pnew->val=b;
+        pnew->nxt=NULL;
+        ptemp=phead;
+        phead=pnew;
+        phead->nxt=ptemp;
+}
+void addnodeatparpos(int pos,int size,int a){
+        struct node *pnew,*ptemp,*ptrav=phead;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("malloc error");
+                exit(1);
+        }
+        pnew->val=a;
+        pnew->nxt=NULL;
+        if(pos<0 || pos>size){
+                printf("Position is in out off range\n");
+                free(pnew);
+                return;
+        }
+        if(pos==0){
+                pnew->nxt=phead;
+                phead=pnew;
+                return;
+        }
+        for(int i=0;i<pos-1 && ptrav!=NULL;i++){
+                ptrav=ptrav->nxt;
+        }
+        if(ptrav==NULL){
+                printf("Invalid position\n");
+                free(pnew);
+                return;
+        }
+        ptemp=ptrav->nxt;
+        ptrav->nxt=pnew;
+        pnew->nxt=ptemp;
+}
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                exit(1);
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        ptrav=phead;
+        while(ptrav->nxt!=NULL){
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=pnew;
+}
+int countlinkedlist(){
+        struct node *ptrav=phead;
+        int count=0;
+        while(ptrav!=NULL){
+                count++;
+                ptrav=ptrav->nxt;
+        }
+        return count;
+}
+void display(){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d->",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+        printf("NULL\n");
+}
+int main(){
+        int n,node,ele;
+        int pos,num,count;
+        printf("Enter total number of nodes:");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++){
+                printf("Enter the value at node %d : ",i+1);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        count=countlinkedlist();
+        printf("Enter the number to add at begginning:");
+        scanf("%d",&ele);
+        addnodeatbeginning(ele);
+        printf("Enter the position to where it insert:");
+        scanf("%d",&pos);
+        printf("Enter the number to insert:");
+        scanf("%d",&num);
+        addnodeatparpos(pos,count,num);
+        printf("Nodes in the Linked list : ");
+        display();
+}
+```
+## create a linked list , display it,print middle node,reverse the linked list and again display it.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+struct node display(struct node *phead){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d->",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+        printf("NULL");
+}
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                exit(1);
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        ptrav=phead;
+        while(ptrav->nxt!=NULL){
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=pnew;
+}
+void findmiddlenode(){
+        struct node *fast,*slow;
+        fast=slow=phead;
+        while(fast!=NULL && fast->nxt!=NULL){
+                slow=slow->nxt;
+                fast=fast->nxt->nxt;
+        }
+        printf("\nMiddle node = %d\n",slow->val);
+}
+struct node* reverse(){
+        struct node *currentnode,*nxtnode,*prevnode=NULL;
+        currentnode=phead;
+        nxtnode=NULL;
+        while(currentnode != NULL){
+                nxtnode=currentnode->nxt;
+                currentnode->nxt=prevnode;
+                prevnode=currentnode;
+                currentnode=nxtnode;
+        }
+        return prevnode;
+
+}
+int main(){
+        int total,node;
+        struct node *Address;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&total);
+        for(int i=0;i<total;i++){
+                printf("Enter the value at node %d : ",i+1);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        printf("Elements in the linked list:");
+        display(phead);
+        findmiddlenode();
+        Address=reverse();
+        display(Address);
+}
+```
