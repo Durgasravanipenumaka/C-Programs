@@ -43,6 +43,66 @@ int main(){
         printf("\n");
 }
 ```
+## Second highest prime number in a 2D matrix :
+```c
+#include<stdio.h>
+void input(int (*ptr)[3],int r,int c){
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            scanf("%d",&ptr[i][j]);
+        }
+    }
+}
+void display(int (*ptr)[3],int r,int c){
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            printf("%d ",ptr[i][j]);
+        }
+        printf("\n");
+    }
+}
+int secondhighestprime(int (*ptr)[3],int r,int c){
+    int max,smax,found=1;
+    max=smax=-1;
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            found=1;
+            if(ptr[i][j] < 0){
+                continue;
+            }
+            for(int k=2;k*k <= ptr[i][j];k++){
+                if((ptr[i][j] % k)==0){
+                    found=0;
+                    break;
+                }
+            }
+            if(found){
+                if(ptr[i][j]>max){
+                smax=max;
+                max=ptr[i][j];
+               }
+               else if(ptr[i][j] > smax && ptr[i][j] != max){
+                    smax=ptr[i][j];
+               }
+            }
+        }
+    }
+    return smax;
+}
+int main(){
+    int n;
+    int arr[3][3];
+    input(arr,3,3);
+    display(arr,3,3);
+    n=secondhighestprime(arr,5,5);
+    if(n==-1){
+        printf("Not enough prime numbers");
+    }
+    else{
+        printf("Second highest prime  number = %d\n",n);
+    }
+}
+```
 ## Loops :
 
 ## Write a program to print the sum of smallest and largest prime in the given range ?
