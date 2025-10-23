@@ -65,11 +65,11 @@ int secondhighestprime(int (*ptr)[3],int r,int c){
     int max,smax,found=1;
     max=smax=-1;
     for(int i=0;i<r;i++){
-        for(int j=0;j<c;j++){
-            found=1;
+        for(int j=0;j<c;j++){ 
             if(ptr[i][j] < 0){
                 continue;
             }
+            found=1;
             for(int k=2;k*k <= ptr[i][j];k++){
                 if((ptr[i][j] % k)==0){
                     found=0;
@@ -94,7 +94,7 @@ int main(){
     int arr[3][3];
     input(arr,3,3);
     display(arr,3,3);
-    n=secondhighestprime(arr,5,5);
+    n=secondhighestprime(arr,3,3);
     if(n==-1){
         printf("Not enough prime numbers");
     }
