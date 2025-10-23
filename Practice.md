@@ -823,6 +823,107 @@ int main(){
         display();
 }
 ```
+## Delete a node:
+- From the beginning
+- From the end
+- From a given position
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node *)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                exit(1);
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        ptrav=phead;
+        while(ptrav->nxt != NULL){
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=pnew;
+}
+void display(){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d->",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+        printf("NULL\n");
+}
+void deletenodeatbeginning(){
+        struct node *ptemp;
+        ptemp=phead;
+        phead=phead->nxt;
+        free(ptemp);
+}
+void deletenodeatend(){
+        struct node *prev,*ptrav=phead;
+        while(ptrav->nxt!=NULL){
+                prev=ptrav;
+                ptrav=ptrav->nxt;
+        }
+        prev->nxt=NULL;
+        free(ptrav);
+}
+int countnodes(){
+        struct node *ptrav=phead;
+        int count=0;
+        while(ptrav!=NULL){
+                count++;
+                ptrav=ptrav->nxt;
+        }
+        return count;
+}
+void deletenodeatparpos(int pos,int size){
+        struct node *prev,*ptemp,*ptrav=phead;
+
+        if(pos<0 || pos >size){
+                printf("Invalid position");
+                return;
+        }
+        for(int i=0;i<pos-1;i++){
+                prev=ptrav;
+                ptrav=ptrav->nxt;
+        }
+        ptemp=prev->nxt;
+        prev->nxt=ptemp->nxt;
+        free(ptemp);
+}
+
+int main(){
+        int total,node;
+        int count,pos;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&total);
+        for(int i=0;i<total;i++){
+                printf("Enter the node at %d : ",i+1);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        display();
+        deletenodeatbeginning();
+        display();
+        deletenodeatend();
+        display();
+        count=countnodes();
+        printf("Enter the position to delete:");
+        scanf("%d",&pos);
+        deletenodeatparpos(pos,count);
+        display();
+}
+```
 ## create a linked list , display it,print middle node,reverse the linked list and again display it.
 ```c
 #include<stdio.h>
@@ -898,3 +999,4 @@ int main(){
         display(Address);
 }
 ```
+## 
