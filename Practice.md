@@ -990,7 +990,118 @@ int main(){
         for(int i=0;i<total;i++){
                 printf("Enter the value at node %d : ",i+1);
                 scanf("%d",&node);
-                createnode(node);
+                createnode(node);#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node *)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        ptrav=phead;
+        while(ptrav->nxt!=NULL){
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=pnew;
+}
+void display(){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d->",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+        printf("NULL");
+}
+void loopcreation(int pos,int size){
+        struct node *prev,*ptrav=phead;
+        if(pos>size || pos<0){
+                printf("Position is in out of bound");
+                return;
+        }
+        for(int i=1;i<pos;i++){
+                prev=ptrav;
+                ptrav=ptrav->nxt;
+        }
+        ptrav=phead;
+        while(ptrav->nxt!=NULL){
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=prev->nxt;
+}
+void checkingloop(){
+        struct node *slow,*fast;
+        slow=fast=phead;
+        while(fast != NULL && fast->nxt != NULL){
+                slow=slow->nxt;
+                fast=fast->nxt->nxt;
+                if(slow==fast){
+                printf("Loop is detected\n");
+                return;
+                }
+        }
+        printf("Loop is not detected\n");
+}
+void deletionloop(){
+           struct node *slow,*fast,*ptrav;
+           slow=fast=phead;
+           while(fast != NULL && fast->nxt != NULL){
+                   slow=slow->nxt;
+                   fast=fast->nxt->nxt;
+                   if(slow==fast){
+                           break;
+                   }
+           }
+           if(slow==fast){
+                   if(slow==phead){
+                           while(slow->nxt != fast){
+                                   slow=slow->nxt;
+                           }
+                           slow->nxt=NULL;
+                   }
+                   else{
+                           slow=phead;
+                           while(slow->nxt != fast){
+                                   slow=slow->nxt;
+                           }
+                           slow->nxt=NULL;
+                   }
+           }
+           else{
+                   printf("Loop is not detected\n");
+           }
+}
+
+int main(){
+        int total,n,pos;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&total);
+        for(int i=0;i<total;i++){
+                printf("Enter the node %d : ",i+1);
+                scanf("%d",&n);
+                createnode(n);
+        }
+        printf("Nodes in the linked list are : ");
+        display();
+        printf("\nEnter the position for creating loop:");
+        scanf("%d",&pos);
+        loopcreation(pos,total);
+        checkingloop();
+        deletionloop();
+        checkingloop();
+}
+```
         }
         printf("Elements in the linked list:");
         display(phead);
@@ -999,4 +1110,5 @@ int main(){
         display(Address);
 }
 ```
-## 
+## Loop creation, detection and deletion of the linked list.
+```c
