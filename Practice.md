@@ -990,7 +990,19 @@ int main(){
         for(int i=0;i<total;i++){
                 printf("Enter the value at node %d : ",i+1);
                 scanf("%d",&node);
-                createnode(node);#include<stdio.h>
+                createnode(node);
+        }
+        printf("Elements in the linked list:");
+        display(phead);
+        findmiddlenode();
+        Address=reverse();
+        display(Address);
+}
+```
+
+## create linked list ,create loop ,detect the loop and delete the loop.
+```c
+#include<stdio.h>
 #include<stdlib.h>
 struct node{
         int val;
@@ -1102,13 +1114,72 @@ int main(){
         checkingloop();
 }
 ```
+
+## create linked list,sorting the linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("malloc error");
+                return;
         }
-        printf("Elements in the linked list:");
-        display(phead);
-        findmiddlenode();
-        Address=reverse();
-        display(Address);
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        ptrav=phead;
+        while(ptrav->nxt!=NULL){
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=pnew;
+}
+void display(){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d->",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+        printf("NULL\n");
+}
+struct node* sorting(){
+        if(!phead || !phead->nxt){
+                return phead;
+        }
+        struct node *i,*j;
+        for(i=phead;i->nxt != NULL;i=i->nxt){
+                for(j=i->nxt;j != NULL;j=j->nxt){
+                        if(i->val > j->val){
+                                i->val = i->val + j->val;
+                                j->val = i->val - j->val;
+                                i->val = i->val - j->val;
+                        }
+                }
+        }
+        return phead;
+}
+
+int main(){
+        int total,node;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&total);
+        for(int i=0;i<total;i++){
+                printf("Enter the node at %d :",i+1);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        printf("NOdes in the linked list :");
+        display();
+        sorting();
+        display();
 }
 ```
-## Loop creation, detection and deletion of the linked list.
-```c
