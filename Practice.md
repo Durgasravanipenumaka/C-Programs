@@ -1143,7 +1143,7 @@ void createnode(int d){
         }
         ptrav->nxt=pnew;
 }
-void display(){
+void display(struct node *phead){
         struct node *ptrav=phead;
         while(ptrav!=NULL){
                 printf("%d->",ptrav->val);
@@ -1167,6 +1167,76 @@ struct node* sorting(){
         }
         return phead;
 }
+int main(){
+        int total,node;
+        struct node *add;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&total);
+        for(int i=0;i<total;i++){
+                printf("Enter the node at %d :",i+1);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        printf("Nodes in the linked list :");
+        display(phead);
+        add=sorting();
+        printf("Nodes after sorting:");
+        display(add);
+}
+```
+
+## check if a linked list is palindrome or not.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        ptrav=phead;
+        while(ptrav->nxt!=NULL){
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=pnew;
+}
+void display(){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d->",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+        printf("NULL\n");
+}
+void palindromeornot(){
+        struct node *ptrav=phead;
+        int arr[100];
+        int k=0;
+        while(ptrav != NULL){
+                arr[k++]=ptrav->val;
+                ptrav=ptrav->nxt;
+        }
+        for(int i=0,j=k-1;i<j;i++,j--){
+                if(arr[i]!=arr[j]){
+                        printf("It is not a palindrome\n");
+                        return;
+                }
+        }
+        printf("It is a palindrome\n");
+}
 
 int main(){
         int total,node;
@@ -1177,9 +1247,9 @@ int main(){
                 scanf("%d",&node);
                 createnode(node);
         }
-        printf("NOdes in the linked list :");
+        printf("Nodes in the linked list :");
         display();
-        sorting();
-        display();
+        palindromeornot();
+
 }
 ```
