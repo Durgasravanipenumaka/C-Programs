@@ -1253,3 +1253,94 @@ int main(){
 
 }
 ```
+
+## Chaeck if the linked list is palindrome or not without using array.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        ptrav=phead;
+        while(ptrav->nxt != NULL){
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=pnew;
+}
+void display(){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d->",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+        printf("NULL");
+}
+struct node* reverse(struct node *phead){
+        struct node *currentnode,*nextnode,*prevnode;
+        nextnode=prevnode=NULL;
+        currentnode=phead;
+        while(currentnode!=NULL){
+                nextnode=currentnode->nxt;
+                currentnode->nxt=prevnode;
+                prevnode=currentnode;
+                currentnode=nextnode;
+        }
+        return prevnode;
+}
+int isplaindrome(){
+        if(phead==NULL || phead->nxt==NULL){
+                return 1;
+        }
+        struct node *slow,*fast;
+        slow=fast=phead;
+        while(fast != NULL && fast->nxt != NULL){
+                slow=slow->nxt;
+                fast=fast->nxt->nxt;
+        }
+        struct node *secondhalf=slow->nxt;
+        struct node *temp=reverse(secondhalf);
+        struct node *firsthalf=phead;
+        int palindrome=1;
+        while(temp!=NULL){
+              if(firsthalf->val != temp->val){
+                   palindrome=0;
+                   break;
+              }
+              firsthalf=firsthalf->nxt;
+              temp=temp->nxt;
+        }
+        return palindrome;
+}
+
+
+int main(){
+        int total,node;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&total);
+        for(int i=0;i<total;i++){
+                printf("Enter the node %d :",i+1);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        display();
+        if(isplaindrome())
+                printf("\nPalindrome\n");
+        else
+                printf("\nNot a palindrome\n");
+}
+```
