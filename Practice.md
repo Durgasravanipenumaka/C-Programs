@@ -1344,3 +1344,87 @@ int main(){
                 printf("\nNot a palindrome\n");
 }
 ```
+
+## Remove duplicates from the linked list.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void createnode(int d){
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL){
+                printf("Malloc error");
+                return;
+        }
+        pnew->val=d;
+        pnew->nxt=NULL;
+        if(phead==NULL){
+                phead=pnew;
+                return;
+        }
+        ptrav=phead;
+        while(ptrav->nxt != NULL){
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=pnew;
+}
+void display(){
+        struct node *ptrav=phead;
+        while(ptrav!=NULL){
+                printf("%d->",ptrav->val);
+                ptrav=ptrav->nxt;
+        }
+        printf("NULL");
+}
+void sorting(){
+        struct node *i,*j;
+        for(i=phead;i!=NULL;i=i->nxt){
+                for(j=i->nxt;j!=NULL;j=j->nxt){
+                        if(i->val > j->val){
+                                int temp=i->val;
+                                i->val=j->val;
+                                j->val=temp;
+                        }
+                }
+        }
+}
+
+void removeduplicates(){
+        struct node *p=phead,*q;
+        while(p != NULL && p->nxt != NULL){
+                while(p->val == p->nxt->val){
+                        q=p->nxt->nxt;
+                        if(q == NULL){
+                                p->nxt = NULL;
+                                break;
+                        }
+                        p->nxt=q;
+                }
+                if(p->val != p->nxt->val)
+                        p=p->nxt;
+        }
+}
+
+int main(){
+        int total,node;
+        printf("Enter the total number of nodes:");
+        scanf("%d",&total);
+        for(int i=0;i<total;i++){
+                printf("Enter the node %d :",i+1);
+                scanf("%d",&node);
+                createnode(node);
+        }
+        display();
+        sorting();
+        printf("\nSorted list :");
+        display();
+        removeduplicates();
+        printf("\nList after removing of duplicates:");
+        display();
+}
+```
