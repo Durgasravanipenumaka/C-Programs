@@ -103,6 +103,62 @@ int main(){
     }
 }
 ```
+
+## Rotate the matrix in 90 degree clockwise,90 degrees anti clockwise and 180 degrees.
+```c
+#include<stdio.h>
+#define r 2
+#define c 3
+int main(){
+        int arr[r][c];
+        int cmat[c][r];
+        int amat[c][r];
+        int mat[r][c];
+        printf("Enter the elements in the matrix:\n");
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<c;i++){
+                for(int j=0;j<r;j++){
+                        cmat[i][j]=arr[r-j-1][i];
+                }
+        }
+        for(int i=0;i<c;i++){
+                for(int j=0;j<r;j++){
+                        amat[i][j]=arr[j][c-i-1];
+                }
+        }
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        mat[i][j]=arr[r-i-1][c-j-1];
+                }
+        }
+        printf("Matrix after 90 degree clockwise rotation :\n");
+        for(int i=0;i<c;i++){
+                for(int j=0;j<r;j++){
+                        printf("%d ",cmat[i][j]);
+                }
+                printf("\n");
+        }
+        printf("\nMatrix after 90 degree anticlockwise rotation :\n");
+        for(int i=0;i<c;i++){
+                for(int j=0;j<r;j++){
+                        printf("%d ",amat[i][j]);
+                }
+                printf("\n");
+        }
+        printf("\nMatrix after 180 degree rotation :\n");
+        for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                        printf("%d ",mat[i][j]);
+                }
+                printf("\n");
+        }
+}
+```
+
 ## Loops :
 
 ## Write a program to print the sum of smallest and largest prime in the given range ?
