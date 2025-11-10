@@ -1484,3 +1484,47 @@ int main(){
         display();
 }
 ```
+
+
+# Strings :
+
+## Non repeating substring :
+```cinclude<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        char word[100],largest[100];
+        int k=0,max=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strlen(str)-1]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                int repeat=1;
+                for(int j=0;j<k;j++){
+                        if(str[i]==word[j]){
+                                repeat=0;
+                                break;
+                        }
+                }
+                if(repeat==1){
+                        word[k++]=str[i];
+                }
+                else{
+                        word[k]='\0';
+                        if(k>max){
+                                max=k;
+                                strcpy(largest,word);
+                        }
+                        k=0;
+                        word[k++]=str[i];
+                }
+        }
+        word[k]='\0';
+        if(k>max){
+                strcpy(largest,word);
+        }
+        printf("Largest=%s\n",largest);
+}
+```
+
+
