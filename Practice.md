@@ -1707,4 +1707,228 @@ int main(){
 }
 ```
 
-## 
+## Count the number of words in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int count=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        for(int i=0;i<len;i++){
+                if(str[i]!=' ' && (str[i+1]==' ' ||str[i+1]=='\t' || str[i+1]=='\n' || str[i+1]=='\0')){
+                        count++;
+                }
+        }
+        printf("Number of words = %d\n",count);
+}
+```
+
+## Print the highest repeating character in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int max=0,freq[256]={0};
+        char ch;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        for(int i=0;i<len;i++){
+                freq[str[i]]++;
+        }
+        for(int i=0;i<256;i++){
+                if(freq[i]>max){
+                        if(i==' ')
+                                continue;
+                        max=freq[i];
+                        ch=i;
+                }
+        }
+        printf("Highest repeating character=%c(%d times)\n",ch,max);
+}
+```
+
+## Replace all spaces in a string with hyphens (-).
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int count=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        for(int i=0;i<len;i++){
+                if(str[i]==' '){
+                        str[i]='-';
+                }
+        }
+        printf("%s\n",str);
+}
+```
+
+## Remove all spaces from a string.
+```c
+#include<stdio.h>
+#include<string.h>anagr
+int main(){
+        char str[100],word[100];
+        int k=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        for(int i=0;i<len;i++){
+                if(str[i]!=' '){
+                        word[k++]=str[i];
+                }
+        }
+        word[k]='\0';
+        printf("%s\n",word);
+}
+```
+
+## Check whether two strings are anagrams (listen ↔ silent).
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str1[100],str2[100];
+        int freq1[256]={0},freq2[256]={0};
+        printf("Enter the string1:");
+        fgets(str1,sizeof(str1),stdin);
+        str1[strcspn(str1,"\n")]='\0';
+        int len1=strlen(str1);
+        printf("Enter the string2:");
+        fgets(str2,sizeof(str2),stdin);
+        str2[strcspn(str2,"\n")]='\0';
+        int len2=strlen(str2);
+        if(len1!=len2){
+                printf("Strings are not Anagram\n");
+                return 0;
+        }
+        for(int i=0;i<len1;i++){
+                freq1[str1[i]]++;
+        }
+        for(int i=0;i<len1;i++){
+                freq2[str2[i]]++;
+        }
+        for(int i=0;i<256;i++){
+                if(freq1[i]!=freq2[i]){
+                        printf("Strings are not Anagram\n");
+                        return 0;
+                }
+        }
+        printf("strings are Anagram\n");
+}
+```
+
+## Find the largest word in a sentence.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],word[100],largest[100];
+        int max=0,k=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        for(int i=0;i<len;i++){
+                if(str[i]!=' '){
+                        word[k++]=str[i];
+                }
+                else{
+                        word[k]='\0';
+                        if(k>max){
+                                max=k;
+                                strcpy(largest,word);
+                        }
+                        k=0;
+                }
+        }
+        word[k]='\0';
+        if(k>max){
+                max=k;
+                strcpy(largest,word);
+        }
+        printf("%s\n",largest);
+}
+```
+
+## Find the smallest word in a sentence.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<limits.h>
+int main(){
+        char str[100],word[100],smallest[100];
+        int min=INT_MAX,k=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        for(int i=0;i<len;i++){
+                if(str[i]!=' '){
+                        word[k++]=str[i];
+                }
+                else{
+                        word[k]='\0';
+                        if(k<min){
+                                min=k;
+                                strcpy(smallest,word);
+                        }
+                        k=0;
+                }
+        }
+        word[k]='\0';
+        if(k<min){
+                min=k;
+                strcpy(smallest,word);
+        }
+        printf("%s\n",smallest);
+}
+```
+
+## Reverse each word in a string individually.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],word[100];
+        int k=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        for(int i=0;i<len;i++){
+                if(str[i]!=' '){
+                        word[k++]=str[i];
+                }
+                else{
+                        word[k]='\0';
+                        for(i=0,j=k-1;i<j;i++,j--){
+                                char temp=word[i];
+                                word[i]=word[j];
+                                word[j]=temp;
+                        }
+                        printf("%s ",word);
+                        k=0;
+                }
+        }
+        word[k]='\0';
+        for(int i=0,j=k-1;i<j;i++,j--){
+                char temp=word[i];
+                word[i]=word[j];
+                word[j]=temp;
+        }
+        printf("%s ",word);
+}
+```
