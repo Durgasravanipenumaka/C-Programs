@@ -1681,4 +1681,30 @@ int main(){
 
 ## Remove duplicate characters from a string (e.g., apple → aple).
 ```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],word[100];
+        int k=0;
+        printf("Enter the string :");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\0")]='\0';
+        int len=strlen(str);
+        for(int i=0;i<len;i++){
+                int found=0;
+                for(int j=0;j<k;j++){
+                        if(word[j]==str[i]){
+                                found=1;
+                                break;
+                        }
+                }
+                if(found==0){
+                        word[k++]=str[i];
+                }
+        }
+        word[k]='\0';
+        printf("%s\n",word);
+}
+```
 
+## 
