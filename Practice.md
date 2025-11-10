@@ -1527,4 +1527,37 @@ int main(){
 }
 ```
 
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int maxlen=0,start=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strlen(str)-1]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                int visited[256]={0};
+                int count=0;
+                for(int j=i;str[j]!='\0';j++){
+                        if(visited[str[j]]==1){
+                                break;
+                        }
+                        else{
+                                visited[str[j]]=1;
+                                count++;
+                        }
+                        if(count>maxlen){
+                                maxlen=count;
+                                start=i;
+                        }
+                }
+        }
+        printf("Longest substring:");
+        for(int i=start;i<start+maxlen;i++){
+                printf("%c",str[i]);
+        }
+        printf("\n");
+}
+```
 
