@@ -1488,6 +1488,104 @@ int main(){
 
 # Strings :
 
+## Reverse a string without using built-in reverse functions.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        for(int i=0,j=len-1;i<j;i++,j--){
+                char temp=str[i];
+                str[i]=str[j];
+                str[j]=temp;
+        }
+        printf("String after reversing:%s\n",str);
+}
+```
+
+## Palindrome or not 
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int found=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        for(int i=0,j=len-1;i<j;i++,j--){
+                if(str[i]!=str[j]){
+                        printf("String is not a palindrome\n");
+                        found=1;
+                        break;
+                }
+        }
+        if(!found)
+                printf("String is a palindrome\n");
+}
+```
+## Convert all lowercase characters to uppercase and vice-versa.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        printf("Enter the string :");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]>='a' && str[i]<='z'){
+                        str[i]=str[i]-32;
+                }
+                else if(str[i]>='A' && str[i]<='Z'){
+                        str[i]=str[i]+32;
+                }
+        }
+        printf("String:%s\n",str);
+}
+```
+
+## Find the ASCII value of each character in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        printf("Enter the string :");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                printf("Ascii character of %c : %d\n",str[i],str[i]);
+        }
+}
+```
+
+## Find the frequency of a given character in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        printf("Enter the string :");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int visited[256]={0};
+        for(int i=0;str[i]!='\0';i++){
+                visited[str[i]]++;
+        }
+        for(int i=0;i<256;i++){
+                if(visited[i]>0){
+                        printf("%c repeats %d times\n",i,visited[i]);
+                }
+        }
+}
+```
+
 ## Non repeating substring :
 ```cinclude<stdio.h>
 #include<string.h>
