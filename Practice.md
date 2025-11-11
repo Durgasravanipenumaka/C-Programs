@@ -1932,3 +1932,80 @@ int main(){
         printf("%s ",word);
 }
 ```
+
+## Check if a string is a valid hexadecimal number.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int found=1;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                if((str[i] >='a' && str[i]<='f')||(str[i] >= 'A' && str[i]<='F')||(str[i] >= '1' && str[i] <= '9')){
+                        found=1;
+                }
+                else{
+                        found=0;
+                        break;
+                }
+        }
+        if(found)
+                printf("Hexadecimal number\n");
+        else
+                printf("Not a Hexadecimal number\n");
+}
+```
+
+## Rotate characters of a string by a given number.
+- Right rotattion :
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int k;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        printf("Rotate by:");
+        scanf("%d",&k);
+        int len=strlen(str);
+        k=k%len;
+        for(int i=0;i<k;i++){
+                char temp=str[len-1];
+                for(int j=len-1;j>0;j--){
+                        str[j]=str[j-1];
+                }
+                str[0]=temp;
+        }
+        printf("%s\n",str);
+}
+```
+- Left rotation :
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int k;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        printf("Rotate by:");
+        scanf("%d",&k);
+        int len=strlen(str);
+        k=k%len;
+        for(int i=0;i<k;i++){
+                char temp=str[0];
+                for(int j=0;j<len-1;j++){
+                        str[j]=str[j+1];
+                }
+                str[len-1]=temp;
+        }
+        printf("%s\n",str);
+}
+```
+
