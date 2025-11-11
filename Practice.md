@@ -1624,7 +1624,7 @@ int main(){
         printf("Largest=%s\n",largest);
 }
 ```
-
+## Find the longest substring without repeating characters.
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -2061,5 +2061,32 @@ int main(){
                         printf("%c repeats %d times\n",str[i],freq[i]);
                 }
         }
+}
+```
+
+## Compress consecutive characters (aaabb → a3b2).
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],word[100];
+        int count=1,k=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strlen(str)-1]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]==str[i+1]){
+                        count++;
+                }
+                else{
+                        word[k++]=str[i];
+                        if(count>1){
+                                word[k++]=count+'0';
+                        }
+                        count=1;
+                }
+        }
+        word[k]='\0';
+        printf("%s\n",word);
 }
 ```
