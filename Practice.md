@@ -2090,3 +2090,36 @@ int main(){
         printf("%s\n",word);
 }
 ```
+
+## Reverse the words in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char str[100],str1[100][100];
+    int k=0,j=0;
+    printf("Enter the string:");
+    fgets(str,sizeof(str),stdin);
+    str[strcspn(str,"\n")]='\0';
+    int len=strlen(str);
+    for(int i=0;i<len;i++){
+        if(str[i]!=' '){
+            str1[j][k++]=str[i];
+        }
+        else{
+            j++;
+            str1[j][k]='\0';
+            k=0;
+        }
+    }
+    j++;
+    str1[j][k]='\0';
+    for(int i=0;i<j;i++){
+        printf("%s\n",str1[i]);
+    }
+    
+    for(int i=j;i>=0;i--){
+        printf("%s ",str1[i]);
+    }
+}
+```
