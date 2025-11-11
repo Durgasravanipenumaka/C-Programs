@@ -1940,7 +1940,7 @@ int main(){
 int main(){
         char str[100];
         int found=1;
-        printf("Enter the string:");
+        freprintf("Enter the string:");
         fgets(str,sizeof(str),stdin);
         str[strcspn(str,"\n")]='\0';
         for(int i=0;str[i]!='\0';i++){
@@ -2009,3 +2009,57 @@ int main(){
 }
 ```
 
+## Count occurrences of each character
+- unorder :
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        int freq[256]={0};
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                freq[str[i]]++;
+        }
+        for(int i=0;i<256;i++){
+                if(freq[i]>0){
+                        printf("%c occurs %d times\n",i,freq[i]);
+                }
+        }
+}
+```
+- order :
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        int freq[len];
+        for(int i=0;i<len;i++){
+                freq[i]=-1;
+        }
+        for(int i=0;i<len;i++){
+                int count=0;
+                if(freq[i]==-1){
+                        for(int j=0;j<len;j++){
+                                if(str[i]==str[j]){
+                                        count++;
+                                        freq[j]=0;
+                                }
+                        }
+                        freq[i]=count;
+                }
+        }
+        for(int i=0;i<len;i++){
+                if(freq[i]>0){
+                        printf("%c repeats %d times\n",str[i],freq[i]);
+                }
+        }
+}
+```
