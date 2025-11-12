@@ -2123,3 +2123,48 @@ int main(){
     }
 }
 ```
+
+## Implement a page replacement algorithm (it looks like Least Recently Used (LRU) or Least Frequently Used (LFU)).
+```c
+#include<stdio.h>
+int main(){
+        int arr[]={7,0,1,2,0,2,3,5,4};
+        int flag=0,count=0,min;
+        int freq[3],req[3];
+        for(int i=0;i<3;i++){
+                freq[i]=-1;
+                req[i]=-1;
+        }
+
+        for(int i=0;i<9;i++){
+                flag=0;
+                for(int j=0;j<3;j++){
+                        if(req[j]==arr[i]){
+                                count++;
+                                freq[j]=count;
+                                flag=1;
+                                break;
+                        }
+                }
+                if(flag==0){
+                        for(int j=0;j<3;j++){
+                                if(freq[j]<freq[min]){
+                                        min=j;
+                                }
+                        }
+                        freq[min]=count++;
+                        req[min]=arr[i];
+                }
+                for(int j=0;j<3;j++){
+                        if(req[j]==-1){
+                                printf("- ");
+                        }
+                        else{
+                                printf("%d ",req[j]);
+                        }
+                }
+                printf("\n");
+        }
+}
+```
+
