@@ -2195,3 +2195,46 @@ int main(){
                 printf("Even Number\n");
 }
 ```
+
+## Swap two numbers without using a third variable.
+```c
+#include<stdio.h>
+int main(){
+        int a,b;
+        printf("Enter the two numbers:");
+        scanf("%d %d",&a,&b);
+        printf("Numbers before swapping: %d %d\n",a,b);
+        a=a^b;
+        b=a^b;
+        a=a^b;
+        printf("Numbers after swapping : %d %d\n",a,b);
+
+}
+```
+
+## Count the number of set bits (1s) in a number.
+```c
+#include<stdio.h>
+void binary(int n){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(n & mask ? '1' : '0');
+                if(i%4==0)
+                        printf(" ");
+        }
+        printf("\n");
+}
+int main(){
+        int n,count=0;
+        printf("Enter the number:");
+        scanf("%d",&n);
+        printf("Number in binary format : ");
+        binary(n);
+        for(int i=0;i<32;i++){
+                if(n&(1<<i))
+                        count++;
+        }
+        printf("Total number of set bits:%d\n",count);
+}
+```
