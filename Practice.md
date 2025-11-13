@@ -2168,3 +2168,30 @@ int main(){
 }
 ```
 
+# BITWISE :
+
+## Check if a number is even or odd.
+```c
+#include<stdio.h>
+void binary(int n){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(n & mask ? '1' : '0');
+                if(i%4==0)
+                        printf(" ");
+        }
+        printf("\n");
+}
+int main(){
+        int n;
+        printf("Enter the number:");
+        scanf("%d",&n);
+        printf("Number in Binary form: ");
+        binary(n);
+        if(n&(n-1))
+                printf("Odd Number\n");
+        else
+                printf("Even Number\n");
+}
+```
