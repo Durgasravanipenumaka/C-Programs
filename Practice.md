@@ -2238,3 +2238,149 @@ int main(){
         printf("Total number of set bits:%d\n",count);
 }
 ```
+
+## Check if the ith bit is set (1) or not (0).
+```c
+#include<stdio.h>
+void binary(int n){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(n & mask ? '1' : '0');
+                if(i%4==0)
+                        printf(" ");
+        }
+        printf("\n");
+}
+int main(){
+        int n,pos;
+        printf("Enter the number:");
+        scanf("%d",&n);
+        printf("Number in binary format : ");
+        binary(n);
+        printf("Enter the position to check:");
+        scanf("%d",&pos);
+        if(n&(1<<(pos-1)))
+                printf("set\n");
+        else
+                printf("Not set\n");
+}
+```
+
+## Set the ith bit of a number
+```
+#include<stdio.h>
+void binary(int n){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(n & mask ? '1' : '0');
+                if(i%4==0)
+                        printf(" ");
+        }
+        printf("\n");
+}
+int main(){
+        int n,pos;
+        printf("Enter the number:");
+        scanf("%d",&n);
+        printf("Number in binary form:");
+        binary(n);
+        printf("Enter the position to set:");
+        scanf("%d",&pos);
+        n=n|(1<<(pos-1));
+        printf("Number after setting the bit:%d\n",n);
+        printf("Number in binary form:");
+        binary(n);
+}
+```
+
+## Clear the ith bit of a number
+```c
+#include<stdio.h>
+void binary(int n){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(n & mask ? '1' : '0');
+                if(i%4==0)
+                        printf(" ");
+        }
+        printf("\n");
+}
+int main(){
+        int n,pos;
+        printf("Enter the number:");
+        scanf("%d",&n);
+        printf("Number in binary form:");
+        binary(n);
+        printf("Enter the position to clear:");
+        scanf("%d",&pos);
+        n=n&~(1<<(pos-1));
+        printf("Number after clearing the bit:%d\n",n);
+        printf("Number in binary form:");
+        binary(n);
+}
+```
+
+## Toggle the ith bit of a number.
+```c
+#include<stdio.h>
+void binary(int n){
+        int mask;
+        for(int i=31;i>=0;i--){
+                mask=1<<i;
+                putchar(n & mask ? '1' : '0');
+                if(i%4==0)
+                        printf(" ");
+        }
+        printf("\n");
+}
+int main(){
+        int n,pos;
+        printf("Enter the number:");
+        scanf("%d",&n);
+        printf("Number in binary form:");
+        binary(n);
+        printf("Enter the position to toggle:");
+        scanf("%d",&pos);
+        n=n^(1<<(pos-1));
+        printf("Number after toggling the bit:%d\n",n);
+        printf("Number in binary form:");
+        binary(n);
+}
+```
+
+## Check if a number is a power of 2.
+```c
+#include<stdio.h>
+int main(){
+        int n;
+        printf("Enter the number:");
+        scanf("%d",&n);
+        if((n&(n-1))==0)
+                printf("power of 2\n");
+        else
+                printf("Not a power of 2\n");
+}
+```
+
+## Find the position of the rightmost set bit.
+```c
+#include<stdio.h>
+int main(){
+        int n,pos;
+        printf("Enter the number:");
+        scanf("%d",&n);
+        for(int i=0;i<32;i++){
+                if(n&(1<<i)){
+                        pos=i+1;
+                        break;
+                }
+        }
+        printf("Position of right most bit:%d\n",pos);
+}
+```
+
+## 
+
