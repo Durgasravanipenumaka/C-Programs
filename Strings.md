@@ -2183,3 +2183,54 @@ int main(){
 }
 ```
 
+## Given a string (sentence), find the word that appears the most number of times.If multiple words have the same frequency, return the first one.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char str[100],word[100][100];
+    int k=0,l=0;
+    int count=0;
+    printf("enter the string:");
+    fgets(str,sizeof(str),stdin);
+    str[strcspn(str,"\n")]='\0';
+    for(int i=0;str[i]!='\0';i++){
+        if(str[i]!=' '){
+            word[l][k++]=str[i];
+        }
+        else{
+            word[l][k]='\0';
+            l++;
+            k=0;
+
+        }
+    }
+    word[l][k]='\0';
+    l++;
+    int freq[l];
+    for(int i=0;i<l;i++){
+        freq[i]=-1;
+    }
+    for(int i=0;i<l;i++){
+        count=0;
+        if(freq[i]==-1){
+          for(int j=0;j<l;j++){
+            if(strcmp(word[i],word[j])==0){
+                freq[j]=0;
+                count++;
+            }
+          }
+          freq[i]=count;
+        }
+    }
+    int max=0,pos;
+    for(int i=0;i<l;i++){
+        if(freq[i]>max){
+            max=freq[i];
+            pos=i;
+        }
+    }
+    printf("Most frequent word:%s\n",word[pos]);
+    printf("Frequency:%d\n",freq[pos]);
+}
+    
