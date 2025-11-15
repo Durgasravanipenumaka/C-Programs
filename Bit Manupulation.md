@@ -882,3 +882,20 @@ int main(){
         binarybits(num);
 }
 ```
+
+## Sum of two numbers using bitwise operators.
+```c
+#include<stdio.h>
+int main(){
+        int a,b;
+        printf("Enter the a and b values:");
+        scanf("%d %d",&a,&b);
+        int carry;
+        while(b!=0){
+                carry=(a&b)<<1;
+                a=a^b;
+                b=carry;
+        }
+        printf("sum of two numbers:%d\n",a);
+}
+```
