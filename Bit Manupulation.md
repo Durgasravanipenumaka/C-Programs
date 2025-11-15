@@ -899,3 +899,15 @@ int main(){
         printf("sum of two numbers:%d\n",a);
 }
 ```
+
+## Subtraction of two numbers.
+```c
+#include<stdio.h>
+int main(){
+        int a,b;
+        printf("Enter the a and b values:");
+        scanf("%d %d",&a,&b);
+        int c = a + (~b + 1);
+        printf("Subtraction of two numbers : %d\n",c);
+}
+```
