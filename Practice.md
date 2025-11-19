@@ -2433,3 +2433,39 @@ int main(){
 }
 ```
 
+## Remove given substring.
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],sstr[100],s[100][100];
+        int k=0,l=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        printf("Enter the substring:");
+        fgets(sstr,sizeof(sstr),stdin);
+        sstr[strcspn(sstr,"\n")]='\0';
+        for(int i=0;str[i]!='\0';i++){
+                if(str[i]!=' '){
+                        s[k][l++]=str[i];
+                }
+                else{
+                        s[k][l]='\0';
+                        if(strcmp(sstr,s[k])!=0){
+                                k++;
+                        }
+                        l=0;
+                }
+        }
+        s[k][l]='\0';
+        if(strcmp(sstr,s[k])!=0){
+                k++;
+        }
+        printf("string after removing the substring:\n");
+        for(int i=0;i<k;i++){
+                printf("%s ",s[i]);
+        }
+        printf("\n");
+}
+```
