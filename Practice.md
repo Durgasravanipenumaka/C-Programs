@@ -2405,3 +2405,31 @@ int main(){
 }
 ```
 
+## Replace the first character of the every word with capital letter.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+        char str[100];
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+
+        for(int i=0;str[i]!='\0';i++){
+                if(i==0){
+                        if(islower(str[i]))
+                                str[i]=toupper(str[i]);
+                }
+
+                else if(str[i]==' ' && str[i+1]!=' '){
+                        if(islower(str[i+1]))
+                                str[i+1]=toupper(str[i+1]);
+                }
+        }
+
+        printf("%s\n",str);
+
+}
+```
+
