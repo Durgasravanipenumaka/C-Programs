@@ -2472,28 +2472,6 @@ int main(){
 
 ## Longest common subsequence.
 ```c
-#include<stdio.h>
-#include<string.h>
-int main(){
-        char str1[100],str2[100];
-        printf("Enter the string:");
-        fgets(str1,sizeof(str1),stdin);
-        str1[strcspn(str1,"\n")]='\0';
-        printf("Enter the string2:");
-        fgets(str2,sizeof(str2),stdin);
-        str2[strcspn(str2,"\n")]='\0';
-        int k=0,pos=0;
-        char word[100];
-        for(int i=0;str2[i]!='\0';i++){
-                for(int j=pos;str1[j]!='\0';j++){
-                        if(str2[i]==str1[j]){
-                                word[k++]=str2[i];
-                                pos=j+1;
-                                break;
-                        }
-                }
-        }
-        word[k]='\0';
-        printf("%s\n",word);
-}
+
+
 ```
