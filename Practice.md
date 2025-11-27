@@ -1587,7 +1587,8 @@ int main(){
 ```
 
 ## Non repeating substring :
-```cinclude<stdio.h>
+```c
+#include<stdio.h>
 #include<string.h>
 int main(){
         char str[100];
