@@ -911,3 +911,23 @@ int main(){
         printf("Subtraction of two numbers : %d\n",c);
 }
 ```
+
+## write a C program to reverse the bits using Macro .
+```c
+#include<stdio.h>
+#define reverse(n,res)         \
+do {                              \
+        for(int i=0;i<32;i++){     \
+                if(n&(1<<i))       \
+                        res=res|(1<<(31-i)); \
+        }      \
+} while(0)
+int main(){
+        int num;
+        printf("Enter the number:");
+        scanf("%d",&num);
+        int result=0;
+        reverse(num,result);
+        printf("Number after reversing : %x\n",result);
+}
+```
