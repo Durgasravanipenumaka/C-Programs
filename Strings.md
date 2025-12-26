@@ -2233,4 +2233,24 @@ int main(){
     printf("Most frequent word:%s\n",word[pos]);
     printf("Frequency:%d\n",freq[pos]);
 }
-    
+```
+
+## frequency of characters using command line argument.
+```c
+#include<stdio.h>
+int main(int argc,char *argv[]){
+        int freq[256]={0};
+        if(argc < 2){
+                 printf("Usage: %s <string>\n", argv[0]);
+                 return 1;
+        }
+        char *str = argv[1];
+        for(int i=0;str[i]!='\0';i++){
+                freq[str[i]]++;
+        }
+        for(int i=0;i<256;i++){
+                if(freq[i]>0)
+                        printf("%c repeats %d times\n",i,freq[i]);
+        }
+}
+```   
